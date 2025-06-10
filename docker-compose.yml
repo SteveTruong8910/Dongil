@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+    app:
+        build:
+            context: .
+            dockerfile: .docker/.Dockerfile
+        container_name: ci3_app
+        ports:
+            - "8989:80"
+        volumes:
+            - .:/var/www/html
+        environment:
+            - APACHE_DOCUMENT_ROOT=/var/www/html
+        working_dir: /var/www/html
+        depends_on:
+            - db
+        restart: always
+
+    db:
+        image: mysql:5.7
+        container_name: ci3_db
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: rootpassword
+            MYSQL_DATABASE: ci3_database
+            MYSQL_USER: ci3_user
+            MYSQL_PASSWORD: ci3_password
+        volumes:
+            - db_data:/var/lib/mysql
+        restart: always
+
+    adminer:
+        image: adminer
+        container_name: ci3_adminer
+        ports:
+            - "8585:8080"
+        restart: always
+volumes:
+    db_data:

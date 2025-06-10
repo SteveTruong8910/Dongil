@@ -1,0 +1,14 @@
+/*
+@font-face {
+    font-family: 'Kyuri_diary';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_07@1.0/Kyuri_diary.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}*/
+
+@font-face {
+    font-family: 'Kyuri_diary';
+    src: url('/assets/fonts/file/Kyuri_diary.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

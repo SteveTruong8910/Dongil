@@ -1,0 +1,15 @@
+/*
+@font-face {
+    font-family: 'Treegarden';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_10@1.0/Treegarden.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*/
+
+@font-face {
+    font-family: 'Treegarden';
+    src: url('/assets/fonts/file/Treegarden.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,0 +1,15 @@
+/*
+@font-face {
+    font-family: 'I_survive';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_06@1.0/I_survive.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*/
+
+@font-face {
+    font-family: 'I_survive';
+    src: url('/assets/fonts/file/I_survive.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

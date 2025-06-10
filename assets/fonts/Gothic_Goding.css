@@ -1,0 +1,14 @@
+/*
+@font-face {
+    font-family: 'Gothic_Goding';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_05@1.0/Gothic_Goding.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}*/
+
+@font-face {
+    font-family: 'Gothic_Goding';
+    src: url('/assets/fonts/file/Gothic_Goding.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://dongl.co.kr/</loc>
+  <lastmod>2024-09-03T12:13:38+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://dongl.co.kr/login</loc>
+  <lastmod>2024-09-03T12:13:38+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dongl.co.kr/app/provision</loc>
+  <lastmod>2024-09-03T12:13:38+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dongl.co.kr/app/privacy</loc>
+  <lastmod>2024-09-03T12:13:38+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://dongl.co.kr/letter?isLogin=N</loc>
+  <lastmod>2024-09-03T12:13:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dongl.co.kr/join</loc>
+  <lastmod>2024-09-03T12:13:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dongl.co.kr/mypage/searchLetter</loc>
+  <lastmod>2024-09-03T12:13:38+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://dongl.co.kr/searchPwd</loc>
+  <lastmod>2024-09-03T12:13:38+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>

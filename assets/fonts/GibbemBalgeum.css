@@ -1,0 +1,14 @@
+/*
+@font-face {
+    font-family: 'GibbemBalgeum';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_04@1.0/GibbemBalgeum.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}*/
+
+@font-face {
+    font-family: 'GibbemBalgeum';
+    src: url('/assets/fonts/file/GibbemBalgeum.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,0 +1,62 @@
+.tmpWrap {    
+}
+
+.viewWrap {
+    display: flex;
+    border-bottom: 1px solid #d7d7d7;
+    padding-bottom: 15px;
+    margin-top: 15px;
+}
+
+.leftBox {
+    width: 30%;
+}
+.leftBox .viewImg {
+    width: 100%;
+}
+
+.leftBox p {
+    text-align: center;
+    margin-top: 5px;
+    letter-spacing: -1px;
+    font-size: 12px;    
+}
+
+.rightBox {
+    margin-left: 20px;
+    width: 70%;
+}
+
+.rightBox .saveDate {
+    font-size: 13px;
+    color: #8a8a8a;
+    margin-bottom: 5px;
+    letter-spacing: -1px;
+}
+
+.rightBox .content {
+    max-height: 184px;
+    overflow: hidden;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: -1px;
+}
+
+.rightBox .btnWrap {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.rightBox .continueBtn{
+    background: linear-gradient(272deg, #FFD600 0.5%, #FFDF34 93.87%);
+    border-radius: 3px;
+    padding: 5px 10px;
+}
+
+.rightBox .deleteBtn{
+    border-radius: 3px;
+    padding: 5px 10px;
+    background: #ff6363;
+    color: #fff;
+}

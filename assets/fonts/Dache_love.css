@@ -1,0 +1,15 @@
+/*
+@font-face {
+    font-family: 'Dache_love';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_02@1.0/Dache_love.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*/
+
+@font-face {
+    font-family: 'Dache_love';
+    src: url('/assets/fonts/file/Dache_love.woff') format('woff');    
+    font-weight: normal;
+    font-style: normal;
+}

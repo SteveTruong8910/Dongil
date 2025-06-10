@@ -1,0 +1,14 @@
+/*
+@font-face {
+    font-family: 'Kimyooyee';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_07@1.0/Kimyooyee.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}*/
+
+@font-face {
+    font-family: 'Kimyooyee';
+    src: url('/assets/fonts/file/Kimyooyee.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

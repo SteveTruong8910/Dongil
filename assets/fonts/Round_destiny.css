@@ -1,0 +1,17 @@
+/*
+
+@font-face {
+    font-family: 'Round_destiny';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_09@1.0/Round_destiny.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*/
+
+
+@font-face {
+    font-family: 'Round_destiny';
+    src: url('/assets/fonts/file/Round_destiny.woff') format('woff');    
+    font-weight: normal;
+    font-style: normal;
+}

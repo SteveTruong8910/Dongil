@@ -1,0 +1,15 @@
+/*
+@font-face {
+    font-family: 'Galmetgol';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_04@1.0/Galmetgol.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*/
+
+@font-face {
+    font-family: 'Galmetgol';
+    src: url('/assets/fonts/file/Galmetgol.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

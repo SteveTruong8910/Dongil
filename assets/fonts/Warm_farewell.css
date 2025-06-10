@@ -1,0 +1,17 @@
+/*
+
+@font-face {
+    font-family: 'Warm_farewell';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_11@1.0/Warm_farewell.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*/
+
+
+@font-face {
+    font-family: 'Warm_farewell';
+    src: url('/assets/fonts/file/Warm_farewell.woff') format('woff');    
+    font-weight: normal;
+    font-style: normal;
+}

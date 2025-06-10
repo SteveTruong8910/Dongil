@@ -1,0 +1,14 @@
+/*
+@font-face {
+    font-family: 'Kangbujang';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_06@1.0/Kangbujang.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}*/
+
+@font-face {
+    font-family: 'Kangbujang';
+    src: url('/assets/fonts/file/Kangbujang.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

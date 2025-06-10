@@ -1,0 +1,15 @@
+/*
+@font-face {
+    font-family: 'Dajin';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Dajin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*/
+
+@font-face {
+    font-family: 'Dajin';
+    src: url('/assets/fonts/file/Dajin.woff') format('woff');    
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,0 +1,15 @@
+/*
+@font-face {
+    font-family: 'Hardworking_donghee';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_06@1.0/Hardworking_donghee.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*/
+
+@font-face {
+    font-family: 'Hardworking_donghee';
+    src: url('/assets/fonts/file/Hardworking_donghee.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

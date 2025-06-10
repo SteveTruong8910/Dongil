@@ -1,0 +1,16 @@
+/*
+
+@font-face {
+    font-family: 'Deagwang_mirror';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_03@1.0/Deagwang_mirror.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*/
+
+@font-face {
+    font-family: 'Deagwang_mirror';
+    src: url('/assets/fonts/file/Deagwang_mirror.woff') format('woff');    
+    font-weight: normal;
+    font-style: normal;
+}

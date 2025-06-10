@@ -1,0 +1,2113 @@
+*{
+    letter-spacing: -0.5px;
+}
+
+.empty{
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+    color: #5e5e5e;
+}
+
+.mainWrap{
+    width: 600px;        
+    margin: 0 auto;
+    background: #fff;    
+}
+
+.yellowText{
+    color: #FFD600;
+}
+
+.yellowBack{
+    color: #FFD600;
+}
+
+.purpleText{
+    color: #6879FF;
+}
+
+.purpleBack{
+    background: #6879FF;
+    color: #fff;
+}
+
+#home{
+    min-height: calc(100vh - 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 100px;
+    overflow: auto;
+}
+
+#home .storeBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+#home .storeBox a{
+    padding: 12px;
+    background: #fdfdfd;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 46%;    
+    text-align: center;
+}
+
+#home .storeBox img{
+    width: 22px;
+}
+
+
+#home .homeBox{
+    height: 100%;
+    position: relative;
+}
+
+#home .ment{    
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -1px;
+}
+
+#home .ment .point{
+    font-weight: bold;
+}
+
+#home .mainImage{
+    width: 40%;
+    margin: 35px 0;
+/*    filter: drop-shadow(5px 8px 11px #000);*/
+}
+
+#home .letterBtn{   
+    width: 100%;
+    height: 50px;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    max-width: 300px;
+    font-size: 16px;
+    letter-spacing: -1px;
+}
+
+#home .searchBtn{   
+    width: 100%;
+    height: 50px;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #00000099;
+    border-radius: 15px;
+    max-width: 300px;
+    font-size: 16px;
+    letter-spacing: -1px;
+    margin-top: 10px;
+}
+
+#home .arrowLeft{
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    font-size: 20px;
+    color: #b3b3b3;
+    cursor: pointer;
+}
+
+#home .arrowRight{
+    position: absolute;
+    right: 10px;
+    top: 40%;
+    font-size: 20px;
+    color: #b3b3b3;
+    cursor: pointer;
+}
+
+#home .box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    padding: 0 20px;    
+}
+
+#home .introMent {
+    font-weight: bold;
+    margin: 20px 0;
+    font-size: 18px;
+    letter-spacing: -1px;
+}
+
+#home .companyInfo{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    line-height: 24px;
+    letter-spacing: -1px;
+    font-size: 12px;
+}
+
+#login{    
+    height: 100%;
+    padding: 30px 18px;
+    text-align: center;
+}
+
+#login .logo{
+    width: 180px;
+}
+
+#login .title{    
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#login .ment{
+    padding: 30px 0 10px 0;
+    font-weight: bold;
+    text-align: left;
+    font-size: 16px;
+    letter-spacing: -0.5px;
+}
+
+#login .loginBox{
+    width: 100%;
+    height: 55px;
+    border-radius: 15px;
+    border: 1.17px solid #0000001A;
+    padding-left: 15px;    
+}
+
+#login .multiBox{
+    position: relative;
+}
+
+#login .multiBox .loginBix{
+    padding-right: 100px;
+}
+
+#login .loginBtn{
+    width: 100%;
+    border-radius: 8px;
+    margin: 15px 0;
+    height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#login .authBtn{
+    background: #6879FF;
+    color: #fff;
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    height: 100%;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    font-size: 13px;
+}
+
+#login .loginN{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #00000099;
+    margin-top: 0;
+}
+
+#login .snsMent{
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 15px 0;
+}
+
+#login .joinMent{
+    text-align: center;
+    color: #00000080;
+    font-size: 14px;
+    margin-top: 20px;  
+    letter-spacing: -1px;
+}
+
+#login .guide{
+    text-align: left;
+    margin: 15px 0 5px 0;
+    padding-left: 2px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+#login .snsLoginBox {
+    width: 100%;
+    display: flex;
+    justify-content: center;    
+}
+
+#login .snsLoginBox img{
+    width: 50px;
+    margin: 0 5px;
+}
+/* 상단 레이아웃 */
+#hd.idx{height:auto;}
+#hd{position:relative; height:50px;}
+
+@media screen and (min-width:600px){
+    #hd_wrapper .row{margin: 0 auto;}
+    #visual .text{font-size: 1.8em; line-height: 1.5em; padding-right: 50px;}
+}
+
+#hd:after {display:block;visibility:hidden;clear:both;content:""}
+#hd_h1 {position:absolute;font-size:0;text-indent:-9999em;line-height:0;overflow:hidden}
+
+#hd_wrapper{    
+    padding: 10px 15px;
+    background: #fff;
+    color: #000000;
+    font-weight: bold;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;   
+    border-bottom: 1px solid #f5f5f5;
+}
+#hd_wrapper .row{max-width: 600px; display: flex; }
+#hd.idx #hd_wrapper{position:absolute; background:none; border-bottom:0;}
+#hd #hd_wrapper:before{display:none;}
+
+#hd_wrapper .pointBox{
+        background: #6879FF;
+    color: #FFDC22;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    margin-top: 5px;
+}
+#hd_wrapper .point{    
+    font-size: 15px;
+}
+
+#hd_wrapper .point .speechBubble {
+    display: block;
+    position: absolute;
+    top: 28px;
+    min-width: 90px;
+    font-size: 12px;
+    text-align: center;
+    padding: 5px 0;
+    border: 1px solid #eee;
+    background: #FFD600;
+    border-radius: 5px;
+}
+
+.speechBubble:after {
+    content: '';
+    border-top: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #FFD600;
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 3px;
+}
+
+#hd_wrapper:after {display:block;visibility:hidden;clear:both;content:""}
+#hd #logo{
+    display: block;
+    font-size: 16px;
+    line-height: 30px;    
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    cursor: unset;
+    letter-spacing: -1px;
+}
+#hd #logo img{width: 100%; max-width: 150px; }
+#hd #logo span{display:inline-block; border-radius:20px; background:#efd9e3; padding:0px 5px; font-size:0.6em; line-height:20px; margin:5px; vertical-align:middle;}
+#hd #title{ text-align:left; line-height:35px; font-size:1.3em; text-align:center; font-weight:500;
+		    display:inline-block; width:100%; white-space: nowrap;overflow: hidden; text-overflow: ellipsis; vertical-align:middle;}
+#hd #hd_wrapper .btn{color: #fff; background-color: rgba(0,0,0,0.15); font-size: 0.9em; margin: 2px 0;}
+
+#hd_back {float:left;}
+#hd_back img{height:25px; margin:4px;}
+#hd_nb {float:right;}
+.hd_icon{display:inline-block; vertical-align:middle; }
+.hd_icon>a { display: flex; align-items: center; font-size:1.2em; line-height:32px; height:30px;  text-align:center; text-decoration:none; margin-left:0px; position:relative; }
+.hd_icon>a .new{ font-size:12px; font-weight:600; min-width:18px; line-height:18px; height:18px; padding:0 5px; text-align:center;
+				background:#463b95; color:#fff; position:absolute; right:-5px; top:-5px; border-radius:15px;}
+
+/* 하단 레이아웃 */
+#ft_menu{
+    position: fixed;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    height: 60px;
+    bottom: 15px;
+    max-width: 600px;
+    width: 95%;
+    border-radius: 20px;
+    background: linear-gradient(272deg, #FFD600 0.5%, #FFDF34 93.87%);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 22px;
+}
+
+#ft_menu a{
+    width: 33%;
+    display: block;
+    text-align: center;
+}
+
+#ft_menu i.active{
+    background: #fff;
+    padding: 5px 15px;
+    border-radius: 5px
+}
+
+
+/*마이페이지*/
+#mypage{
+    height: 100%;
+    padding: 30px 20px 80px 20px;
+}
+
+#mypage .ment{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 15px;
+    padding-bottom: 20px;
+    border-bottom: 6px solid #EEE;
+    text-align: center;
+}
+
+#mypage .pointInfo{
+    border-radius: 10px;
+    background: #FFF;    
+    border: 1px solid #eee;
+    padding: 15px 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    box-shadow: 0px 5px 6px 0px #eee;
+}
+
+#mypage .pointBox{
+    background: #6879FF;
+    color: #FFDC22;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+#mypage .pointName{
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -1px;
+}
+
+#mypage .point{
+    float: right;
+    letter-spacing: -1px;
+}
+
+#mypage .serviceMent{
+    color: #636363;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#mypage .service{
+    margin-top: 15px;
+}
+
+#mypage .box{
+    margin-bottom: 15px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    border-bottom: 1px solid #d7d7d7;
+    padding-bottom: 15px;
+}
+
+#mypage .box span{
+    letter-spacing: -1px;
+    font-size: 18px;
+}
+
+#mypage .box span img{
+    width: 8px;
+}
+
+#letter{
+    position: relative;
+    padding: 0 15px;
+    height: 100%;
+}
+
+#letter .progressBox{
+    height: 25px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#letter .progressBox .circle{
+    width: 14px;
+    height: 14px;
+    background: #ECECEC;
+    border-radius: 50%;
+    display: flex;
+    z-index: 2;
+    cursor: pointer;
+    position: relative;
+}
+
+#letter .progressBox .circle .circleMent{
+    position: absolute;
+    left: -15px;
+    top: 18px;    
+    white-space: nowrap;
+    font-size: 11px;
+    letter-spacing: -0.5px;
+}
+
+#letter .progressBox .circle.active{
+    background: #FFDC1C;
+}
+
+#letter .progressBox .line{
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #ECECEC;
+    top: 6px;    
+}
+
+#letter .progressBox .activeLine{
+    position: absolute;
+    background: #FFDC1C;
+    width: 0%;    
+    height: 2px;
+    top: 6px;
+    z-index: 1;
+}
+
+#letter .selectMent{
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+#letter .letterMent{
+    color: rgba(0, 0, 0, 0.6);
+    letter-spacing: -1px;
+    margin: 5px 0;
+}
+
+#letter .letterWrap{
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+#letter .cateBox{
+    overflow: auto;
+    white-space: nowrap;
+    padding-bottom: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#letter .cate{
+    border-radius: 10px;
+    padding: 3px 20px;
+    margin-right: 5px;
+}
+
+#letter .cate.active{
+    color: #fff;
+    background: #6879FF;
+}
+
+#letter .letterViewBox{
+    width: 31%;
+    cursor: pointer;
+    margin: 5px 5px;
+    padding: 5px 5px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+#letter .letterImgBox{
+    width: 100%;
+    height: 200px;
+}
+
+#letter .letterImgBox img{
+    width: 100%;
+    height: 100%;
+}
+
+#letter .letterViewBox .dirText{
+    position: absolute;
+    right: 5px;
+    background: #6879FF;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px 10px;
+    opacity: 0.7;
+}
+
+#letter .letterViewBox .letterName{    
+    text-align: center;
+    padding-top: 21px;
+    letter-spacing: -1px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+#letter .letterViewBox .letterPrice{
+    color: #6879FF;
+    text-align: center;
+    margin-top: 5px;
+    letter-spacing: -1px;
+    font-weight: 600;
+}
+
+#letter .letterViewBox.active{
+    background: #ffeb79;
+}
+
+#letter .letterBox{
+    min-height: 560px;
+    text-align: center;
+    background: no-repeat 50% 0 /386px;
+    padding-top: 50px;    
+    zoom: 1.5;
+    position: relative;
+}
+
+
+#letter .letterContent{
+    width: 310px;
+    height: 432px;
+    background: Transparent;
+    outline: none;
+    font-size: 13px;
+    line-height: 21.6px ;
+    resize: none;    
+    color: black;
+    overflow: hidden;    
+    white-space: pre-wrap;
+    z-index: 1;
+    position: inherit;
+    word-break: break-all;
+}
+
+@media screen and (max-width:600px){
+    #letter .letterBox{
+/*        zoom: unset !important;*/
+        zoom: 1;
+/*        zoom: 0.9;*/
+    }
+    
+    #letter .letterContent{
+/*        line-height: 24.12px !important;*/
+    }
+}
+
+#letter .total{
+    font-weight: bold;
+    letter-spacing: -1px;
+    margin-bottom: 5px;    
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#letter #totalCnt{
+    
+}
+
+#letter .letterPage{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #acacac;
+    opacity: 0.3;
+    font-size: 18px;
+}
+
+#letter .btnAddLetter{
+    background: #D9D9D9;
+    padding: 10px;
+    border-radius: 5px;    
+    float: right;
+    font-weight: 500;
+}
+
+#letter .addForm{
+    position: relative;
+}
+
+#letter .btnDelete{
+    z-index: 1;
+    background: #ff2121;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#letter .customBox{
+    position: fixed;
+    bottom: 0;
+    z-index: 2;
+    width: calc(100% - 30px);
+    height: 70px;
+    background: #f9f9f9;
+    max-width: 570px;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;    
+}
+
+#letter .tagBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+}
+
+#letter .tagBox img{
+    margin-right: 15px;
+    cursor: pointer;
+    width: 20px;
+}
+
+#letter .tagBox span{
+    font-size: 15px;
+    margin-right: 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#letter .tagBox input{
+    width: 30px;
+    margin-right: 15px;
+}
+
+#letter .fontSizeBox{
+    z-index: 5;
+    position: fixed;
+    bottom: 70px;
+    display: flex;
+    background: #f9f9f9;
+    border: 1px solid #bbbbbb;
+}
+
+#letter .fontSizeBox .fontSize{
+    padding: 10px 15px;
+    text-align: center;
+    cursor: pointer;    
+}
+
+#letter .fontSize.active{
+    background: #6879FF;
+    color: #fff;
+}
+
+#letter .customBox .nextBtn{
+    padding: 12px 15px;
+    border-radius: 5px;
+}
+
+#letter #selectFont{
+    width: 100%;
+    height: 40px;
+    margin: 5px 0;
+    border: 1px solid #c3c3c3;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+#letter .openFontBtn {
+    display: block;
+    background: #FFDC1C;
+    border-radius: 5px;
+    padding: 8px 10px;
+    margin-top: 15px;
+}
+
+#letter #selectFontId {
+    width: 100%;
+    height: 40px;
+    margin: 5px 0;
+    border: 1px solid #c3c3c3;
+    padding: 3px;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding-left: 10px;
+    cursor: pointer;
+    background: url(/assets/image/ico/ico_arrow_down.png) no-repeat right +10px center;
+    background-size: 11px 8px;
+}
+
+#fontModal .fontModalcloseBtn {
+    padding: 8px 20px;
+    margin-bottom: 15px;    
+    border-radius: 5px;
+    border: 1px solid #ff1d1d;
+    color: #ff1f1f;
+    background: #fff;
+}
+
+#fontModal .fontBtnWrap {
+    display: flex;
+    justify-content: space-around;   
+}
+
+#fontModal .fontBtnWrap button {
+    width: 49%;
+    padding: 11px;
+    border-radius: 5px;
+}
+
+#fontModal button.active {
+    background: #FFDC1C;
+}
+
+#fontModal #fontList {
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+#fontModal .fontWrap {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+    justify-content: space-between;
+}
+
+#fontModal .checkBtn {
+    margin-right: 10px;
+}
+
+#fontModal .defaultWrap {
+    display: flex;
+}
+
+#fontModal .starWrap {
+    cursor: pointer;
+}
+
+#fontModal .starWrap .fa-star{
+    font-size: 15px;
+}
+
+#fontModal .starWrap.active .far {
+    display: none;
+}
+
+#fontModal .starWrap.noActive .fas {
+    display: none;
+}
+
+#letter .photoMent{
+    font-size: 16px;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+}
+
+#letter .photoMent span{
+    color: #FF0000;
+}
+
+#letter .uploadPhotoBtn{
+    width: 30%;
+    height: 180px;
+    margin-right: 9px;
+}
+
+#letter .postBox{
+    margin: 10px 0;
+    margin-top: 0px;
+    padding: 15px 10px;
+    border-bottom: 2px solid #D9D9D9;
+}
+
+#letter .addrBtnWrap {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 14px;
+}
+
+#letter .addrBtn {
+    padding: 5px 6px;
+    border-radius: 4px;
+    background: #fff;
+    border: 1px solid #c8c8c8;
+    font-size: 14px;
+    background: url(/assets/image/ico/ico_arrow_down.png) no-repeat right +5px center;
+    background-size: 11px 8px;
+    padding-right: 23px;
+    font-weight: bold;
+}
+
+#letter .postHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+#letter .postHeader span{
+    display: flex;
+    align-items: center;
+}
+
+#letter .postHeader input[type="checkbox"]{
+    margin: 0;
+    margin-left: 6px;
+}
+
+#letter .postHeader label{
+    color: #FF6C6C;
+    letter-spacing: -1px;
+    margin: 0;
+}
+
+#letter .postTitle{
+    font-size: 16px;
+    font-weight: bold;    
+    text-align: center;
+    letter-spacing: -1px;
+}
+
+#letter .multiBox{
+    position: relative;
+}
+
+#letter .guide{
+    text-align: left;
+    margin: 15px 0 5px 0;
+    padding-left: 2px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+#letter .fieldInput{
+    width: 100%;
+    height: 55px;
+    border-radius: 15px;
+    border: 1.17px solid #0000001A;
+    padding-left: 15px;
+}
+
+#letter .authBtn{
+    background: #6879FF;
+    color: #fff;
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    height: 100%;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    font-size: 13px;
+}
+
+#letter .payBox{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 15px 0;
+}
+
+#letter .stampBox.active{    
+    border: 1px solid #FFDC1C;
+    background: #fff9d7;
+}
+
+#letter .stampBox::before{
+    content: "•";
+    font-size: 30px;
+    color: #FFDC1C;    
+    position: absolute;
+    left: 10px;
+    top: 17px;
+}
+
+#letter .stampBox{
+    width: 100%;
+    padding: 10px 10px 10px 35px;
+    display: inline-block;
+    cursor: pointer;
+    line-height: 25px;
+    letter-spacing: -1px;    
+    position: relative;
+    border: 1px solid #f1f1f1;
+    margin: 5px 0;
+    border-radius: 8px;
+}
+
+#letter .stampTitle{
+    font-weight: bold;
+    letter-spacing: -0.5px;
+    font-size: 14px;
+}
+
+#letter .title{
+    font-weight: bold;
+    letter-spacing: -1px;
+    font-size: 18px;
+    margin-bottom: 2px
+}
+
+#letter .title label{
+    font-weight: 700;
+    font-size: 14px;
+}
+
+#letter .price{    
+    color: #6879FF;
+    font-size: 14px;
+}
+
+#letter .ment{
+    color: #000000;
+    font-size: 13px;
+}
+
+#letter .point{
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+#letter .point .pointBox{
+    background: #FFDC1C;
+    color: black;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+}
+
+#letter .point .pointMent{
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: -1px;
+    font-weight: 700;
+}
+
+#letter .priceTitle{
+    font-weight: bold;
+    letter-spacing: -0.5px;
+}
+
+#letter .totalPrice{
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+#letter .dateBox{
+    display: flex;
+    margin: 15px 0;
+}
+
+#letter .dateBox #reservDate{
+    width: 100%;
+    background: #F2F2F2;
+    text-align: center;
+    margin-right: 5px;
+    height: 45px;
+    border-radius: 8px;
+}
+
+#letter .payPointBox{
+    display: flex;
+    margin-bottom: 8px;
+    height: 45px;
+    align-items: center;
+    position: relative;
+}
+
+#letter .payPointBox span{
+    width: 50px;    
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+}
+
+#letter .payPointBox div{
+    width: calc(100% - 20px);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#letter .payPointBox #payPoint{
+    height: 100%;
+    border: 1px solid #CDCDCD;
+    border-radius: 5px;
+    padding: 0 10px;
+    text-align: right;
+    width: calc(100% - 110px);
+    color: #6879FF;
+    font-weight: bold;
+    padding-right: 55px;
+    font-size: 16px;
+}
+
+#letter .payPointBox .deletePoint{
+    position: absolute;
+    right: 117px;
+    top: 10px;
+    width: 28px;
+    height: 28px;
+    background: #989898;
+    color: #fff;
+    border-radius: 50%;
+}
+
+#letter .payPointBox #allPayBtn{
+    width: 100px;
+    height: 100%;
+    background: #fff;
+    border: 1px solid #CDCDCD;
+    border-radius: 5px;
+}
+
+#letter .payPointBox #allPayBtn.active{
+    background: #6879FF;
+    color: #fff;
+}
+
+#letter .chkPointBox{
+    text-align: right;
+    margin: 5px 0 10px 0;
+}
+
+#letter .payBtnBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#letter .payBtnBox .payTypeBtn {
+    width: 48%;
+    height: 40px;
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 5px;
+    background: #fcfcfc;
+    border: 1px solid #eee;    
+}
+
+#letter .payBtnBox .payTypeBtn.active {
+    border: 1px solid #FFDC1C;
+    background: #fff9d7;
+}
+
+#letter .btnPay{
+    width: 100%;    
+    margin-top: 10px;
+    border-radius: 8px;
+    background: #6879FF;
+    color: #fff;
+    letter-spacing: -1px;
+    font-weight: bold;    
+    font-size: 15px;
+    padding: 15px;
+}
+
+#letter .btnNext{
+    background: #6879FF;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+    position: fixed;
+    bottom: 15px;
+    width: calc(100% - 30px);
+    max-width: 570px;
+    height: 50px;
+}
+
+#letter .photosList{
+    margin-top: 10px;    
+/*
+    display: flex;
+    flex-wrap: wrap;
+*/
+}
+
+#letter .photoImgBox{    
+    position: relative;
+    display: inline-block;
+    margin: 5px;
+    border: 1px solid #eee;
+    width: 30%;
+    height: 180px;
+}
+
+#letter .photoImgBox .fa-times{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background: black;
+    color: #fff;
+    padding: 7px;
+    cursor: pointer;
+}
+
+#letter .photoImgBox img{
+    width: 100%;
+    height: 100%;    
+    object-fit: cover;
+}
+
+#letter .photoImgBox .btnBox {
+    position: absolute;
+    bottom: 0px;
+    justify-content: flex-end;
+    display: flex;
+    width: 100%;
+}
+
+#letter .photoImgBox .imgType {
+    width: 50%;
+    height: 25px;
+    font-size: 12px;
+}
+
+#letter .photoImgBox .imgType.active {
+    background: #6879FF;
+    color: #fff;
+}
+
+#letter .postBtn{
+    background: #FFDC1C;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px 20px;        
+    margin-top: 10px;
+}
+
+#letter .comment{
+    letter-spacing: -1px;
+    color: black;
+    margin-bottom: 2px;
+    text-align: center;
+    background: #f9f9f9;
+    padding: 3px 0;
+    border-radius: 5px;
+}
+
+#letter .priceBox{
+    margin: 10px 0;
+    text-align: center;
+}
+
+#letter .tmpSaveBtn{
+    border: 1px solid #fe63ae;
+    padding: 10px 30px;
+    border-radius: 5px;    
+    margin: 5px 0;
+    background: #ffffff;
+    color: #fe63ae;
+}
+
+#letter .fileWrap {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    border: 1px solid #EDEDED;
+    background: #f3f3f3;
+    padding: 10px 10px;
+    border-radius: 8px;
+    align-items: center;
+}
+
+#letter .fileWrap .fileName{
+    font-size: 12px;
+    width: 58%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#letter .fileWrap .fileCnt{
+    font-size: 12px;
+    color: #676767;
+    font-weight: bold;
+    width: 40px;
+}
+
+
+#letter .fileWrap .btnColorBox {
+    display: flex;
+    flex-direction: column;
+    height: 60px;
+    justify-content: space-between;
+}
+
+#letter .fileWrap .btnColor{
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-size: 12px;    
+    opacity: 0.1;
+}
+                            
+#letter .fileWrap .btnColor.active {
+    opacity: 1;
+}
+
+#letter .fileWrap .btnColor.black{
+    background: black;
+    color: #fff;
+}
+
+#letter .fileWrap .btnColor.color{
+    background: #6879FF;
+    color: #fff;
+}
+
+#letter .fileWrap .delBtn{
+    color: black;
+    cursor: pointer;
+}    
+
+
+.postPopup .postBox{
+    margin: 10px 0;    
+    border-radius: 5px;
+    padding: 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.postPopup .postHead{
+    font-weight: bold;
+    margin: 5px 0 2px 0;
+}
+
+.postPopup .postContent{
+    font-size: 13px;
+    color: #858585;
+    line-height: 19px;
+}
+
+.postPopup .postChoiceBtn{
+    width: 100%;
+    padding: 5px 0;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.postPopup .postSelect{
+    width: 100%;
+    height: 42px;
+    border-radius: 5px;
+    border: 1.17px solid #0000001A;
+    padding-left: 15px;
+    margin: 12px 0;
+}
+
+#myLetter{
+    padding-bottom: 80px;    
+}
+
+#myLetter .totalLetter{
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+    letter-spacing: -1px;
+}
+
+#myLetter .letterList{
+    padding: 15px;
+}
+
+#myLetter .letterListBox{
+    padding: 10px;
+    border: 1px solid #eee;    
+    margin-bottom: 8px;
+    line-height: 26px;    
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.10);
+}
+
+#myLetter .letterListBox p{        
+    letter-spacing: -1px;
+    width: 49%;
+    display: inline-block;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+#myLetter .letterListBox p:nth-child(even){
+    text-align: right;
+}
+
+#myLetter .letterListBox .guide{        
+    color: #8b8b8b;
+}
+
+#myLetter .reviewBtn{
+    margin-top: 10px;
+    background: #FFD600;
+    width: 100%;
+    display: block;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    padding: 6px 0;
+}   
+
+#myLetter .reviewFBtn{
+    margin-top: 10px;
+    background: #9a9a9a;
+    width: 100%;
+    display: block;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    padding: 6px 0;
+    opacity: .3;    
+}
+
+#myLetter .deleteBtn{
+    cursor: pointer;
+    margin-top: 10px;
+    background: #fd6262;
+    width: 100%;
+    display: block;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    padding: 6px 0;    
+}
+
+
+.state.B{
+    color: #ff1111;
+    font-weight: bold !important;   
+}
+
+.state.W{
+    color: #5e5e5e;
+    font-weight: bold !important;   
+}
+
+.state.F{
+    color: #34b8c7;
+    font-weight: bold !important;   
+}
+
+.state.C{
+    color: #c92424;
+    font-weight: bold !important;   
+}
+
+.sw>.nav .nav-link{
+    letter-spacing: -1px;
+}
+
+#cropperBox{   
+}
+
+#cropperBox .imgContainer{
+    z-index: 99999;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;    
+    background-color: rgba(0, 0, 0, 0.9);        
+    touch-action: none;
+}
+
+#cropperBox .containerBox{
+    background-color: black;    
+    height: 650px;
+    position: absolute;
+    width: 600px;
+    left: 50%;
+    top: 50%;      
+    transform: translate(-50%, -50%);
+}
+
+#cropperBox .imageBox{
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    height: calc(100% - 200px);
+}
+
+#cropperBox .cropperSwiper {
+    height: calc(100% - 70px);
+}
+
+#cropperBox .thumbnailSwiper {
+    height: 70px;
+    margin-top: 20px;
+}
+
+#cropperBox .thumbnailSwiper .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cropperBox .thumbnailSwiper .swiper-slide-thumb-active img{
+    border: 2px solid white;    
+}    
+
+#cropperBox .thumbnailSwiper img {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    object-fit: cover;
+}
+
+#cropperBox .cropper-view-box{
+    background: #fff;
+}
+
+#cropperBox .btnBox{
+    bottom: 0px;
+    position: absolute;
+    right: 0px;
+    padding: 10px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#cropperBox .btnBox button{
+    padding: 6px 10px;
+    color: #fff;
+    border: 0;
+    margin: 0 1px;
+}
+
+#cropperBox .btnBox .btnUp, #cropperBox .btnBox .btnDown{
+    background: #574949;
+}
+
+#cropperBox .btnBox i{
+    color: #fff;
+    font-size: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+#cropperBox .btnBox .btnSave{
+    background: #FFDC1C;
+    color: black;
+    border-radius: 5px;
+    padding: 10px 20px;
+}    
+
+#cropperBox .btnBox .btnSave.disabled {
+    background: #d9d9d9;
+}
+
+#cropperBox .cropperHeader{
+    display: flex;
+    justify-content: space-between;
+    padding: 21px 15px;    
+    background: black;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+#cropperBox .swiper-pagination{
+    bottom: 2px;
+}
+
+#cropperBox .swiper-button-prev,  #cropperBox .swiper-button-next{
+    color: #FFDC1C;    
+}
+
+#cropperBox .swiper-pagination-bullet{
+    background: #fff !important;
+    opacity: 1;
+}
+
+#cropperBox .swiper-pagination-bullet-active{
+    background: #FFDC1C !important;
+    opacity: 1;
+}
+
+#progressLoader {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #fff;
+    z-index: 1000000000;
+}
+
+#progressLoader p {
+    font-size: 18px;   
+}
+
+#progressLoader p span {
+    color: #FFC219;
+    font-weight: bold;
+}
+
+#progressLoader .percent {
+    margin-top: 15px;
+}
+
+#searchLetter{
+    padding: 0px 20px 70px 20px;
+}
+
+#searchLetter .title{    
+    padding: 30px 0 10px 0;
+    font-weight: bold;
+    text-align: left;     
+}
+
+#searchLetter input{
+    width: 100%;
+    height: 67px;
+    border-radius: 15px;
+    border: 1.17px solid #0000001A;
+    padding-left: 15px;
+    margin-bottom: 10px
+}
+
+#searchLetter .searchLetterBtn{
+    width: 100%;
+    border-radius: 5px;
+    margin: 15px 0;
+    height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#app{
+    white-space: pre-line;
+    padding: 0 15px 100px 15px;
+    font-size: 12px;
+    letter-spacing: -1px;
+}
+
+#board{
+    padding: 0 15px;
+    padding-bottom: 100px;
+    position: relative;
+    min-height: calc(100vh - 140px);
+}
+
+#board .cate{
+    margin: 15px 0px;
+    text-align: center;
+    overflow-x: auto;
+}
+
+#board .cate a{
+    display: inline-block;
+    border-radius: 10px;
+    background: #eee;
+    color: #525252;    
+    font-size: 13px;
+    padding: 5px 18px;
+    margin: 0 5px;
+    letter-spacing: -0.5px;
+}
+
+#board .cate a.active{
+    background: #6879FF;
+    color: #FFF;
+}
+
+#board .searchBox{
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+#board .searchBox #searchText{
+    width: 100%;
+    height: 45px;
+    border-radius: 15px;
+    border: 1.17px solid #0000001A;
+    padding-left: 15px;
+}
+
+#board .searchBox i{
+    position: absolute;
+    right: 17px;
+    top: 14px;
+    font-size: 18px;
+}
+
+#board .boardTab{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #0000001A;
+    padding: 10px 0;
+}
+
+#board .boardCate{
+    background: #6C6C6C;
+    width: 50px;
+    text-align: center;
+    color: #fff;
+    border-radius: 6px;
+    padding: 5px 0;
+}
+
+#board .content{
+    width: calc(100% - 50px);
+    padding-left: 10px;
+}
+
+
+#board .content p:nth-child(1){
+    color: #c3c3c3;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+#board .content p:nth-child(2){
+    color: rgba(0, 0, 0, 0.70);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#board .writeBoard{
+    border: 1px solid #6676f0;
+    color: #6676f0;
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    background: #e7e9ff;
+}
+
+#board .answerBox{
+    background: #eee;
+    color: #fff;
+    border-radius: 5px;
+    margin-left: 5px;
+    padding: 2px 7px;
+    font-size: 12px;
+}
+
+#board .answerBox.active{
+    background: black;
+}
+
+
+#boardV{
+    padding: 0 15px;
+    padding-top: 15px;
+    padding-bottom: 100px;
+}
+
+#boardV .date{
+    color: rgba(25, 25, 25, 0.50);
+    text-align: right;
+}
+
+#boardV .title{
+    color: rgba(0, 0, 0, 0.80);    
+    font-size: 18px;
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+#boardV .content{
+    color: #696969;
+}
+
+#boardV .answer{
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+#boardV .answerHead{
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#boardV .profileWrap{
+    display: flex;
+    align-items: center;
+}
+
+#boardV .profileWrap i{
+    background: #FFDF37;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+#boardV .profileWrap span{
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+#boardW{
+    padding: 0 15px;
+    padding-bottom: 100px;
+}
+
+#boardW .ment{    
+    padding: 10px 0;
+    font-weight: bold;
+    text-align: left;
+    font-size: 16px;
+    letter-spacing: -0.5px;
+}
+
+#boardW .boardTitle{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 15px 0;
+    letter-spacing: -1px;
+}
+
+#boardW .title{
+    width: 100%;
+    height: 55px;
+    border-radius: 15px;
+    border: 1.17px solid #0000001A;
+    padding-left: 15px;
+}
+
+#boardW .content{
+    display: block;
+    width: 100%;
+    height: calc(100vh - 190px);
+    border-radius: 15px;
+    border: 1.17px solid #0000001A;
+    background: #FFF;
+    resize: none;    
+    padding: 15px;
+    max-height: 300px;
+    outline: 0;
+}
+
+#boardW .submitBtn{
+    width: 100%;
+    height: 50px;
+    margin-top: 15px;
+    background: #6879FF;
+    color: #fff;
+    border-radius: 10px;
+}
+
+#postView .letterBox{
+    min-height: 560px;
+    text-align: center;
+    background: no-repeat 50% 0 /386px !important;
+    padding-top: 50px;
+    zoom: 2;
+}
+
+#postView .letterContent{
+    width: 100%;
+    max-width: 310px;
+    height: 432px;
+    background: Transparent;
+    outline: none;
+    font-size: 13px;
+    line-height: 22.7px !important;
+    overflow: hidden;
+    resize: none;    
+    position: relative;
+}
+
+
+
+/* popup */
+.popupContainer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.30);
+    
+    /* animation */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    z-index: 1000;
+}
+
+
+.popupContainer.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popupContainer .popupBox{
+    min-width: 380px;
+    width: 95%;
+    max-width: 600px;
+    padding: 24px;
+    border-radius: 24px;
+    border: 1px solid var(----Stroke, #E6E7E7);
+    background: var(----FF, #FFF);
+    max-height: 90vh;
+    overflow: auto;
+}
+
+.popupContainer .title{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.popupContainer .title p{
+    color: var(----dark-100, #061310);    
+    font-size: 16px;    
+    font-weight: 700;
+}
+
+.popupContainer .title i{
+    cursor: pointer;
+    color: #061310;
+}
+
+
+.popupContainer .btnBox{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+}
+
+.popupContainer .btnBox button{
+    display: flex;
+    width: 49%;
+    height: 40px;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid var(----Stroke, #E6E7E7);
+}
+
+.popupContainer .btnBox .cancelBtn{    
+    color: var(----dark-30, #B4B8B7);
+    background: var(----FF, #FFF);
+}
+
+.popupContainer .btnBox .accessBtn{
+    background: var(----Highlight, #FFD600);
+    color: #fff;    
+}
+
+#reviewPopup .guide{
+    margin-top: 24px;
+    color: var(----dark-50, #828987);
+    font-size: 12px;
+}
+
+#reviewPopup textarea{
+    width: 100%;
+    height: 250px;
+    border: 1px solid #848484;
+    border-radius: 5px;
+    margin-top: 10px;
+    outline: 0;
+    padding: 10px;
+    resize: none;
+}
+
+.fa-star{
+    font-size: 16px;
+}
+
+.fas.fa-star{
+    color: #FFD600;
+}
+
+#reviewPopup .starWrap{
+    margin-top: 5px;
+}
+
+#reviewPopup .fa-star{
+    cursor: pointer;
+}
+
+#dropZone.dragover {
+    background: #f6f6f6 !important;
+}
+
+#letter .libraryWrap{
+    display: flex;
+    flex-wrap: wrap; 
+}
+
+#letter .libraryViewBox{
+    width: 31%;
+    cursor: pointer;
+    margin: 5px 5px;
+    padding: 5px 5px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+#letter .libraryImgBox{
+    width: 100%;
+    height: 200px;
+}
+
+#letter .libraryImgBox img{
+    width: 100%;
+    height: 100%;
+}
+
+#letter .libraryViewBox .dirText{
+    position: absolute;
+    right: 5px;
+    background: #6879FF;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px 10px;
+    opacity: 0.7;
+}
+
+#letter .libraryViewBox .libraryName{    
+    text-align: center;
+    padding-top: 21px;
+    library-spacing: -1px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+#letter .libraryViewBox .libraryPrice{
+    color: #6879FF;
+    text-align: center;
+    margin-top: 5px;
+    library-spacing: -1px;
+    font-weight: 600;
+}
+
+#letter .libraryViewBox.active{
+    background: #ffeb79;
+}
+
+#letter .libraryBox{
+    min-height: 560px;
+    text-align: center;
+    background: no-repeat 50% 0 /386px;
+    padding-top: 50px;    
+    zoom: 1.5;
+    position: relative;
+}
+
+
+#letter .libraryContent{
+    width: 310px;
+    height: 432px;
+    background: Transparent;
+    outline: none;
+    font-size: 13px;
+    line-height: 21.6px ;
+    resize: none;    
+    color: black;
+    overflow: hidden;    
+    white-space: pre-wrap;
+    z-index: 1;
+    position: inherit;
+    word-break: break-all;
+}
+
+@media screen and (max-width: 600px){
+    .mainWrap{
+        width: 100%;        
+    }
+    
+    #cropperBox .containerBox{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 500px){
+    #letter .letterViewBox{
+        width: 46%;
+    }
+
+    #letter .libraryViewBox{
+        width: 46%;
+    }
+    
+    .sw-theme-arrows>.nav .nav-link{
+        margin: 0 !important;
+        padding: 5px !important;
+    }        
+    
+    #home .mainImage{
+        width: 60%;
+    }
+}

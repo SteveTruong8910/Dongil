@@ -1,0 +1,13 @@
+/*
+@font-face {
+    font-family: 'Kanginhan';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_07@1.0/Kanginhan.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}*/
+@font-face {
+    font-family: 'Kanginhan';
+    src: url('/assets/fonts/file/Kanginhan.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,0 +1,125 @@
+#mypage .postBox{
+    margin: 10px 0;    
+    border-radius: 5px;
+    padding: 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+#mypage .postHead{
+    font-weight: bold;
+    margin: 5px 0 2px 0;
+}
+
+#mypage .postContent{
+    font-size: 14px;
+    color: #858585;
+    line-height: 20px;  
+}
+
+#mypage .postChoiceBtn{
+    padding: 3px 15px;
+    margin-top: 10px;
+    margin-right: 8px;
+    border-radius: 15px;
+    background: #fff;
+    border: 1px solid #b1b1b1;
+}
+#mypage .choiceBtn {
+    float: right;
+    padding: 2px 15px;
+    border-radius: 2px;
+}
+
+#mypage .choiceBtn.active {    
+    background: linear-gradient(272deg, #FFD600 0.5%, #FFDF34 93.87%);
+}
+
+#mypage .addAddrBtn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 8px 0px;
+    border-radius: 5px;
+    background: #fff;
+    border: 1px solid #969696;
+}
+
+#addrPopup .selectMent {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+
+#addrPopup .postBox {
+    margin: 10px 0;
+    padding: 15px 0;
+    border-bottom: 2px solid #D9D9D9;
+}
+
+#addrPopup .postHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+#addrPopup .postHeader span{
+    display: flex;
+    align-items: center;
+}
+
+#addrPopup .postHeader input[type="checkbox"]{
+    margin: 0;
+    margin-left: 6px;
+}
+
+#addrPopup .postHeader label{
+    color: #FF6C6C;
+    letter-spacing: -1px;
+    margin: 0;
+}
+
+#addrPopup .postTitle{
+    font-size: 16px;
+    font-weight: bold;    
+    text-align: center;
+    letter-spacing: -1px;
+}
+
+#addrPopup .multiBox{
+    position: relative;
+}
+
+#addrPopup .guide{
+    text-align: left;
+    margin: 15px 0 5px 0;
+    padding-left: 2px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+#addrPopup .fieldInput{
+    width: 100%;
+    height: 48px;
+    border-radius: 15px;
+    border: 1.17px solid #0000001A;
+    padding-left: 15px;
+}
+
+#addrPopup .letterMent {
+    color: rgba(0, 0, 0, 0.6);
+    letter-spacing: -1px;
+    margin: 5px 0;
+}
+
+#addrPopup .btnNext{
+    background: #6879FF;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;    
+    bottom: 15px;
+    width: calc(100%);
+    max-width: 570px;
+    height: 50px;
+}

@@ -1,0 +1,15 @@
+/*
+@font-face {
+    font-family: 'My_wife_writing';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_08@1.0/My_wife_writing.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*/
+
+@font-face {
+    font-family: 'My_wife_writing';
+    src: url('/assets/fonts/file/My_wife_writing.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,0 +1,15 @@
+/*
+@font-face {
+    font-family: 'Gootneaeum';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_05@1.0/Gootneaeum.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*/
+
+@font-face {
+    font-family: 'Gootneaeum';
+    src: url('/assets/fonts/file/Gootneaeum.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

@@ -1,0 +1,18 @@
+/*
+
+@font-face {
+    font-family: 'Korea_hero';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_07@1.0/Korea_hero.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*/
+
+
+@font-face {
+    font-family: 'Korea_hero';
+    src: url('/assets/fonts/file/Korea_hero.woff') format('woff');    
+    font-weight: normal;
+    font-style: normal;
+}
+
