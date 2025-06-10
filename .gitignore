@@ -18,8 +18,6 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /vendor/
 /ci_sessions/
 /assets/upload/*
-20250507_dongl_DB_Backup.sql
-dongl_dump.sql
 
 # IDE Files
 #-------------------------
