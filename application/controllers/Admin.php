@@ -796,7 +796,12 @@ class Admin extends CI_Controller {
 
         $query = $this->db->query($sql);
         $writeInfo = $query->row_array();  // 쿼리 결과를 배열로 받음
-        $writeInfo['content'] = explode('$#', $writeInfo['content']);  // 내용 구분자가 '$#'일 경우, 내용 분리
+		$letterContent = explode('$#', $writeInfo['content']);  // 내용 구분자가 '$#'일 경우, 내용 분리
+		$filtered = array_filter($letterContent, function($value) {
+			return preg_match('/\P{C}/u', $value);
+		});
+
+		$writeInfo['content'] = array_values($filtered);
 
         /* 심플 경우 편지지 출력 x */
         // write_list 테이블과 letter_list 테이블을 JOIN하여 letterIdx에 해당하는 cateIdx를 조회
@@ -911,10 +916,6 @@ class Admin extends CI_Controller {
 
         // getPostInfo 메서드를 호출하여 writeIdx에 대한 정보를 가져옴
         $info = $this->getPostInfo($writeIdx);  // 'getPostInfo'는 writeIdx에 해당하는 편지 정보와 편지지 정보를 반환
-//		echo '<pre>';
-//		print_r($info);
-//		echo '</pre>';
-//		die();
 
         // 뷰에 필요한 데이터를 설정
         $viewData['title'] = $info['writeInfo']['orderId'].'_편지지';  // 출력할 페이지 제목 설정
