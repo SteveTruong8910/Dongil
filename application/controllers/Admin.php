@@ -798,7 +798,7 @@ class Admin extends CI_Controller {
         $writeInfo = $query->row_array();  // 쿼리 결과를 배열로 받음
 		$letterContent = explode('$#', $writeInfo['content']);  // 내용 구분자가 '$#'일 경우, 내용 분리
 		$filtered = array_filter($letterContent, function($value) {
-			return preg_match('/\P{C}/u', $value);
+			return !preg_match('/^[\s\x{200B}\x{200C}\x{200D}\x{2060}\x{FEFF}]*$/u', $value);
 		});
 
 		$writeInfo['content'] = array_values($filtered);
