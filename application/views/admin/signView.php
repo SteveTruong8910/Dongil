@@ -18,9 +18,13 @@
 
     #signView.big .delStamp{    
         bottom: calc(10px + 2.4cm);
-    } 
-    
-    
+    }
+
+	.delStamp-1{
+		position: absolute;
+		bottom: calc(10px + 4.0cm);
+		font-size: 18px;
+	}
 </style>
 
 <script src="/assets/js/jquery-barcode.min.js"></script>
@@ -52,7 +56,7 @@
         </div>
                     
         <div id="signReceive" class="sign signReceive">
-             <div class="barcodeBox">
+             <div class="barcodeBox" style="<?= $forceBig ? 'margin-top: -150px;' : ''?>">
                  <? if($data['registrationNumber']) { ?>
                  <div class="<?=$data['stamp'] == 0? 'hide' : ''?>" style="display: flex; align-items: center;"> 
                      <? if($data['special'] == '선택등기') { ?>
@@ -79,6 +83,12 @@
                     </div>
                 </div>
                 <? } ?>
+
+			    <? if($data['isExpress'] == 'Y' && $forceBig) { ?>
+				  <div class="delStamp-1">
+					 익일특급
+				  </div>
+			    <? } ?>
             </div>
             <div class="receiveWrap">
                 <p class="addrTitle">[받는 사람]</p>
@@ -88,17 +98,11 @@
             </div>
         </div>
 
-        <? if($data['isExpress'] == 'Y') { ?>
-<!--
-        <div class="delStamp">
-            <?=$this->config->item('stamp')[$data['stamp']]['name']?>
-        </div>
--->
-        <div class="delStamp">
-            익일특급
-        </div>
-        <? } ?>
-
+		<? if($data['isExpress'] == 'Y' && !$forceBig) { ?>
+			<div class="delStamp">
+				익일특급
+			</div>
+		<? } ?>
         <p class="signWriteId"><?=$data['writeId']?></p>
     </div>
     <? } ?>

@@ -1084,7 +1084,7 @@
         // 각 편지 내용에 대해 값이 있는지 체크하여 총 개수 계산
         for (let i = 0; i < letterContentCnt; i++) {
             // 공백을 제외한 내용을 확인하여 값이 있을 경우 letterTotalCnt 증가
-            if (trimEndOnly($('.letterContent').eq(i).val())) {
+            if (removeInvisibleCharacters($('.letterContent').eq(i).val())) {
                 letterTotalCnt++;
             }
         }
@@ -1143,7 +1143,7 @@
      */
     function setPriceInfo() {
         // 현재 선택된 편지 개수
-        let letterCnt = getLetterTotalCnt(), 
+        let letterCnt = getLetterTotalCnt(),
 
         // 선택된 편지 가격 계산
         totalLetterPrice = letterIndex == -1 ? 0 : ((letterCnt > 0 ? parseInt(letterList[letterIndex]['price']) : 0) + (letterCnt > 3 ? ((cateIdx == 1 ? 200 : 300) * (letterCnt - 3)) : 0)),
@@ -1246,6 +1246,10 @@
     function trimEndOnly(str) {
         return str.replace(/\s+$/, '');  // 정규식을 사용하여 문자열 끝에 있는 공백을 제거
     }
+
+   function removeInvisibleCharacters(str) {
+	   return str.replace(/[\s\u200B\u200C\u200D\u2060\uFEFF]/g, '');
+   }
 
     /* 임시저장 함수 */
     async function tmpSaveLetter(isResultModal = true) {        
