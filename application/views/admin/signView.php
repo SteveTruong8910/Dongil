@@ -20,7 +20,7 @@
         bottom: calc(10px + 2.4cm);
     }
 
-	#signView.big .delStamp-1{
+	.delStamp-1{
 		position: absolute;
 		bottom: calc(10px + 4.0cm);
 		font-size: 18px;
@@ -56,7 +56,7 @@
         </div>
                     
         <div id="signReceive" class="sign signReceive">
-             <div class="barcodeBox" style="margin-top: -150px;">
+             <div class="barcodeBox" style="<?= $forceBig ? 'margin-top: -150px;' : ''?>">
                  <? if($data['registrationNumber']) { ?>
                  <div class="<?=$data['stamp'] == 0? 'hide' : ''?>" style="display: flex; align-items: center;"> 
                      <? if($data['special'] == '선택등기') { ?>
@@ -84,7 +84,7 @@
                 </div>
                 <? } ?>
 
-			    <? if($data['isExpress'] == 'Y') { ?>
+			    <? if($data['isExpress'] == 'Y' && $forceBig) { ?>
 				  <div class="delStamp-1">
 					 익일특급
 				  </div>
@@ -98,6 +98,11 @@
             </div>
         </div>
 
+		<? if($data['isExpress'] == 'Y' && !$forceBig) { ?>
+			<div class="delStamp">
+				익일특급
+			</div>
+		<? } ?>
         <p class="signWriteId"><?=$data['writeId']?></p>
     </div>
     <? } ?>
@@ -118,9 +123,9 @@
         });        
         
         // 인쇄 전/후 처리할 함수 설정
-        window.onbeforeprint = beforePrintSetup;  // 인쇄 전 'beforePrintSetup' 함수 호출
-        window.onafterprint = afterPrintSetup;    // 인쇄 후 'afterPrintSetup' 함수 호출
-        printPage();  // 페이지 인쇄 시작
+        // window.onbeforeprint = beforePrintSetup;  // 인쇄 전 'beforePrintSetup' 함수 호출
+        // window.onafterprint = afterPrintSetup;    // 인쇄 후 'afterPrintSetup' 함수 호출
+        // printPage();  // 페이지 인쇄 시작
     }
 
     // 페이지를 인쇄하는 함수
