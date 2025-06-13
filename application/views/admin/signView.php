@@ -123,9 +123,9 @@
         });        
         
         // 인쇄 전/후 처리할 함수 설정
-        // window.onbeforeprint = beforePrintSetup;  // 인쇄 전 'beforePrintSetup' 함수 호출
-        // window.onafterprint = afterPrintSetup;    // 인쇄 후 'afterPrintSetup' 함수 호출
-        // printPage();  // 페이지 인쇄 시작
+        window.onbeforeprint = beforePrintSetup;  // 인쇄 전 'beforePrintSetup' 함수 호출
+        window.onafterprint = afterPrintSetup;    // 인쇄 후 'afterPrintSetup' 함수 호출
+        printPage();  // 페이지 인쇄 시작
     }
 
     // 페이지를 인쇄하는 함수
