@@ -148,7 +148,11 @@ class Mypage extends CI_Controller {
         // 날짜 포맷 가공
         foreach ($list as &$item) {
             $item['regDateFormatted'] = substr($item['regDate'], 2, 8); // 예: '25-03-28'
-            $item['fileUrl'] = '/assets/upload/mailbox/' . $item['fileName'];
+			if (isset($item['fileName'])) {
+				$item['fileUrl'] = '/assets/upload/mailbox/' . $item['fileName'];
+			} else {
+				$item['fileUrl'] = '';
+			}
         }
 
         $viewData['mailList'] = $list;
