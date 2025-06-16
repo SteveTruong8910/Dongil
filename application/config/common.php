@@ -200,7 +200,9 @@ $config['handFonts'] = array(
     ['fontName' => 'Ownglyph_hwanseung-Rg', 'font-family' => 'Ownglyph_hwanseung-Rg', 'name' => '환승체'],
     ['fontName' => 'Hope_nuri', 'font-family' => 'Hope_nuri', 'name' => '희망누리'],
     ['fontName' => 'White_kkorisuri', 'font-family' => 'White_kkorisuri', 'name' => '흰꼬리수리'],
-    ['fontName' => 'Saying_tobe_strong', 'font-family' => 'Saying_tobe_strong', 'name' => '힘내라는 말보단']    
+    ['fontName' => 'Saying_tobe_strong', 'font-family' => 'Saying_tobe_strong', 'name' => '힘내라는 말보단'],
+    ['fontName' => 'HYSinMyeongJo', 'font-family' => 'HYSinMyeongJo', 'name' => 'HY신명조'],
+    ['fontName' => 'HumanGothic', 'font-family' => 'Human_gothic', 'name' => '휴먼고딕'],
 );
 
 /* 전국 구치소/교도소/소년원 */
