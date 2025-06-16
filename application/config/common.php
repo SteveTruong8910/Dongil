@@ -61,6 +61,8 @@ $config['fonts'] = array(
 
 /* 손글씨 폰트 */
 $config['handFonts'] = array(
+	['fontName' => 'HumanGothic', 'font-family' => 'Human_gothic', 'name' => '휴먼고딕'],
+	['fontName' => 'HYSinMyeongJo', 'font-family' => 'HYSinMyeongJo', 'name' => 'HY신명조'],
     ['fontName' => 'Pretendard-Regular', 'font-family' => 'Pretendard-Regular', 'name' => '프리텐다드'], // END
     ['fontName' => 'IM_Hyemin-Bold', 'font-family' => 'IM_Hyemin-Bold', 'name' => 'IM혜민체'],
     ['fontName' => 'Garam', 'font-family' => 'Garam', 'name' => '가람연꽃'], // END
@@ -200,9 +202,7 @@ $config['handFonts'] = array(
     ['fontName' => 'Ownglyph_hwanseung-Rg', 'font-family' => 'Ownglyph_hwanseung-Rg', 'name' => '환승체'],
     ['fontName' => 'Hope_nuri', 'font-family' => 'Hope_nuri', 'name' => '희망누리'],
     ['fontName' => 'White_kkorisuri', 'font-family' => 'White_kkorisuri', 'name' => '흰꼬리수리'],
-    ['fontName' => 'Saying_tobe_strong', 'font-family' => 'Saying_tobe_strong', 'name' => '힘내라는 말보단'],
-    ['fontName' => 'HYSinMyeongJo', 'font-family' => 'HYSinMyeongJo', 'name' => 'HY신명조'],
-    ['fontName' => 'HumanGothic', 'font-family' => 'Human_gothic', 'name' => '휴먼고딕'],
+    ['fontName' => 'Saying_tobe_strong', 'font-family' => 'Saying_tobe_strong', 'name' => '힘내라는 말보단']
 );
 
 /* 전국 구치소/교도소/소년원 */
