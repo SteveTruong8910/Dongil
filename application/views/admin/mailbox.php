@@ -80,7 +80,7 @@
                             <option value="0" <?= $row['scan_status'] == 0 ? 'selected' : '' ?>>스캔</option>
                             <option value="1" <?= $row['scan_status'] == 1 ? 'selected' : '' ?>>스캔 & 택배</option>
                             <option value="2" <?= $row['scan_status'] == 2 ? 'selected' : '' ?>>택배</option>
-                            <option value="3" <?= $row['scan_status'] == 3 ? 'selected' : '' ?>>폐기</option>
+                            <option value="3" <?= $row['scan_status'] == 3 ? 'selected' : '' ?>>보관</option> <!-- change 폐기 -> 보관 -->
                         </select>
                     </td>
 

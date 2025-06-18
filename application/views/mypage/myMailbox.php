@@ -71,7 +71,7 @@
                 data-path="<?=$mail['pdfPath']?>"
                 data-request="<?=$mail['deliveryRequest']?>"
                 data-read="<?=$mail['isRead']?>"
-                data-discarded="<?=$mail['isDiscarded']?>"
+                data-discarded="<?=isset($mail['isDiscarded']) ? $mail['isDiscarded'] : null ?>"
                 data-scan-status="<?=$mail['scan_status']?>"> <!-- scanStatus 값 추가 -->
 
                 <?php if ($mail['isRead'] == 'N') { ?>
@@ -395,7 +395,7 @@
             buttons.appendChild(makeBtn('스캔본 확인 후 택배받기', () => updateScanStatus('1', mailboxIdx)));
             buttons.appendChild(makeBtn('스캔본 확인하지 않고 택배받기', () => updateScanStatus('2', mailboxIdx)));
             // buttons.appendChild(makeBtn('스캔본 확인하지 않고 폐기하기', () => discardMail(mailboxIdx)));
-            buttons.appendChild(makeBtn('스캔본 확인 후 보관하기', () => discardMail(mailboxIdx)));
+            buttons.appendChild(makeBtn('스캔본 확인 후 보관하기', () => updateScanStatus('3', mailboxIdx)));
         } else {
             // 상태에 따른 버튼 그룹
             switch(scanStatus) {
@@ -410,6 +410,7 @@
                     buttons.appendChild(makeBtn('택배 신청', () => requestDelivery(mailboxIdx)));
                     break;
                 case '3':  // 스캔본 확인 안하고 폐기하기
+					buttons.appendChild(makeBtn('스캔본 다운로드', () => handleScanDownload(mailboxIdx)));
                     break;
             }
         }
