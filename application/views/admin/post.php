@@ -1049,7 +1049,7 @@
     //     }
     // }
     async function allFileDown() {
-        let $allFileBtn = $('.allFileBtn'); // 모든 파일 다운로드 버튼
+		let $allFileBtn = $('.subBatch:checked').closest('tr').find('.allFileBtn');
 
         for (let i = 0; i < $allFileBtn.length; i++) {
             let $btn = $allFileBtn.eq(i);
