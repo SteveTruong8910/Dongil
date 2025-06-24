@@ -483,6 +483,11 @@
 			return;
 		}
 
+		if (payType !== 'point' && realTotalPrice === 0) {
+			showAlert('결제금액이 0원일 경우 포인트 결제만 가능합니다.');
+			return;
+		}
+
         const type = '<?=$type?>'; // scan 또는 delivery
 
         const isCashReceipt = $('#isCashReceipt').is(':checked') ? 'Y' : 'N';
