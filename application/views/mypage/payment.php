@@ -386,6 +386,16 @@
                 confirmMsg = `${$payType.text()}(으)로 진행하시겠어요?`;  // 결제 타입을 선택했을 때 해당 결제 방식으로 진행할지 확인
             }
         }
+
+		if (payType === 'point' && (payPoint === 0 || realTotalPrice !== 0)) {
+			showAlert('결제타입을 선택해주세요.');
+			return;
+		}
+
+		if (payType !== 'point' && realTotalPrice === 0) {
+			showAlert('결제 오류가 발생하였습니다. 고객센터로 문의해주시기 바랍니다.');
+			return;
+		}
         
         showConfirm(confirmMsg)
         .then(async (result) => {
@@ -477,11 +487,6 @@
         const payPoint = parseInt(uncomma($('#payPoint').val()));
         const totalPrice = price;
         const realTotalPrice = totalPrice - payPoint;
-
-		if (payType == 'point' && (payPoint === 0 || realTotalPrice !== 0)) {
-			showAlert('결제타입을 선택해주세요.');
-			return;
-		}
 
         const type = '<?=$type?>'; // scan 또는 delivery
 
