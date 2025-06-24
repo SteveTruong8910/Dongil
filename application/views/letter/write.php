@@ -3682,7 +3682,7 @@
         }
 
 		if (payType !== 'point' && realTotalPrice === 0) {
-			showAlert('결제금액이 0원일 경우 포인트 결제만 가능합니다.');
+			showAlert('결제 오류가 발생하였습니다. 고객센터로 문의해주시기 바랍니다.');
 			return;
 		}
 
