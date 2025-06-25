@@ -3681,7 +3681,7 @@
             }
         }
 
-		if (payType !== 'point' && realTotalPrice === 0) {
+		if (payType !== 'point' && (realTotalPrice - payPoint === 0)) {
 			showAlert('결제 오류가 발생하였습니다. 고객센터로 문의해주시기 바랍니다.');
 			return;
 		}
