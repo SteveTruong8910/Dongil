@@ -3703,7 +3703,9 @@
             }
 
             // 저장된 글 인덱스 업데이트
-            tmpSaveIdx = writeRes.writeIdx;
+			if (saveIdx == 0) {
+				tmpSaveIdx = writeRes.writeIdx;
+			}
 
             // 기존 정보가 있고, 결제 방식이 동일하거나 포인트 결제인 경우 수정된 내용 확인 후 처리
             if (saveIdx > 0 && (isSamePrice || payType == 'point' || payType == 'deposit')) {
