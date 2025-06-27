@@ -3738,8 +3738,7 @@
                         orderId: orderId,
                         amount: parseInt($('#realTotalPrice').val()),  // 결제 금액
                         goodsName: $('#goodsName').val(),
-                        // returnUrl: 'https://dongl.co.kr/payReturnUrl', // 결제 후 리턴될 URL
-                        returnUrl: 'http://13.236.169.105:8989/payReturnUrl', // 결제 후 리턴될 URL
+                        returnUrl: 'https://dongl.co.kr/payReturnUrl', // 결제 후 리턴될 URL
                         fnError: function (result) {
                             showAlert('결제가 취소되었습니다.');
                         }
