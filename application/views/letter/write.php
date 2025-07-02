@@ -731,6 +731,7 @@
         croppers = [],  // 크롭퍼 목록 (초기값 빈 배열)
         croppedCanvases = [], // 모자이크 크롭퍼 목록(초기값 빈 배열)
         files = [],  // 일반 파일 목록 (초기값 빈 배열)
+		libraryFiles = [],
 
     // 썸네일 swiper 설정
     thumbnailSwiper = new Swiper('.thumbnailSwiper', {            
@@ -1618,6 +1619,9 @@
         /* 문서 */
         pdfFiles = info.pdfFiles;  // 저장된 PDF 파일 목록을 pdfFiles 변수에 할당
         setReadFile(info.pdfFiles, '', info.fileColor);  // 파일을 읽어와서 표시하는 함수 호출
+
+		libraryFiles = info.libraryFiles;
+		setLibraryFiles(libraryFiles);
 
         /* 주소 */
         $("#senderAddr").val(info.senderAddr);  // 보내는 사람의 주소를 설정
@@ -3078,7 +3082,6 @@
                 filePath: filePath,
                 originalFileName: $this.find('.libraryName').text() + '.pdf'
             };
-            console.log(filePath);
 
         const existingIndex = libraryIndexes.indexOf(index);
         
@@ -3122,6 +3125,73 @@
         
         $('#libraryList').html(html);
     }
+
+	async function setLibraryFiles(libraryFiles) {
+		const res = await postJson('/userApi/getLibrary', {
+			cateIdx: 0
+		});
+
+		const list = res.list || [];
+		if (list.length <= 0) {
+			$('#libraryList').html('<p class="empty">등록된 자료가 없습니다.</p>');
+			return;
+		}
+
+		for (const libraryFile of libraryFiles) {
+			let index = list.findIndex(item => item.idx === libraryFile.libraryIdx);
+			let filteredData = index !== -1 ? list[index] : null;
+			if (filteredData == null) {
+				continue;
+			}
+			let libraryData = {
+				idx: filteredData.idx,
+				name: filteredData.name,
+				price: parseInt(filteredData.price) || 0,
+				pageCount: filteredData.pageCount,
+				color: 'color',
+				cateName: filteredData.cateName,
+				isBroadcast: filteredData.cateName.includes('방송표'),
+				filePath: filteredData.filePath,
+				originalFileName: filteredData.originalFileName
+			};
+
+			libraryIndexes.push(index);
+			selectedLibraries.push(libraryData);
+		}
+
+		updateSelectedLibraries();
+		setPriceInfo();
+
+		let listHtml = '';
+		const sevenDaysAgo = new Date();
+		sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+		sevenDaysAgo.setHours(0, 0, 0, 0);
+		list.forEach((data, index) => {
+			const regDate = new Date(data.regDate.replace(' ', 'T'));
+			const isNew = regDate >= sevenDaysAgo;
+			const isBroadcast = data.cateName.includes('방송표'); // 카테고리 이름으로 방송표 확인
+
+			listHtml += `
+                    <div class="libraryViewBox ${libraryIndexes.includes(index) ? 'active' : ''}"
+                        onclick="choicelibrary($(this))"
+                        data-cate="${data.categoryIdx}"
+                        data-idx="${data.idx}"
+                        data-page-count="${data.pageCount}"
+                        data-cate-name="${data.cateName}"
+                        data-file-path="${data.filePath}">
+                        ${isNew ? `<div class="newBadge"><img src="/assets/image/new.png" alt="New"></div>` : ''}
+                        <div class="dirText" onclick="event.stopPropagation(); previewLibraryImage('${data.thumbUrl}')">미리보기</div>
+                        <div class="libraryImgBox">
+                            <img src="${data.thumbUrl}"/>
+                        </div>
+                        <p class="libraryName">${data.name}</p>
+                        <p class="libraryPrice">${comma(data.price)+'원'}</p>
+                    </div>
+                `;
+		});
+
+		$('#libraryWrap').html(listHtml);
+	}
 
     /* 자료 색상 변경 함수 */
     function changeLibraryColor($wrap, color, index) {

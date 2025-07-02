@@ -77,7 +77,8 @@ class Letter extends CI_Controller {
                 $info['pdfFiles'] = '[]';
             }
             $info['pdfFiles'] = json_decode($info['pdfFiles'], true);
-            
+            $info['libraryFiles'] = json_decode($info['libraryFiles'], true);
+
             /* 폰트정보 지정 */
             $this->user['fontKrName'] = $info['fontKrName'];
             $this->user['fontFamily'] = $info['fontFamily'];
