@@ -1,21 +1,25 @@
 FROM php:7.4-apache
 
-# Cài đặt các gói phụ thuộc
+# Install dependencies and GD extension
 RUN apt-get update && apt-get install -y \
     unzip \
     git \
     curl \
     libmariadb-dev \
     libzip-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
     zip \
-    && docker-php-ext-install mysqli pdo_mysql zip \
-    && docker-php-ext-enable mysqli pdo_mysql
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd mysqli pdo_mysql zip \
+    && docker-php-ext-enable gd mysqli pdo_mysql
 
-# Bật mod_rewrite của Apache
+# Enable mod_rewrite for Apache
 RUN a2enmod rewrite
 
-# Cài đặt Composer
+# Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Thiết lập thư mục làm việc
+# Set working directory
 WORKDIR /var/www/html

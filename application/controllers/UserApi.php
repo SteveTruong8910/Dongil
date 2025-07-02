@@ -692,7 +692,7 @@ class UserApi extends CI_Controller {
         $cashReceiptEmail = empty($_POST['cashReceiptEmail'])? '' : $_POST['cashReceiptEmail'];        
 
         $libraryFiles = empty($_POST['libraryFiles']) ? [] : $_POST['libraryFiles'];
-        $libraryFiles = json_encode($libraryFiles, JSON_UNESCAPED_UNICODE);
+//        $libraryFiles = json_encode($libraryFiles, JSON_UNESCAPED_UNICODE);
 
         $libraryFileColor = empty($_POST['libraryFileColor']) ? '' : $_POST['libraryFileColor'];
         $totalLibraryFileCnt = empty($_POST['totalLibraryFileCnt']) ? 0 : $_POST['totalLibraryFileCnt'];
@@ -752,6 +752,7 @@ class UserApi extends CI_Controller {
                 $serverLibraryPrintPrice += $pageCount * $fee;
             }
         }
+		$libraryFiles = json_encode($libraryFiles, JSON_UNESCAPED_UNICODE);
 
         // 서버에서 최종 검증된 총 libraryPrice = 전달된 가격 + 출력비
         $finalLibraryPrice = $libraryPrice + $serverLibraryPrintPrice;
