@@ -45,7 +45,7 @@
             </div>
             <p style="margin-top: -18px;"><?=removePostboxNumbers($data['senderAddr'], false)?></p>
             <p><?=$data['senderAddrDetail']?></p>
-            <p><?=$data['senderName']?></p>
+            <p><?=$data['senderName'] . '   ' . ($data['displaySenderPhone'] == 1 ? $data['senderTel'] : '')?></p>
             <p class="zipcode"><?=$data['senderZipcode']?></p>
         </div>
 

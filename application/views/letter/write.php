@@ -379,7 +379,16 @@
             <p class="guide">이름</p>
             <input type="text" id="senderName" class="fieldInput" value="<?=$this->user['senderName']?>" placeholder="이름"/>
             <p class="guide">전화번호</p>
-            <input type="tel" id="senderTel" class="fieldInput" value="<?=$this->user['senderTel']?>" placeholder="전화번호" oninput="this.value = this.value.replace(/[^0-9]/g, '');"/>                        
+            <input type="tel" id="senderTel" class="fieldInput" value="<?=$this->user['senderTel']?>" placeholder="전화번호" oninput="this.value = this.value.replace(/[^0-9]/g, '');"/>
+			<p class="guide" style="display: inline-block; margin-right: 10px;">우편봉투에 보내는 사람의 휴대폰 번호를 함께 표시하시겠습니까?</p>
+			<div style="display: inline-block;">
+				<label style="padding: 6px; margin-right: 10px;">
+					<input type="radio" name="displayPhone" id="displaySenderPhone" value="1" style="margin-right: 5px" <?=($this->user['displaySenderPhone'] === '1') ? 'checked' : ''?>>예
+				</label>
+				<label>
+					<input type="radio" name="displayPhone" id="displaySenderPhone" value="0" style="margin-right: 5px" <?=($this->user['displaySenderPhone'] === '0' || is_null($this->user['displaySenderPhone'])) ? 'checked' : ''?>>아니요
+				</label>
+			</div>
             <div class="<?=$isLogin == 'Y'? 'hide': ''?>">
                 <p class="guide">✅임의의 숫자 4자리(주문조회 및 주소 불러오기시 필요)</p>
                 <input type="tel" id="mbPassword" class="fieldInput" value="" placeholder="비밀번호 4자리" maxlength="4"/>
@@ -1324,7 +1333,9 @@
             cashReceiptType = $('input[name=cashReceiptType]:checked').val(), // 현금영수증 유형
             depositType = $("#depositType option:selected").val(), // 입금 유형
             cashReceiptNumber = $('#cashReceiptNumber').val(), // 현금영수증 번호
-            cashReceiptEmail = $('#cashReceiptEmail').val(); // 현금영수증 이메일
+            cashReceiptEmail = $('#cashReceiptEmail').val(), // 현금영수증 이메일
+			displaySenderPhone = $('input[name="displayPhone"]:checked').val();
+
 
         // 현금영수증 유효성 검사
         if(payType == 'deposit' && isTmpSave != 'Y' && isCashReceipt == 'Y') {                                   
@@ -1466,7 +1477,8 @@
             libraryFiles: libraryFiles,
             libraryFileColor: libraryFileColors.join('/'),
             totalLibraryFileCnt: selectedLibraries.length,
-            libraryPrice: libraryPrice
+            libraryPrice: libraryPrice,
+			displaySenderPhone: displaySenderPhone
         }, isLoader);
 
         return setWriteRes;
@@ -1633,8 +1645,14 @@
         $("#receiverAddrDetail").val(info.receiverAddrDetail).attr('disabled', false);  // 받는 사람의 상세 주소 설정, disabled 속성 제거
         $("#receiverName").val(info.receiverName);  // 받는 사람의 이름 설정
         $("#receiverTel").val(info.receiverTel);  // 받는 사람의 전화번호 설정
+		if (info.displaySenderPhone !== 0) {
+			$('input[name="displayPhone"][value="' + info.displaySenderPhone + '"]').prop('checked', true);
+		} else {
+			$('input[name="displayPhone"][value="0"]').prop('checked', true);
+		}
 
-        /* 우편 */
+
+			/* 우편 */
         $(`.stampBox[data-stamp="${info.stamp}"]`).click();  // 선택된 스탬프를 클릭하여 적용
         $('#reservDate').val(info.deliveryDate);  // 배송 예정일 설정
         $(`.payTypeBtn[data-type="${info.payType}"]`).click();  // 결제 방법을 설정

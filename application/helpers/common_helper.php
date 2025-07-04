@@ -45,7 +45,8 @@ function autoSaveAddress($db, $writeIdx){
                 receiverAddr = '{$info['receiverAddr']}',
                 receiverAddrDetail = '{$info['receiverAddrDetail']}',
                 receiverName = '{$info['receiverName']}',
-                receiverTel = '{$info['receiverTel']}'
+                receiverTel = '{$info['receiverTel']}',
+                displaySenderPhone = '{$info['displaySenderPhone']}'
         ";
         $db->query($sql);  // SQL 쿼리 실행
     }

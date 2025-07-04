@@ -115,6 +115,7 @@ class AddressApi extends CI_Controller {
         $receiverAddrDetail = $_POST['receiverAddrDetail'];
         $receiverName = $_POST['receiverName'];
         $receiverTel = $_POST['receiverTel'];                
+        $displaySenderPhone = $_POST['displaySenderPhone'];
 
         // 주소가 새로 추가되는 경우 INSERT 쿼리 실행
         $sql = "";
@@ -131,7 +132,8 @@ class AddressApi extends CI_Controller {
                     receiverAddr = '{$receiverAddr}',
                     receiverAddrDetail = '{$receiverAddrDetail}',
                     receiverName = '{$receiverName}',
-                    receiverTel = '{$receiverTel}'
+                    receiverTel = '{$receiverTel}',
+                    displaySenderPhone = '{$displaySenderPhone}'
             ";
         } else {
             // 기존 주소 수정 시 UPDATE 쿼리 실행
@@ -146,7 +148,8 @@ class AddressApi extends CI_Controller {
                     receiverAddr = '{$receiverAddr}',
                     receiverAddrDetail = '{$receiverAddrDetail}',
                     receiverName = '{$receiverName}',
-                    receiverTel = '{$receiverTel}'
+                    receiverTel = '{$receiverTel}',
+                    displaySenderPhone = '{$displaySenderPhone}'
                 WHERE
                     idx = '{$addressIdx}'
             ";
@@ -176,6 +179,10 @@ class AddressApi extends CI_Controller {
                 $this->choiceAddress($addressIdx, $this->user['idx']);
             }
         }
+
+		if ($addressIdx !== 0) {
+			$this->choiceAddress($addressIdx, $this->user['idx']);
+		}
 
         // 결과를 JSON 형식으로 반환
         die(json_encode($result));        
@@ -278,7 +285,8 @@ class AddressApi extends CI_Controller {
                 receiverAddr = '{$info['receiverAddr']}',
                 receiverAddrDetail = '{$info['receiverAddrDetail']}',
                 receiverName = '{$info['receiverName']}',
-                receiverTel = '{$info['receiverTel']}'
+                receiverTel = '{$info['receiverTel']}',
+                displaySenderPhone = '{$info['displaySenderPhone']}'
             WHERE                            
                 idx = '{$memberIdx}'";
 
