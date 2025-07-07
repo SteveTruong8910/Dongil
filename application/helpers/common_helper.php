@@ -965,6 +965,4 @@ function containsSaseoham($string) {
         return false;  // 없으면 false 반환
     }
 }
-
-
 ?>
