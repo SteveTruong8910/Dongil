@@ -54,7 +54,16 @@
                 <p class="guide">이름</p>
                 <input type="text" id="senderName" class="fieldInput" value="" placeholder="이름"/>
                 <p class="guide">전화번호</p>
-                <input type="tel" id="senderTel" class="fieldInput" value="" placeholder="전화번호" oninput="this.value = this.value.replace(/[^0-9]/g, '');"/>                
+                <input type="tel" id="senderTel" class="fieldInput" value="" placeholder="전화번호" oninput="this.value = this.value.replace(/[^0-9]/g, '');"/>
+				<p class="guide" style="display: inline-block; margin-right: 10px;">우편봉투에 보내는 사람의 휴대폰 번호를 함께 표시하시겠습니까?</p>
+				<div style="display: inline-block;">
+					<label style="padding: 6px; margin-right: 10px;">
+						<input type="radio" name="displayPhone" id="displaySenderPhone" value="1" style="margin-right: 5px">예
+					</label>
+					<label>
+						<input type="radio" name="displayPhone" id="displaySenderPhone" value="0" style="margin-right: 5px">아니요
+					</label>
+				</div>
             </div>
         
             <div class="postBox">
@@ -97,7 +106,12 @@
         $('#receiverAddrDetail').val(!addressIdx ? '' : data['receiverAddrDetail']);
         $('#receiverName').val(!addressIdx ? '' : data['receiverName']);
         $('#receiverTel').val(!addressIdx ? '' : data['receiverTel']);
-        
+		if (addressIdx != 0) {
+			$('input[name="displayPhone"][value="' + data['displaySenderPhone'] + '"]').prop('checked', true);
+		} else {
+			$('input[name="displayPhone"][value="0"]').prop('checked', true);
+		}
+
         // type이 'show'이면 팝업을 보여주고, 아니면 팝업을 숨김
         if (type == 'show') {            
             $addrPopup.addClass('show');
@@ -145,7 +159,9 @@
             $receiverAddrDetail = $('#receiverAddrDetail'),
             $receiverName = $('#receiverName'),
             $receiverTel = $('#receiverTel');
-        
+
+		let displaySenderPhone = $('input[name="displayPhone"]:checked').val();
+
         // 주소 저장 API 호출
         const setAddressRes = await postJson('/addressApi/setAddress', {
             addressIdx: $('#addressIdx').val(),
@@ -156,15 +172,16 @@
             receiverAddr: $receiverAddr.val(),
             receiverAddrDetail: $receiverAddrDetail.val(),
             receiverName: $receiverName.val(),
-            receiverTel: $receiverTel.val()
+            receiverTel: $receiverTel.val(),
+			displaySenderPhone: displaySenderPhone
         });
-        
+
         // 저장 결과 확인
         if (!setAddressRes.result) {
             swal(setAddressRes.msg); // 실패 메시지 표시
             return false;
-        } 
-        
+        }
+
         // 저장 완료 메시지 표시 후 페이지 새로 고침
         showAlert("저장되었습니다.")
         .then(() => {

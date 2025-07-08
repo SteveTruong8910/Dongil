@@ -657,6 +657,7 @@ class UserApi extends CI_Controller {
         $senderAddrDetail = $this->db->escape_str($_POST['senderAddrDetail']);
         $senderName = $_POST['senderName'];
         $senderTel = $_POST['senderTel'];
+		$displaySenderPhone = $_POST['displaySenderPhone'];
         $isSaveSender = $_POST['isSaveReceiver'];
 
         $receiverAddr = $_POST['receiverAddr'];
@@ -845,6 +846,7 @@ class UserApi extends CI_Controller {
             senderAddrDetail = '{$senderAddrDetail}',
             senderName = '{$senderName}',
             senderTel = '{$senderTel}',
+            displaySenderPhone = '{$displaySenderPhone}',
             receiverAddr = '{$receiverAddr}',
             receiverAddrDetail = '{$receiverAddrDetail}',
             receiverName = '{$receiverName}',
