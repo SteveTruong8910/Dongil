@@ -1941,7 +1941,7 @@
 
     
     /* 편지지 기본 세팅 */
-    function setLetterForm() { 
+    function setLetterForm() {
         let data = letterList[letterIndex], // 선택된 편지지 데이터 가져오기
             $letterBox = $('.letterBox'), // 편지지의 전체 박스를 선택
             $letterContent = $('.letterContent'); // 편지 내용 입력란 선택
@@ -2077,7 +2077,7 @@
     }
     
     /* 폰트 선택 */
-    async function choiceFont(name, fontName, fontFamily) {        
+    async function choiceFont(name, fontName, fontFamily) {
         // 폰트 파일을 link 태그로 동적으로 추가
         let fontLink = $(`<link rel="stylesheet" data-font href="/assets/fonts/${fontFamily}.css?v=20250220">`);        
 
@@ -2090,7 +2090,7 @@
                 await document.fonts.load(`16px ${fontName}`);                  
 
                 // 로드가 완료되면 폰트를 .letterContent에 적용
-                $('.letterContent').css('font-family', fontName);
+                $('.letterContent').css('font-family', fontFamily);
 
                 // 폰트 정보를 selectFontId에 업데이트
                 $('#selectFontId').val(name)
