@@ -119,12 +119,13 @@ class payReturnUrl extends CI_Controller {
                 // 결제 정보를 가져오는 SQL 쿼리 (주문 상태, 결제 정보 포함)
                 $sql = "    
                     SELECT
-                        W.state, P.tid, P.amount, P.orderId
+                        W.state, P.tid, P.amount, P.orderId, P.idx
                     FROM
                         write_list AS W LEFT JOIN
                         pay_list AS P ON P.writeIdx = W.idx AND P.isUse = 'Y'
                     WHERE
-                        W.idx = '{$writeIdx}';";
+                        W.idx = '{$writeIdx}'
+                    ORDER BY P.idx DESC;";
 
                 $query = $this->db->query($sql);
                 $info = $query->row_array();
