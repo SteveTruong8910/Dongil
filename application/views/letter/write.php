@@ -3824,7 +3824,7 @@
                         appScheme: `dongldn://`,
                         method: payType,
                         orderId: orderId,
-                        amount: parseInt($('#realTotalPrice').val()),  // 결제 금액
+                        amount: parseInt(writeRes.realTotalPrice),  // 결제 금액
                         goodsName: $('#goodsName').val(),
                         returnUrl: 'https://dongl.co.kr/payReturnUrl', // 결제 후 리턴될 URL
                         fnError: function (result) {

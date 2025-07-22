@@ -1120,14 +1120,14 @@ class UserApi extends CI_Controller {
         
         /* 주문번호 자동 생성 */
         setOrderId($this->db, $result['writeIdx']);
-
         
         $result['result'] = true;
         $result['isPay'] = $isPay;
         $result['mbName'] = $mbName;
         $result['mbPhoneNumber'] = $mbPhoneNumber;
         $result['mbPassword'] = $mbPassword;
-		
+        $result['realTotalPrice'] = $realTotalPrice;
+
 		die(json_encode($result));
 	}
     
@@ -1150,13 +1150,14 @@ class UserApi extends CI_Controller {
         $sql = "
             SELECT
                 W.state, W.payType, W.payPoint, W.memberIdx, W.payIdx, W.productName,
-                P.tid, P.amount, P.orderId
+                P.tid, P.amount, P.orderId, P.idx
             FROM
                 write_list AS W
             LEFT JOIN
                 pay_list AS P ON P.writeIdx = W.idx AND P.isUse = 'Y'
             WHERE
                 W.idx = ?
+            ORDER BY P.idx DESC;
         ";
 
         $query = $this->db->query($sql, array($writeIdx));
