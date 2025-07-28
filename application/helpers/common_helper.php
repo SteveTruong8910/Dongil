@@ -543,7 +543,7 @@ function setLetterInfo2($letterInfo, $writeInfo, $type){
         $webkit = $writeInfo['fontWeight'] == '500' ? '0.02em' : '0.06em';  // 폰트 굵기에 따른 텍스트 스트로크
 
         return "
-            font-family: '{$writeInfo['fontName']}';
+            font-family: '{$writeInfo['fontFamily']}';
             font-size: {$finalFontSize}px;
             letter-spacing: {$writeInfo['letterSpacing']};
             text-align : {$writeInfo['fontAlign']};
@@ -588,7 +588,7 @@ function setLetterInfo3($letterInfo, $writeInfo, $type, $isSimple = false){
         $webkit = $writeInfo['fontWeight'] == '500' ? '0.02em' : '0.06em';  // 폰트 굵기에 따른 텍스트 스트로크
 
         return "
-            font-family: '{$writeInfo['fontName']}';
+            font-family: '{$writeInfo['fontFamily']}';
             font-size: {$finalFontSize}px;
             letter-spacing: {$writeInfo['letterSpacing']};
             text-align : {$writeInfo['fontAlign']};
