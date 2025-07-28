@@ -61,6 +61,7 @@ $config['fonts'] = array(
 
 /* 손글씨 폰트 */
 $config['handFonts'] = array(
+	['fontName' => 'OnGulIpRadioPen', 'font-family' => 'OnGulIpRadioPen', 'name' => '온글잎 레디오 볼펜체'],
 	['fontName' => 'HumanGothic', 'font-family' => 'Human_gothic', 'name' => '휴먼고딕'],
 	['fontName' => 'HYSinMyeongJo', 'font-family' => 'HYSinMyeongJo', 'name' => 'HY신명조'],
     ['fontName' => 'Pretendard-Regular', 'font-family' => 'Pretendard-Regular', 'name' => '프리텐다드'], // END
