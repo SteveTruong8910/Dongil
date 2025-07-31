@@ -710,7 +710,7 @@ function setOrderId($db, $writeIdx){
     
             foreach ($libraryFiles as $lib) {
                 if (!empty($lib['originalFileName'])) {
-                    $title = pathinfo($lib['originalFileName'], PATHINFO_FILENAME);
+                    $title = pathinfo($lib['originalFileName'], PATHINFO_FILENAME) . (array_key_exists('libCount', $lib) ? $lib['libCount'] : 1) . '세트';
                     $titles[] = $CI->db->escape_str($title);
                 }
             }
