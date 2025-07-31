@@ -67,6 +67,44 @@
         box-shadow: 0 0 10px #000;
     }
 
+	.spinner {
+		display: inline-flex;
+		flex-direction: column;
+		align-items: center;
+		width: 30px;
+	}
+
+	.arrow {
+		background: none;
+		border: none;
+		font-size: 12px;
+		cursor: pointer;
+		color: #676767;
+		line-height: 1;
+		padding: 2px;
+	}
+
+	.arrow.up {
+		border-left: 3px solid #aaa;
+		border-top: 3px solid #aaa;
+		transform: rotate(45deg);
+	}
+
+	.arrow.down {
+		border-left: 3px solid #aaa;
+		border-top: 3px solid #aaa;
+		transform: rotate(-135deg);
+	}
+
+	.arrow:hover {
+		color: #333;
+	}
+
+	.number {
+		font-size: 12px;
+		color: #676767;
+		margin: 4px 0;
+	}
 
 
 </style>
@@ -1000,6 +1038,7 @@
         selectedLibraries.forEach(lib => {
             const basePrice = parseInt(lib.price || 0);
             const pageCount = parseInt(lib.pageCount || 0);
+			const totalPrice = parseInt(parseInt(lib.libCount) * basePrice);
 
             // if (lib.isBroadcast) {
             //     // 방송표는 출력비 없음
@@ -1011,7 +1050,7 @@
 
             //     totalLibraryPrice += basePrice + totalPrintFee;
             // }
-            totalLibraryPrice += basePrice;
+            totalLibraryPrice += totalPrice;
         });
 
         return totalLibraryPrice;
@@ -1409,7 +1448,8 @@
                 ext: 'pdf',
                 fileName: realFileName,
                 originalFileName: lib.name + '.pdf',
-                pageCount: lib.pageCount || 1
+                pageCount: lib.pageCount || 1,
+				libCount: lib.libCount || 1,
             };
         });
 
@@ -3094,6 +3134,7 @@
                 name: $this.find('.libraryName').text(),
                 price: parseInt(priceText) || 0,
                 pageCount: $this.data('page-count'),
+				libCount: 1,
                 color: 'color',
                 cateName: cateName,
                 isBroadcast: isBroadcast,
@@ -3128,7 +3169,11 @@
             html += `
             <div class="fileWrap libraryFile" data-lib-idx="${lib.idx}" data-cate-name="${lib.cateName}" data-file-path="${lib.filePath}">
                 <span class="fileName">${lib.name}</span>
-                <span class="fileCnt">${lib.pageCount}장</span>
+                <span class="spinner">
+					<button class="arrow up"></button>
+					<span class="number">${lib.libCount}</span>
+					<button class="arrow down"></button>
+				</span>
                 <div class="btnColorBox">
                     <button class="btnColor black ${lib.color === 'black' ? 'active' : ''}" 
                             onclick="changeLibraryColor($(this).closest('.fileWrap.libraryFile'), 'black', ${idx})">블랙</button>
@@ -3170,7 +3215,8 @@
 				cateName: filteredData.cateName,
 				isBroadcast: filteredData.cateName.includes('방송표'),
 				filePath: filteredData.filePath,
-				originalFileName: filteredData.originalFileName
+				originalFileName: filteredData.originalFileName,
+				libCount: parseInt(libraryFile.libCount) || 1,
 			};
 
 			libraryIndexes.push(index);
@@ -4190,6 +4236,28 @@
             // 결제 정보 갱신
             setPriceInfo();
         });
+
+		$(document).on('click', '.spinner .arrow.up', function () {
+			const $fileWrap = $(this).closest('.fileWrap.libraryFile');
+			const libIdx = $fileWrap.data('lib-idx');
+			const library = selectedLibraries.find(lib => parseInt(lib.idx) === libIdx);
+			if (library) {
+				library.libCount += 1;
+				$fileWrap.find('.number').text(library.libCount);
+				setPriceInfo();
+			}
+		});
+
+		$(document).on('click', '.spinner .arrow.down', function () {
+			const $fileWrap = $(this).closest('.fileWrap.libraryFile');
+			const libIdx = $fileWrap.data('lib-idx');
+			const library = selectedLibraries.find(lib => parseInt(lib.idx) === libIdx);
+			if (library && library.libCount > 1) {
+				library.libCount -= 1;
+				$fileWrap.find('.number').text(library.libCount);
+				setPriceInfo();
+			}
+		});
         
         defaultSetup();        
     });
