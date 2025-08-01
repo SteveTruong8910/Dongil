@@ -3,6 +3,9 @@
     # Options +FollowSymlinks
     RewriteEngine On
 
+	RewriteCond %{HTTPS} off
+	RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
+
     # Checks to see if the user is attempting to access a valid file,
     # such as an image or css document, if this isn't true it sends the
     # request to the front controller, index.php
