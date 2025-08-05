@@ -14,7 +14,7 @@
 
 <div id="notice">
     <div class="local">
-        총 사서함 수 <?=count($list)?>건
+        총 사서함 수 <?=$pageData['totalCnt']?>건
     </div>
 
     <form id="searchForm" method="get">
@@ -156,6 +156,7 @@
         </tbody>
     </table>
 
+	<?php $this->load->view('/common/page', $pageData); ?>
 </div>
 
 <!-- 📤 스캔 업로드 모달 -->
