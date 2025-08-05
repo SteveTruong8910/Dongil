@@ -1579,7 +1579,9 @@ class Admin extends CI_Controller {
         if (!empty($searchType) && !empty($searchTxt)) {
             if ($searchType == 'memberIdx') {
                 $searchSql .= " AND M.{$searchType} = '{$searchTxt}'";
-            } else {
+			} elseif ($searchType == 'senderName') {
+				$searchSql .= " AND M.nickname LIKE '%{$searchTxt}%'";
+			} else {
                 $searchSql .= " AND M.{$searchType} LIKE '%{$searchTxt}%'";
             }
         }
