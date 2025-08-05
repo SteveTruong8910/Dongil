@@ -3547,7 +3547,7 @@
 				// .off('click');
 			}
 
-            btn.text('사서함 서비스 끄기').addClass('active');
+            btn.text('사서함 서비스 사용중').addClass('active');
             isPoboxActive = true;
         } else {
             // 사서함 서비스 끄기 - 원래 주소 정보로 복원
