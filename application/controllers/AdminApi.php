@@ -1030,6 +1030,36 @@ class AdminApi extends CI_Controller {
         die(json_encode($result));
     }
 
+	public function editMailbox()
+	{
+		$result = array('result' => false, 'msg' => '');
+
+		// 필수값 체크
+		$mailboxIdx = $_POST['mailboxIdx'] ?? '';
+		$memberIdx = $_POST['memberIdx'] ?? '';
+		$senderName = $_POST['senderNameEdit'] ?? '';
+		$senderAddress = $_POST['senderAddressEdit'] ?? '';
+
+		if (empty($mailboxIdx)) {
+			$result['msg'] = '회원 번호가 누락되었습니다.';
+			die(json_encode($result));
+		}
+
+		// DB에 등록
+		$sql = "
+			UPDATE mailbox_list
+			SET senderName = '{$senderName}', senderAddress = '{$senderAddress}', memberIdx = '{$memberIdx}'
+			WHERE idx = '{$mailboxIdx}'
+		";
+		$result['result'] = $this->db->query($sql);
+
+		if (!$result['result']) {
+			$result['msg'] = 'DB 저장 중 오류가 발생했습니다.';
+		}
+
+		die(json_encode($result));
+	}
+
 
     public function lockOrders() {
         header('Content-Type: application/json');
@@ -1211,6 +1241,30 @@ class AdminApi extends CI_Controller {
 
         echo json_encode(['result' => true]);
     }
+
+	public function deleteMailBox()
+	{
+		$result = array('result' => false, 'msg' => '');
+
+		$json = json_decode(file_get_contents('php://input'), true);
+		$mailboxIdx = (int)$json['idx'];
+		if (empty($mailboxIdx)) {
+			$result['msg'] = '사서함 인덱스가 누락되었습니다.';
+			die(json_encode($result));
+		}
+
+		$this->db->where('idx', $mailboxIdx);
+		$delete = $this->db->delete('mailbox_list');
+
+		if ($delete) {
+			$result['result'] = true;
+			$result['msg'] = '삭제 완료';
+		} else {
+			$result['msg'] = '삭제 실패';
+		}
+
+		die(json_encode($result));
+	}
 
     public function setLibraryCategory()
     {

@@ -24,15 +24,15 @@
             </div>         
             <p class="guide">주소</p>
             <input type="hidden" id="receiverZipCode"/>
-            <input type="text" id="receiverAddr" class="fieldInput" placeholder="주소" value="<?=$this->user['receiverAddr']?>" onclick="openDaumPostcode($('#receiverZipCode'), $('#receiverAddr'), $('#receiverAddrDetail'), 2)" readonly/>
+            <input type="text" id="receiverAddr" class="fieldInput" placeholder="주소" value="<?=$this->user['senderAddr']?>" onclick="openDaumPostcode($('#receiverZipCode'), $('#receiverAddr'), $('#receiverAddrDetail'), 2)" readonly/>
             <p class="guide">상세주소</p>
-            <input type="text" id="receiverAddrDetail" class="fieldInput" value="<?=$this->user['receiverAddrDetail']?>" placeholder="상세주소" <?=$this->user['addressIdx']? '' : 'disabled'?>/>
+            <input type="text" id="receiverAddrDetail" class="fieldInput" value="<?=$this->user['senderAddrDetail']?>" placeholder="상세주소" <?=$this->user['addressIdx']? '' : 'disabled'?>/>
                         
             <p class="guide">이름</p>
-            <input type="text" id="receiverName" class="fieldInput" value="<?=$this->user['receiverName']?>" placeholder="이름"/>
+            <input type="text" id="receiverName" class="fieldInput" value="<?=$this->user['senderName']?>" placeholder="이름"/>
                         
             <p class="guide">전화번호(선택)</p>
-            <input type="tel" id="receiverTel" class="fieldInput" value="<?=$this->user['receiverTel']?>" placeholder="전화번호" oninput="this.value = this.value.replace(/[^0-9]/g, '');"/>  
+            <input type="tel" id="receiverTel" class="fieldInput" value="<?=$this->user['senderTel']?>" placeholder="전화번호" oninput="this.value = this.value.replace(/[^0-9]/g, '');"/>
         </div>
        
         <p class="title hide" style="margin-bottom: 20px;">
