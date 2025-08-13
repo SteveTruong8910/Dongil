@@ -1596,6 +1596,10 @@ class Admin extends CI_Controller {
                 M.nickname,
                 M.senderTel,
                 MB.regDate,
+                MB.receiverName,
+                MB.receiverAddr,
+                MB.receiverAddrDetail,
+                MB.receiverTel,
                 MB.idx AS mailboxIdx,
                 M.idx AS memberIdx
             FROM 

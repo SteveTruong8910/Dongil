@@ -55,7 +55,8 @@
                 <th width="200">상세주소</th>
                 <th>전화번호</th>
                 <th width="200">운송장번호</th>
-                <!-- <th>관리</th> -->
+				<th>편집하다</th>
+                <th>삭제</th>
             </tr>
         </thead>
         <tbody>
@@ -80,7 +81,7 @@
                             <option value="0" <?= $row['scan_status'] == 0 ? 'selected' : '' ?>>스캔</option>
                             <option value="1" <?= $row['scan_status'] == 1 ? 'selected' : '' ?>>스캔 & 택배</option>
                             <option value="2" <?= $row['scan_status'] == 2 ? 'selected' : '' ?>>택배</option>
-                            <option value="3" <?= $row['scan_status'] == 3 ? 'selected' : '' ?>>보관</option> <!-- change 폐기 -> 보관 -->
+                            <option value="3" <?= $row['scan_status'] == 3 ? 'selected' : '' ?>>스캔 & 보관</option> <!-- change 보관 -> 스캔 & 보관 -->
                         </select>
                     </td>
 
@@ -94,7 +95,7 @@
                         <? if($row['pdfPath']) { ?>
                             <a href="/assets/mailbox/<?=$row['pdfPath']?>" target="_blank" class="btnDownload" style="padding: 4px 8px; display: inline-block;">PDF 보기</a>
                         <? } else { ?>
-                            <button type="button" class="btnDownload" onclick="openUploadModal(<?=$row['mailboxIdx']?>)" style="padding: 4px 8px; display: inline-block; color: red;">스캔본 첨부</button>
+                            <button type="button" class="btnDownload" onclick="openUploadModal(<?=$row['mailboxIdx']?>)" style="padding: 3px !important; display: inline-block; color: red;">스캔본 첨부</button>
                         <? } ?>
                     </td>
                     <!-- 스캔 결제 상태 -->
@@ -147,6 +148,12 @@
                             <button onclick="setTrackingNumber(<?=$row['mailboxIdx']?>)">등록</button>
                         <? } ?>
                     </td>
+					<td>
+						<button onclick="openEditForm(<?=$row['mailboxIdx']?>)">편집하다</button>
+					</td>
+					<td>
+						<button onclick="deleteMailBox(<?=$row['mailboxIdx']?>)">삭제</button>
+					</td>
 
                     <!-- <td>
                         <button onclick="openUploadModal(<?=$row['idx']?>)">📤 스캔파일 업로드</button>
@@ -218,6 +225,39 @@
       </div>
     </div>
   </div>
+</div>
+
+
+<div id="editModal" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog" style="width:600px; max-width:90%;">
+		<div class="modal-content">
+			<div class="modal-body">
+				<p><strong>사서함에 등록할 회원과 PDF 파일을 입력해주세요.</strong></p>
+
+				<!-- 회원 이름 검색 영역 -->
+				<div style="display:flex; gap:5px; margin-bottom:10px;">
+					<input type="text" id="searchMemberNameEditModal" class="fieldInput" placeholder="회원 이름 입력" style="flex:1;" />
+					<button type="button" class="btnDownload" onclick="searchMemberEditModal()">검색</button>
+				</div>
+
+				<form id="editForm" enctype="multipart/form-data">
+					<input type="hidden" name="mailboxIdx" id="mailboxIdxEdit">
+
+					<label>회원 번호</label>
+					<input type="number" name="memberIdx" id="memberIdxInputEdit" required class="fieldInput"><br><br>
+
+					<label>보내는 사람 이름</label>
+					<input type="text" name="senderNameEdit" class="fieldInput"><br><br>
+
+					<label>보내는 사람 주소</label>
+					<input type="text" name="senderAddressEdit" class="fieldInput"><br><br>
+
+					<button class="btnDownload">등록</button>
+
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- 👤 회원 검색 결과 모달 -->
@@ -510,6 +550,15 @@
         $('#registerModal').modal('show');
     }
 
+	function openEditForm(mailboxIdx) {
+		let mailBoxData = <?= json_encode($list) ?>.find(r => r.mailboxIdx == mailboxIdx);
+		document.getElementById('memberIdxInputEdit').value = mailBoxData.memberIdx;
+		document.getElementById('mailboxIdxEdit').value = mailBoxData.mailboxIdx;
+		document.getElementsByName('senderNameEdit')[0].value = mailBoxData.senderName;
+		document.getElementsByName('senderAddressEdit')[0].value = mailBoxData.senderAddress;
+		$('#editModal').modal('show');
+	}
+
     $('#registerForm').submit(async function(e){
         e.preventDefault();
         let formData = new FormData(this);
@@ -526,6 +575,23 @@
             alert(result.msg || '등록 실패');
         }
     });
+
+	$('#editForm').submit(async function(e){
+		e.preventDefault();
+		let formData = new FormData(this);
+
+		const res = await fetch('/adminApi/editMailbox', {
+			method: 'POST',
+			body: formData
+		});
+		const result = await res.json();
+		if(result.result) {
+			alert('등록 완료');
+			location.reload();
+		} else {
+			alert(result.msg || '등록 실패');
+		}
+	});
 
     async function confirmScanDeposit(mailboxIdx) {
         const confirmed = confirm("해당 사용자의 스캔 결제를 입금 확인 처리하시겠습니까?");
@@ -586,12 +652,75 @@
         }
     }
 
+	async function searchMemberEditModal() {
+		const keyword = $('#searchMemberNameEditModal').val().trim();
+		if (!keyword) {
+			alert("회원 이름을 입력해주세요.");
+			return;
+		}
+
+		const res = await fetch('/adminApi/searchMembersByName', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ keyword })
+		});
+
+		const text = await res.text();
+		let result;
+		try {
+			result = JSON.parse(text);
+		} catch (e) {
+			alert('검색 결과를 불러오지 못했습니다.');
+			console.error('JSON 파싱 오류:', text);
+			return;
+		}
+
+		if (result.result && result.data.length) {
+			const html = result.data.map(member => `
+                <li style="padding:8px; border-bottom:1px solid #eee; cursor:pointer;"
+                    onclick="selectSearchMemberEditModal(${member.idx}, '${member.senderName}')">
+                    ${member.senderName} (${member.idx}) - ${member.senderTel || ''} - ${member.receiverAddr} ${member.receiverAddrDetail}
+                </li>
+            `).join('');
+			$('#memberResultList').html(html);
+			$('#memberResultModal').modal('show');
+		} else {
+			$('#memberResultList').html('<li style="padding:8px;">검색 결과가 없습니다.</li>');
+			$('#memberResultModal').modal('show');
+		}
+	}
+
     // 선택된 회원을 등록폼에 넣기
     function selectSearchMember(memberIdx, memberName) {
         $('#memberIdxInput').val(memberIdx);
         $('#memberResultModal').modal('hide');
         // alert(`"${memberName}" 회원이 선택되었습니다.`);
     }
+
+	function selectSearchMemberEditModal(memberIdx, memberName) {
+		$('#memberIdxInputEdit').val(memberIdx);
+		$('#memberResultModal').modal('hide');
+		// alert(`"${memberName}" 회원이 선택되었습니다.`);
+	}
+
+	function deleteMailBox(idx) {
+		if (confirm("정말로 삭제하시겠습니까?")) {
+			fetch('/adminApi/deleteMailBox', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ idx: idx })
+			})
+				.then(res => res.json())
+				.then(result => {
+					if (result.result) {
+						alert('삭제 완료');
+						location.reload();
+					} else {
+						alert(result.msg || '삭제 실패');
+					}
+				});
+		}
+	}
 
     async function updateScanStatus(idx, status) {
         console.log(idx, status);
