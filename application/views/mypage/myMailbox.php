@@ -393,7 +393,7 @@
             // 스캔 상태가 설정되지 않은 경우
             buttons.appendChild(makeBtn('스캔본 확인 후 폐기하기', () => updateScanStatus('0', mailboxIdx)));
             buttons.appendChild(makeBtn('스캔본 확인 후 택배받기', () => updateScanStatus('1', mailboxIdx)));
-            buttons.appendChild(makeBtn('스캔본 확인하지 않고 택배받기', () => updateScanStatus('2', mailboxIdx)));
+            // buttons.appendChild(makeBtn('스캔본 확인하지 않고 택배받기', () => updateScanStatus('2', mailboxIdx)));
             // buttons.appendChild(makeBtn('스캔본 확인하지 않고 폐기하기', () => discardMail(mailboxIdx)));
             buttons.appendChild(makeBtn('스캔본 확인 후 보관하기', () => updateScanStatus('3', mailboxIdx)));
         } else {
