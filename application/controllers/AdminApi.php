@@ -24,7 +24,7 @@ class AdminApi extends CI_Controller {
         $password = $_POST['password'];  
 
         // 아이디와 비밀번호가 일치하지 않으면 오류 메시지를 반환
-        if(!($id == 'admin' && $password == 'admin2588')){
+        if(!($id == 'admin' && $password == 'dongap3667!')){
             $result['msg'] = "아이디 혹은 비밀번호가 일치하지않습니다.";  // 오류 메시지
             die(json_encode($result));  // JSON 형식으로 응답
         }

@@ -55,7 +55,7 @@
                 <th width="200">상세주소</th>
                 <th>전화번호</th>
                 <th width="200">운송장번호</th>
-				<th>편집하다</th>
+				<th>수정</th>
                 <th>삭제</th>
             </tr>
         </thead>
@@ -149,7 +149,7 @@
                         <? } ?>
                     </td>
 					<td>
-						<button onclick="openEditForm(<?=$row['mailboxIdx']?>)">편집하다</button>
+						<button onclick="openEditForm(<?=$row['mailboxIdx']?>)">수정</button>
 					</td>
 					<td>
 						<button onclick="deleteMailBox(<?=$row['mailboxIdx']?>)">삭제</button>
