@@ -3528,14 +3528,14 @@
                 .off('click');
 
             $('#senderAddrDetail')
-                .val('3층')
+                .val('3층' + ' (<?= $this->user['idx'] ?>)')
                 .prop('readonly', true)
                 .addClass('no-click')
                 .off('click');
 
 			if (defaultName) {
 				$('#senderName')
-					.val(defaultName + ' (<?= $this->user['idx'] ?>)')
+					.val(defaultName)
 					.prop('readonly', false)
 				// .addClass('no-click')
 				// .off('click');
