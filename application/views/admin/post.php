@@ -953,6 +953,7 @@
 					continue;
 				}
                 const fileUrl = basePath + fileName; //파일 Url
+				await new Promise(resolve => setTimeout(resolve, 500));
 				downloadFileDirectly(fileUrl, downloadFileName);  // 직접 다운로드 함수 호출
             }
 
