@@ -928,68 +928,37 @@
         // 흑백(1) 또는 컬러(2) 처리
         for (let cnt = 1; cnt <= 2; cnt++) { /* 흑백, 컬러 */
             showLoadingBar();  // 로딩 바 표시
-
-            let mergedPDF = await PDFDocument.create(),  // 새로운 PDF 문서 생성
-                isFile = false,  // 파일이 성공적으로 처리되었는지 확인
-                failedFiles = [];  // 실패한 파일 목록
-
-                let downloadFileName = `(${cnt === 1 ? '블랙' : '컬러'})${data.orderId}.pdf`; // 다운로드 파일명 설정
-
             // 각 파일을 순차적으로 처리
             for (let i = 0; i < files.length; i++) {
+
                 let fileColor = data.fileColor.split("/")[i];  // 파일 색상 확인
 
                 // 흑백(1) 또는 컬러(2)만 처리
                 if (cnt == 1 && fileColor !== '블랙') continue;
                 if (cnt == 2 && fileColor !== '컬러') continue;
+				let downloadFileName = `(${cnt === 1 ? '블랙' : '컬러'})${data.orderId}(${i + 1}).pdf`; // 다운로드 파일명 설정
 
                 const fileName = files[i].fileName;
                 const pdfPath = basePath + fileName;  // PDF 파일 경로
-                const fileSize = await getFileSize(pdfPath); // 파일 크기 확인
-                const fileUrl = basePath + fileName; //파일 Url                                
-                
-                // 파일 크기가 30MB 이상 또는 pdf 파일이 하나면 바로 다운로드
-                if(fileSize >= 30000000 || (fileName.endsWith('.pdf') && files.length == 1)) {
-                    console.log(`Direct ${fileName}`); // 로그 출력
-                    downloadFileDirectly(fileUrl, downloadFileName);  // 직접 다운로드 함수 호출
-                    continue;  // 다음 파일로 넘어감
-                }
+                const fileUrl = basePath + fileName; //파일 Url
 
                 try {
                     // PDF 파일 처리
                     if (fileName.endsWith('.pdf')) {
-                        const response = await fetch(pdfPath);
-                        if (!response.ok) {
-                            throw new Error(`Failed to fetch ${pdfPath}: ${response.statusText}`);
-                        }
-
-                        const existingPdfBytes = await response.arrayBuffer();  // PDF 파일의 배열 버퍼 가져오기
-                        const pdfDoc = await PDFDocument.load(existingPdfBytes, {
-                            ignoreEncryption: true  // 암호화된 파일도 무시하고 로드
-                        });
-
-                        const pageCount = pdfDoc.getPageCount();  // 페이지 수 가져오기
-                        console.log(`Total pages in ${fileName}: ${pageCount}`);
-
-                        // 각 페이지를 병합 PDF에 복사
-                        for (let page = 0; page < pageCount; page++) {
-                            try {
-                                const [viewPage] = await mergedPDF.copyPages(pdfDoc, [page]);
-                                
-                                mergedPDF.addPage(viewPage);
-                            } catch (pageError) {
-                                console.warn(`Skipping page ${page} in ${fileName}:`, pageError);  // 페이지 복사 실패 시 경고
-                            }
-                        }
+						console.log('pdf', fileName);
+						await new Promise(resolve => setTimeout(resolve, 500));
+						downloadFileDirectly(fileUrl, downloadFileName);  // 직접 다운로드 함수 호출
                     } 
                     // 이미지 파일 처리
                     else if (fileName.match(/\.(jpg|jpeg|png)$/)) {
+						console.log('image', fileName);
                         const response = await fetch(pdfPath);
                         if (!response.ok) {
                             throw new Error(`Failed to fetch ${pdfPath}: ${response.statusText}`);
                         }
 
                         const imageBytes = await response.arrayBuffer();  // 이미지 파일의 배열 버퍼 가져오기
+						let mergedPDF = await PDFDocument.create();  // 새로운 PDF 문서 생성
                         let image;
                         if (fileName.endsWith('.jpg') || fileName.endsWith('.jpeg')) {
                             image = await mergedPDF.embedJpg(imageBytes);  // JPG 파일 처리
@@ -997,31 +966,29 @@
                             image = await mergedPDF.embedPng(imageBytes);  // PNG 파일 처리
                         }
 
-                        if (image) {
-                            // 이미지 크기에 맞는 페이지를 추가하고 이미지 삽입
-                            const page = mergedPDF.addPage([image.width, image.height]);
-                            page.drawImage(image, {
-                                x: 0,
-                                y: 0,
-                                width: image.width,
-                                height: image.height,
-                            });
-                        }
+						if (image) {
+							// 이미지 크기에 맞는 페이지를 추가하고 이미지 삽입
+							const page = mergedPDF.addPage([image.width, image.height]);
+							page.drawImage(image, {
+								x: 0,
+								y: 0,
+								width: image.width,
+								height: image.height,
+							});
+						}
+
+						await new Promise(resolve => setTimeout(resolve, 500));
+						const pdfBytes = await mergedPDF.save({ updateFieldAppearances: false });  // 병합된 PDF 저장
+						download(pdfBytes, downloadFileName, "application/pdf");
                     } else {
                         console.warn(`Unsupported file type: ${fileName}`);  // 지원하지 않는 파일 유형 경고
                     }
 
-                    isFile = true;  // 파일이 처리되었음을 표시
+
                 } catch (error) {
                     console.error(`Error processing file ${fileName}:`, error);  // 파일 처리 오류                    
                     downloadFileDirectly(fileUrl, downloadFileName);  // 오류 발생 시 파일 직접 다운로드
                 }
-            }
-
-            // 파일이 성공적으로 병합되었으면 다운로드 처리
-            if (isFile) {                
-                const pdfBytes = await mergedPDF.save({ updateFieldAppearances: false });  // 병합된 PDF 저장
-                download(pdfBytes, downloadFileName, "application/pdf");  // PDF 다운로드
             }
 
             hideLoadingBar();  // 로딩 바 숨기기
