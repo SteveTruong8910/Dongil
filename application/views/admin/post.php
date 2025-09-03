@@ -1052,7 +1052,7 @@
 			let customLibraryFileName = data.orderId.replace(/_\(.*/, "")
             let mergedPDF = await PDFDocument.create(),
                 isFile = false,
-                downloadFileName = `(${cnt === 1 ? '블랙' : '컬러'})${customLibraryFileName}_자료.pdf`;
+                downloadFileName = `(${cnt === 1 ? '블랙' : '컬러'})${customLibraryFileName}.pdf`;
             
 
             for (let i = 0; i < files.length; i++) {
