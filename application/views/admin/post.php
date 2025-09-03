@@ -930,13 +930,13 @@
             showLoadingBar();  // 로딩 바 표시
             // 각 파일을 순차적으로 처리
             for (let i = 0; i < files.length; i++) {
-
+				let fileNumber = String(i + 1).padStart(2, '0');
                 let fileColor = data.fileColor.split("/")[i];  // 파일 색상 확인
 
                 // 흑백(1) 또는 컬러(2)만 처리
                 if (cnt == 1 && fileColor !== '블랙') continue;
                 if (cnt == 2 && fileColor !== '컬러') continue;
-				let downloadFileName = `(${cnt === 1 ? '블랙' : '컬러'})${data.orderId}(${i + 1}).pdf`; // 다운로드 파일명 설정
+				let downloadFileName = `(${cnt === 1 ? '블랙' : '컬러'})${data.orderId}(${fileNumber}).pdf`; // 다운로드 파일명 설정
 
                 const fileName = files[i].fileName;
                 const pdfPath = basePath + fileName;  // PDF 파일 경로
@@ -1049,9 +1049,10 @@
         for (let cnt = 1; cnt <= 2; cnt++) { // 1 = 흑백, 2 = 컬러
             showLoadingBar();  // 로딩 바 표시
 
+			let customLibraryFileName = data.orderId.replace(/_\(.*/, "")
             let mergedPDF = await PDFDocument.create(),
                 isFile = false,
-                downloadFileName = `(${cnt === 1 ? '블랙' : '컬러'})${data.orderId}_자료.pdf`;
+                downloadFileName = `(${cnt === 1 ? '블랙' : '컬러'})${customLibraryFileName}_자료.pdf`;
             
 
             for (let i = 0; i < files.length; i++) {
