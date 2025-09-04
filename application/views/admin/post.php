@@ -932,11 +932,12 @@
             for (let i = 0; i < files.length; i++) {
 				let fileNumber = String(i + 1).padStart(2, '0');
                 let fileColor = data.fileColor.split("/")[i];  // 파일 색상 확인
+				let customLibraryFileName = data.orderId.replace(/_\(.*/, "")
 
                 // 흑백(1) 또는 컬러(2)만 처리
                 if (cnt == 1 && fileColor !== '블랙') continue;
                 if (cnt == 2 && fileColor !== '컬러') continue;
-				let downloadFileName = `(${cnt === 1 ? '블랙' : '컬러'})${data.orderId}(${fileNumber}).pdf`; // 다운로드 파일명 설정
+				let downloadFileName = `(${cnt === 1 ? '블랙' : '컬러'})${customLibraryFileName}(${fileNumber}).pdf`; // 다운로드 파일명 설정
 
                 const fileName = files[i].fileName;
                 const pdfPath = basePath + fileName;  // PDF 파일 경로
