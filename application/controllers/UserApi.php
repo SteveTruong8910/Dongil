@@ -2165,7 +2165,7 @@ class UserApi extends CI_Controller {
             SELECT L.*, C.cateName
             FROM library_list AS L
             LEFT JOIN library_category AS C ON L.categoryIdx = C.idx
-            WHERE L.isUse = 'Y'
+            WHERE L.isUse = 'Y' AND L.categoryIdx is not null
         ";
 
 
