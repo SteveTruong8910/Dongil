@@ -3233,7 +3233,7 @@
 		list.forEach((data, index) => {
 			const regDate = new Date(data.regDate.replace(' ', 'T'));
 			const isNew = regDate >= sevenDaysAgo;
-			const isBroadcast = data.cateName.includes('방송표'); // 카테고리 이름으로 방송표 확인
+			const isBroadcast = (data.cateName || '').includes('방송표'); // 카테고리 이름으로 방송표 확인
 
 			listHtml += `
                     <div class="libraryViewBox ${libraryIndexes.includes(index) ? 'active' : ''}"
@@ -3336,8 +3336,7 @@
             for (let data of list) {
                 const regDate = new Date(data.regDate.replace(' ', 'T'));
                 const isNew = regDate >= sevenDaysAgo;
-                const isBroadcast = data.cateName.includes('방송표'); // 카테고리 이름으로 방송표 확인
-
+                const isBroadcast = (data.cateName || '').includes('방송표'); // 카테고리 이름으로 방송표 확인
                 listHtml += `
                     <div class="libraryViewBox" 
                         onclick="choicelibrary($(this))" 

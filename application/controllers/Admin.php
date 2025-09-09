@@ -449,7 +449,7 @@ class Admin extends CI_Controller {
                 categoryIdx = '{$viewData['categoryIdx']}' AND
                 isUse = 'Y'
             ORDER BY
-                sortOrder DESC, idx DESC;
+                sortOrder ASC, idx DESC;
         ";
 
         $query = $this->db->query($sql);

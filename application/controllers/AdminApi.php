@@ -1447,7 +1447,7 @@ class AdminApi extends CI_Controller {
     public function changeLibraryCategory()
     {
         // 요청된 카테고리 인덱스 배열을 받음
-        $idxArr = $_POST['idxArr'];
+        $idxArr = array_unique($_POST['idxArr']);
 
         // 인덱스 배열에 대해 반복하면서 순서 변경
         for($i=0; $i<count($idxArr); $i++) {
