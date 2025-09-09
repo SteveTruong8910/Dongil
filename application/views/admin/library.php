@@ -460,7 +460,7 @@
 
         // 서버에 카테고리 이름 변경 요청
         const setChangeCateNameRes = await postJson('/adminApi/changeLibraryCateName', {
-            cateIcategoryIdxdx : categoryIdx,
+			categoryIdx : categoryIdx,
             cateName : cateName
         });
 
