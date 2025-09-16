@@ -2537,8 +2537,8 @@
     async function saveCropper() {
         croppedCanvases = [];
         for (let i = 0; i < croppers.length; i++) {
-            let naturalWidth = croppers[i].canvas.width;  // 원본 캔버스 크기 사용
-            let naturalHeight = croppers[i].canvas.height;
+			let naturalWidth = croppers[i].canvas.getBoundingClientRect().width  // 원본 캔버스 크기 사용
+			let naturalHeight = croppers[i].canvas.getBoundingClientRect().height;
             
             let canvas = croppers[i].getCroppedCanvas({
                 width: naturalWidth, 
