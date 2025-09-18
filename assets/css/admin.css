@@ -1007,9 +1007,9 @@ input[type="text"], input[type="password"], input[type="number"]{
     position: relative;
     width: 14.95cm;
 /*    height: 22.3cm;*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
+    /*justify-content: center;*/
+    /*align-items: center;*/
 }
 
 #postImgView .cropImg2 {    
