@@ -1728,7 +1728,7 @@
                 '일반전화(02-1234-5678)': '',
                 '휴대전화(010-1234-5678)': checkNotPhone(data['senderTel'], data['receiverTel']),
                 '등기번호(선납소포라벨만 입력가능)': '',
-                '중량(g)' : ''
+				'중량(g)' : data.hasOwnProperty('envelopeWeight') ? Math.floor(data['envelopeWeight']) : ''
             };
 
             jsonData.push(obj); // jsonData 배열에 객체 추가
