@@ -247,7 +247,7 @@ $config['prison'] = array(
     array('region' => '충청도', 'name' => '미평여자학교(청주소년원)', 'post' => 28632, 'address' => '충북 청주시 서원구 남지로41번길 23 (미평동, 미평고등학교)', 'addressDetail' => ''),
     array('region' => '충청도', 'name' => '대산학교(대전소년원)', 'post' => 34699, 'address' => '대전 동구 산내로 1398-41 (대성동)', 'addressDetail' => ''),
     
-    array('region' => '전라도', 'name' => '광주교도소', 'post' => 61244, 'address' => '광주시 북광주우체국 사서함', 'addressDetail' => '63호'),
+    array('region' => '전라도', 'name' => '광주교도소', 'post' => 61057, 'address' => '광주시 북광주우체국 사서함', 'addressDetail' => '63호'),
     array('region' => '전라도', 'name' => '전주교도소', 'post' => 54966, 'address' => '전북 전주우체국 사서함', 'addressDetail' => '72호'),
     array('region' => '전라도', 'name' => '순천교도소', 'post' => 57987, 'address' => '전남 순천우체국 사서함', 'addressDetail' => '9호'),
     array('region' => '전라도', 'name' => '목포교도소', 'post' => 58574, 'address' => '전남 무안 일로우체국 사서함', 'addressDetail' => '1호'),
