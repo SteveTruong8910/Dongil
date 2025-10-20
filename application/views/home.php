@@ -113,7 +113,7 @@
 				<span style="display: inline-block;">계좌번호: 기업 28810139201013</span>
 				<button onclick="copyToClipboard('기업 28810139201013')" style="margin-left: 2px; padding: 3px; display: inline-block;">복사</button>
 			</div>
-			<span>주소: 부산광역시 사하구 하신중앙로 27번길 6</span>
+			<span>주소: 부산광역시 서구 충무대로91 101-2401호</span>
 			<span>대표자: 황종민</span>
 			<span>COPYRIGHT (C) 2024 동글. ALL RIGHTS RESERVED.</span>
 		</div>
