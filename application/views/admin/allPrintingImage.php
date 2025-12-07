@@ -75,7 +75,7 @@
 			<div class="content" style="page-break-after: always;">
 				<div class="first-page">
 					<div class="rotate-box">
-						<p><?= $writeInfo['letterIdx'] . ' ' . $writeInfo['mbName'] . ' ' .'P'. $writeInfo['totalPhotoCnt'] ?></p>
+						<p><?= $writeInfo['printOrderId'] . ' ' . $writeInfo['mbName'] . ' ' .'P'. $writeInfo['totalPhotoCnt'] ?></p>
 					</div>
 				</div>
 			</div>
