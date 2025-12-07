@@ -18,11 +18,67 @@
         margin: 0; /* 이미지의 마진 제거 */
         padding: 0; /* 이미지의 패딩 제거 */
     }
+	.first-page {
+		position: relative;
+		width: 100vw;
+		height: 100vh;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.rotate-box {
+		transform: rotate(90deg);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.first-page p {
+		margin: 0;
+		padding: 0;
+		white-space: nowrap;
+		font-size: 40px;
+		font-weight: bold;
+	}
+
+	/* ====== PRINT FIX ====== */
+	@media print {
+		@page { margin: 0 !important; }
+
+		html, body {
+			margin: 0 !important;
+			padding: 0 !important;
+			height: 100%;
+			width: 100%;
+		}
+
+		.first-page {
+			width: 100vw !important;
+			height: 100vh !important;
+		}
+
+		.rotate-box {
+			transform: rotate(90deg) !important;
+		}
+	}
+
 </style>
 
 <div id="postImgView" class="imgSheet">
     <?php
         foreach($list as $writeInfo) {
+		?>
+			<div class="content" style="page-break-after: always;">
+				<div class="first-page">
+					<div class="rotate-box">
+						<p><?= $writeInfo['letterIdx'] . ' ' . $writeInfo['mbName'] . ' ' .'P'. $writeInfo['totalPhotoCnt'] ?></p>
+					</div>
+				</div>
+			</div>
+		<?php
             foreach ($writeInfo['photos'] as $key => $img) {
                 // 특정 조건을 만족하면 현재 반복을 건너뜀(무광, 유광 구분) (continue)
                 if (

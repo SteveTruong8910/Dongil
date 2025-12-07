@@ -878,7 +878,12 @@ class UserApi extends CI_Controller {
                 ELSE (totalLetterCnt * 3.8)  -- 심플, 테마 3.8g (기본적인 적용)
               END
             ) 
-            + (totalPhotoCnt * 3.9)  -- 유광 및 무광 사진 3.9g
+            + (
+				CASE 
+				  WHEN totalPhotoCnt >= 1 THEN (totalPhotoCnt * 3.9) + 3.9
+				  ELSE 0
+				END
+			  )
             + (totalPdfFileCnt * 6.2) -- 문서 6.2g
             + (totalLibraryFileCnt * 6.2)
             + (
