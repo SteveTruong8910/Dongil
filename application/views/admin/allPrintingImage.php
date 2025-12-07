@@ -71,6 +71,7 @@
     <?php
         foreach($list as $writeInfo) {
 		?>
+			<?php if ($writeInfo['totalPhotoCnt'] >= 1 && $_GET['isGloss'] == 'Y'): ?>
 			<div class="content" style="page-break-after: always;">
 				<div class="first-page">
 					<div class="rotate-box">
@@ -78,6 +79,7 @@
 					</div>
 				</div>
 			</div>
+			<?php endif; ?>
 		<?php
             foreach ($writeInfo['photos'] as $key => $img) {
                 // 특정 조건을 만족하면 현재 반복을 건너뜀(무광, 유광 구분) (continue)
