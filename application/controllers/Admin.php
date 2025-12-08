@@ -958,6 +958,9 @@ class Admin extends CI_Controller {
 
         // 'writeId'는 orderId와 동일
         $writeInfo['writeId'] = $writeInfo['orderId'];
+		preg_match('/^\d+/', $writeInfo['orderId'], $matches);
+		$firstOrderData = $matches[0];
+		$writeInfo['printOrderId'] = substr($firstOrderData, -4);
 
         // writeInfo 배열 반환
         return $writeInfo;
