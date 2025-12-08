@@ -182,9 +182,6 @@
                     <div class="<?=$clsBox?>">
                         <div style="position: relative;">
                             <img class="<?=$clsImg?> height <?=$clsSize?>" src="<?= $rotatedImageDataUri ?? '/assets/upload/photos/' . $img['onebonFileName'] ?>" />
-                            <span class="writeId photo">
-                                <?= $writeInfo['normalWriteId'] . 'P' . ($key + 1) ?><?= $writeInfo['subWriteId']?>
-                            </span>
                         </div>                        
                     </div>
                 </div>
