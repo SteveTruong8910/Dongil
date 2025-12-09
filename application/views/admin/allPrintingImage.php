@@ -44,11 +44,94 @@
 		font-weight: bold;
 	}
 
+	#postImgView .cropImgBox2 {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 100vh;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		page-break-inside: avoid;
+	}
+
+	#postImgView .cropImg2 {
+		width: 100vw;
+		height: 100vh;
+		max-height: 100vh;
+		max-width: 100%;
+		object-fit: contain;
+		margin: 0;
+		padding: 0;
+	}
+
+	#postImgView .cropImgBox {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 100vh;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		page-break-inside: avoid;
+	}
+
+	#postImgView .cropImg {
+		width: 100vw;
+		height: 100vh;
+		max-height: 100vh;
+		max-width: 100%;
+		object-fit: contain;
+		margin: 0;
+		padding: 0;
+	}
+
 	/* ====== PRINT FIX ====== */
 	@media print {
-		@page { margin: 0 !important; }
+		@page {
+			margin: 0 !important;
+			size: auto;
+		}
 
-		html, body {
+		.imgSheet {
+			page-break-after: always;
+			page-break-inside: avoid;
+		}
+
+		.cropImgBox2 {
+			height: 100vh !important;
+			max-height: 100vh !important;
+			overflow: hidden !important;
+			page-break-inside: avoid !important;
+		}
+
+		.cropImg2 {
+			width: 100%;
+			height: 100%;
+			display: block;
+			margin: 0;
+			object-fit: cover !important;
+		}
+
+		.cropImgBox {
+			height: 100vh !important;
+			max-height: 100vh !important;
+			overflow: hidden !important;
+			page-break-inside: avoid !important;
+		}
+
+		.cropImg {
+			width: 100%;
+			height: 100%;
+			display: block;
+			margin: 0;
+			object-fit: cover !important;
+		}
+
+		html,
+		body {
 			margin: 0 !important;
 			padding: 0 !important;
 			height: 100%;
@@ -177,18 +260,9 @@
                     $clsImg = 'cropImg2';
                 }
             ?>
-            <div class="imgSheet">
-                <div class="letterImgWrap height">
-                    <div class="<?=$clsBox?>">
-                        <div style="position: relative;">
-                            <img class="<?=$clsImg?> height <?=$clsSize?>" src="<?= $rotatedImageDataUri ?? '/assets/upload/photos/' . $img['onebonFileName'] ?>" />
-                            <span class="writeId photo">
-                                <?= $writeInfo['normalWriteId'] . 'P' . ($key + 1) ?><?= $writeInfo['subWriteId']?>
-                            </span>
-                        </div>                        
-                    </div>
-                </div>
-            </div>
+			<div class="<?=$clsBox?>">
+					<img class="<?=$clsImg?> height <?=$clsSize?>" src="<?= $rotatedImageDataUri ?? '/assets/upload/photos/' . $img['onebonFileName'] ?>" />
+			</div>
     <?  }
     }
     ?>
