@@ -2119,7 +2119,7 @@
     /* 폰트 선택 */
     async function choiceFont(name, fontName, fontFamily) {
         // 폰트 파일을 link 태그로 동적으로 추가
-        let fontLink = $(`<link rel="stylesheet" data-font href="/assets/fonts/${fontFamily}.css?v=20250220">`);        
+        let fontLink = $(`<link rel="stylesheet" data-font href="/assets/fonts/${fontName}.css?v=20250220">`);
 
         fontLink.on('load', async function() {            
             await document.fonts.ready; // 폰트가 사용할 준비가 됐다고 알려주는 Promise
@@ -2127,16 +2127,28 @@
             // 🔹 특정 폰트가 실제로 로드되었는지 확인
             try {
                 // 16px 크기로 폰트 로드 확인
-                await document.fonts.load(`16px ${fontName}`);                  
+                await document.fonts.load(`16px ${fontName}`);
+
+				let fontWeight = 'normal';
+				if (fontName === 'GangwonEduModoo_Bold') {
+					fontWeight = 'bold';
+				}
 
                 // 로드가 완료되면 폰트를 .letterContent에 적용
-                $('.letterContent').css('font-family', fontFamily);
+				$('.letterContent').css({
+					'font-family': fontFamily,
+					'font-weight': fontWeight
+				});
 
                 // 폰트 정보를 selectFontId에 업데이트
-                $('#selectFontId').val(name)
-                                  .attr('data-font_family', fontFamily)
-                                  .attr('data-font_name', fontName)
-                                  .css('font-family', fontName);
+				$('#selectFontId').val(name)
+					.attr('data-font_family', fontFamily)
+					.attr('data-font_name', fontName)
+					.attr('data-font_weight', fontWeight)
+					.css({
+						'font-family': fontName,
+						'font-weight': fontWeight
+					});
 
                 // 브라우저에서 폰트 렌더링이 끝난 후에 setAllTriger() 호출
                 setTimeout(() => {
