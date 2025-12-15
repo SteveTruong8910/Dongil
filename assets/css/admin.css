@@ -992,7 +992,7 @@ input[type="text"], input[type="password"], input[type="number"]{
 #postImgView .cropImgBox {
     position: relative;
     width: 14.95cm;
-    height: 22.0cm;
+    height: 22.3cm;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1000,13 +1000,13 @@ input[type="text"], input[type="password"], input[type="number"]{
 
 #postImgView .cropImg {    
     width: 100%;
-    height: 21.7cm;
+    height: 22.3cm;
 }
 
 #postImgView .cropImgBox2 {
     position: relative;
     width: 14.95cm;
-/*    height: 22.3cm;*/
+    height: 22.3cm;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1020,7 +1020,7 @@ input[type="text"], input[type="password"], input[type="number"]{
 #postImgView .imgBox {
     position: relative;
     width: 14.95cm;
-    height: 21.9cm;    
+    height: 21.9cm;
     display: flex;
     justify-content: center;
     align-items: center;
