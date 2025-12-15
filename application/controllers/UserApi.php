@@ -1344,7 +1344,7 @@ class UserApi extends CI_Controller {
         $result = array('result' => false, 'msg' => "");                
 
         // 이미지의 기본 너비와 높이 설정
-        $width = 1168;
+        $width = 1200;
         $height = 800;
 
         // 업로드된 파일이 없는 경우 에러 메시지 반환
