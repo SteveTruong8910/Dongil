@@ -61,12 +61,6 @@ $config['fonts'] = array(
 
 /* 손글씨 폰트 */
 $config['handFonts'] = array(
-	['fontName' => 'GangwonEducationSaeum', 'font-family' => 'Gangwon Education Saeum', 'name' => '강원교육새음'],
-	['fontName' => 'GangwonEduHyeonOkSsaem', 'font-family' => 'Gangwon Education Hyeonoksaem', 'name' => '강원교육현옥샘'],
-	['fontName' => 'ParkSeoWooFont', 'font-family' => 'Kyobo 2024', 'name' => '교보손글씨2024박서우체'],
-	['fontName' => 'GangwonEduTtunteun', 'font-family' => 'Gangwon Education Power', 'name' => '강원교육튼튼'],
-	['fontName' => 'GangwonEduModoo_Light', 'font-family' => 'Gangwon Education All', 'name' => '강원교육모두 Light'],
-	['fontName' => 'GangwonEduModoo_Bold', 'font-family' => 'Gangwon Education All', 'name' => '강원교육모두 Bold'],
 	['fontName' => 'OnGleipMerry', 'font-family' => 'OnGleipMerry', 'name' => '온글잎 메리마체'],
 	['fontName' => 'OnGulIpRadioPen', 'font-family' => 'OnGulIpRadioPen', 'name' => '온글잎 레디오 볼펜체'],
 	['fontName' => 'HumanGothic', 'font-family' => 'Human_gothic', 'name' => '휴먼고딕'],
