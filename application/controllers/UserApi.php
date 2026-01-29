@@ -2002,7 +2002,7 @@ class UserApi extends CI_Controller {
         ]);        
     
         // 포인트 차감
-        if ($payType === 'point') {
+        if ($payPoint > 0) {
             $this->db->query("UPDATE member_list SET point = point - ? WHERE idx = ?", [$payPoint, $memberIdx]);
     
             $this->db->insert('point_log', [
