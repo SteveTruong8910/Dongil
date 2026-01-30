@@ -3155,11 +3155,13 @@
             };
 
         const existingIndex = libraryIndexes.indexOf(index);
-        
-        if (existingIndex >= 0) {
-            libraryIndexes.splice(existingIndex, 1);
-            selectedLibraries.splice(existingIndex, 1);
-            $this.removeClass('active');
+		const library = selectedLibraries.find(lib => lib.idx === libraryIdx);
+
+        if (library) {
+			library.libCount += 1;
+			$this.closest('.fileWrap.libraryFile').find('.number').text(library.libCount);
+			setPriceInfo();
+			$this.addClass('active');
         } else {
             libraryIndexes.push(index);
             selectedLibraries.push(libraryData);
@@ -3311,24 +3313,24 @@
         // 현재 선택된 카테고리가 방송표인지 확인
         const isBroadcastCategory = $(`.cate2[data-cate="${cateIdx}"]`).text().includes('방송표');
 
-        if (selectedLibraries.length > 0) {
-            const remainingLibs = selectedLibraries.filter(lib => {
-                const $libBox = $(`.libraryViewBox[data-idx="${lib.idx}"]`);
-                // 현재 카테고리에 속하거나 방송표 자료인 경우 유지
-                return ($libBox.length > 0 && $libBox.data('cate') == choiceCateIdx) || 
-                    (isBroadcastCategory && lib.isBroadcast);
-            });
-            
-            // 다른 카테고리에 속하는 자료는 제거
-            if (remainingLibs.length !== selectedLibraries.length) {
-                selectedLibraries = remainingLibs;
-                libraryIndexes = remainingLibs.map(lib => 
-                    $(`.libraryViewBox[data-idx="${lib.idx}"]`).index()
-                );
-                updateSelectedLibraries();
-                setPriceInfo();
-            }
-        }
+        // if (selectedLibraries.length > 0) {
+        //     const remainingLibs = selectedLibraries.filter(lib => {
+        //         const $libBox = $(`.libraryViewBox[data-idx="${lib.idx}"]`);
+        //         // 현재 카테고리에 속하거나 방송표 자료인 경우 유지
+        //         return ($libBox.length > 0 && $libBox.data('cate') == choiceCateIdx) ||
+        //             (isBroadcastCategory && lib.isBroadcast);
+        //     });
+		//
+        //     // 다른 카테고리에 속하는 자료는 제거
+        //     if (remainingLibs.length !== selectedLibraries.length) {
+        //         selectedLibraries = remainingLibs;
+        //         libraryIndexes = remainingLibs.map(lib =>
+        //             $(`.libraryViewBox[data-idx="${lib.idx}"]`).index()
+        //         );
+        //         updateSelectedLibraries();
+        //         setPriceInfo();
+        //     }
+        // }
 
         // 서버에 해당 카테고리 자료 요청
         const res = await postJson('/userApi/getLibrary', {
