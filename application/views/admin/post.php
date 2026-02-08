@@ -930,7 +930,7 @@
             showLoadingBar();  // 로딩 바 표시
             // 각 파일을 순차적으로 처리
             for (let i = 0; i < files.length; i++) {
-				let fileNumber = String(i + 1).padStart(2, '0');
+				let fileNumber = String(i + 1).padStart(3, '0');
                 let fileColor = data.fileColor.split("/")[i];  // 파일 색상 확인
 				let customLibraryFileName = data.orderId.replace(/_\(.*/, "")
 

@@ -1,6 +1,24 @@
 <style>
     #mypage{ padding-top: 0px; min-height: calc(100vh - 50px); position: relative; }
     #ft_menu{ display: none; }
+
+	.addrBtn {
+		padding: 5px 6px;
+		border-radius: 4px;
+		background: #fff;
+		border: 1px solid #c8c8c8;
+		font-size: 14px;
+		background: url(/assets/image/ico/ico_arrow_down.png) no-repeat right +5px center;
+		background-size: 11px 8px;
+		padding-right: 23px;
+		font-weight: bold;
+	}
+
+	.addrBtnWrap {
+		display: flex;
+		justify-content: space-around;
+		margin-top: 14px;
+	}
 </style>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -70,7 +88,11 @@
                 <div class="postHeader">
                     <p class="selectMent">받으시는 분이 누구신가요?</p>                    
                 </div>
-                <p class="guide">주소</p>
+				<div class="addrBtnWrap">
+					<button class="addrBtn" onclick="openAddrModal('show', 'army')">전국 군대 훈련소</button>
+					<button class="addrBtn" onclick="openAddrModal('show', 'prison')">전국 구치소/교도소/소년원</button>
+				</div>
+				<p class="guide">주소</p>
                 <p class="letterMent">📮사서함인 경우 'XX우체국 사서함'까지만 기입. 사서함 번호는 상세주소에 적어주세요.</p>
                 <input type="hidden" id="receiverZipCode"/>
                 <input type="text" id="receiverAddr" class="fieldInput" placeholder="주소" value="" onclick="openDaumPostcode($('#receiverZipCode'), $('#receiverAddr'), $('#receiverAddrDetail'), 2)" readonly/>
@@ -91,8 +113,34 @@
     </div>
 </div>
 
+<div id="addrModal" class="postPopup popupContainer">
+	<div class="popupBox">
+		<div class="title">
+			<p id="addrTitle">전국 군대 훈련소</p>
+			<i class="fas fa-times" onclick="openAddrModal('close');"></i>
+		</div>
+
+		<select id="postSelect" class="postSelect">
+			<option value=""></option>
+		</select>
+
+		<div id="addrList">
+			<p class="postHead"><i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i> 낙생고등학교</p>
+			<p class="postContent">주소 - (13480)경기 성남시 분당구 대왕판교로 477</p>
+			<p class="postContent">상세주소 - 낙생고등학교</p>
+		</div>
+	</div>
+</div>
+
 <script>
     // 주소 팝업을 열거나 닫는 함수
+	const prisonType = <?=json_encode($this->config->item('prisonType'))?>;  // 교도소 종류
+	const prison = <?=json_encode($this->config->item('prison'))?>;  // 교도소 목록
+	const armyType = <?=json_encode($this->config->item('armyType'))?>;  // 군대 종류
+	const army = <?=json_encode($this->config->item('army'))?>;  // 군대 목록
+	// 주소 관련 정보
+	var addressType = { prison : prisonType, army : armyType };  // prisonType, armyType 설정
+	var addressList = { prison : prison, army : army };  // prison, army 설정
     async function onPostPopup(type, data = {}, addressIdx = 0) {
         let $addrPopup = $('#addrPopup');
         
@@ -147,6 +195,68 @@
             });
         });
     }
+
+	function openAddrModal(type, addrType = '') {
+		let $addrModal = $('#addrModal'); // 주소 선택 모달 엘리먼트 가져오기
+
+		if (type == 'show') {  // 모달 열기
+			let postSelectHtml = "<option value=''>선택</option>"; // 기본 선택 옵션 추가
+			let adrType = addressType[addrType]; // 선택한 주소 유형에 해당하는 리스트 가져오기
+
+			// 주소 유형 목록을 <option> 태그로 변환하여 추가
+			for (let adr of adrType) {
+				postSelectHtml += `<option value="${adr}">${adr}</option>`;
+			}
+
+			// 모달 제목 설정 ('군대 훈련소' 또는 '구치소/교도소/소년원')
+			$('#addrTitle').html(addrType == 'army' ? '군대 훈련소' : '구치소/교도소/소년원');
+
+			// 주소 선택 드롭다운 리스트 업데이트 및 변경 시 이벤트 핸들러 추가
+			$('#postSelect').html(postSelectHtml).attr('onchange', `changeAddrSelect('${addrType}')`);
+
+			// 기본적으로 안내 문구 표시
+			$("#addrList").html('<p class="empty" style="text-align:center">검색하실 항목을 선택해주세요.</p>');
+
+			// 모달을 표시
+			$addrModal.addClass('show');
+		} else {  // 모달 닫기
+			$addrModal.removeClass('show');
+		}
+	}
+
+	function changeAddrSelect(adrType) {
+		let list = ''; // 주소 목록 HTML을 저장할 변수
+		let adrList = addressList[adrType]; // 선택한 유형의 주소 리스트 가져오기
+		let choiceType = $('#postSelect option:selected').val(); // 사용자가 선택한 지역 값 가져오기
+
+		// 주소 리스트를 순회하며 선택한 지역과 일치하는 주소만 필터링
+		for (let i = 0; i < adrList.length; i++) {
+			let data = adrList[i];
+			let addressDetail = !data.addressDetail ? data.name : data.addressDetail; // 상세 주소 설정 (없으면 name 사용)
+
+			if (data.region != choiceType) continue; // 선택한 지역과 일치하지 않으면 건너뛰기
+
+			// 주소 정보를 HTML 요소로 변환하여 리스트에 추가
+			list += `<div class="postBox">
+                        <p class="postHead"><i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i> ${data.name}</p>
+                        <p class="postContent">주소 - (${data.post})${data.address}</p>
+                        <p class="postContent">상세주소 - ${addressDetail}</p>
+                        <button class="postChoiceBtn" onclick="choiceAddr('${data.post}', '${data.address}', '${addressDetail}')">선택</button>
+                    </div>`;
+		}
+
+		// 생성된 주소 리스트를 HTML에 반영
+		$('#addrList').html(list);
+	}
+
+	function choiceAddr(post, address, addressDetail) {
+		// 받는 사람 주소 필드에 선택한 주소 설정
+		$("#receiverAddr").val(`(${post})${address}`);
+		$("#receiverAddrDetail").val(addressDetail).attr('disabled', false); // 상세주소 입력 가능하도록 활성화
+
+		// 주소 선택 모달 닫기
+		openAddrModal('hide');
+	}
     
     // 주소를 저장하는 함수
     async function setAddress() {

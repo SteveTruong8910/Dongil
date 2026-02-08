@@ -38,7 +38,8 @@
     <p class="ment">3만원 ~ 10만원 미만 3%, 10만원 이상 5%</p>
         
     <p class="payType">결제방식</p>      
-    
+    <p class="ment" style="margin-bottom: 5px; ">충전된 포인트의 유효기간은 12개월 입니다</p>
+
     <div id="depositBox" class="hide" style="margin-bottom:10px;">
         <p class="letterMent" style="color: #260606;">💸무통장 입금 계좌 안내</p>
         <? foreach($this->config->item('donglDeposit') as $bankNumber => $bank){ ?>            
