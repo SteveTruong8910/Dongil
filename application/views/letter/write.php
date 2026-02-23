@@ -267,8 +267,8 @@
         <p class="letterMent">✉️ 150x100mm / 유광-270g 포토용지</p>
 
 <!--        <p class="letterMent">✔ 인물사진->유광추천 / 그외->무광추천</p>-->
-        <!-- <p class="letterMent">(*5장씩 무제한 업로드 가능 / 장당 무광: 300원, 유광: 500원)</p> -->
-        <p class="letterMent">(*5장씩 무제한 업로드 가능 / 장당 유광: 500원)</p>
+        <!-- <p class="letterMent">(*5장씩x무제한 업로드 가능 / 장당 무광: 300원, 유광: 500원)</p> -->
+        <p class="letterMent">(<span style="color:red;font-size:16px">*5장씩x무제한 업로드 가능</span> / 장당 유광: 500원)</p>
         
         <? if(!empty($this->user['idx']) && $saveIdx == 0){ ?> 
             <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -295,7 +295,7 @@
     </div>
     <div id="step-4" class="step hide" style="padding-bottom:70px;">        
         <p class="selectMent">📄문서 전송(A4 사이즈)</p>
-        <p class="letterMent">✉️100gsm 백상지(<?=(isIos() || isAndroid())? '*3개씩 업로드 / ' : ''?>장당 흑백 150원, 컬러 300원)</p>        
+        <p class="letterMent">✉️100gsm 백상지(<span style="color:red;font-size:16px"><?=(isIos() || isAndroid())? '*3개씩x무제한 업로드 / ' : ''?></span>장당 흑백 150원, 컬러 300원)</p>        
         <p class="letterMent">✅ 봉투는 대봉투로 전송됩니다</p>
         
         <? if(!empty($this->user['idx']) && $saveIdx == 0){ ?> 
