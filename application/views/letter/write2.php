@@ -219,7 +219,7 @@
             <? if(!empty($this->user)) { ?>
                 <button class="postBtn" onclick="onPostPopup('show');">
                     <i class="fas fa-map-marker-alt" style="margin-right:5px;"></i>
-                    주소지 찾기
+                    저장된 주소
                 </button>
             <? }else{ ?>
                 <button class="postBtn" onclick="onPostPopup('show');">

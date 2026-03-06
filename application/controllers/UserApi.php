@@ -1071,6 +1071,15 @@ class UserApi extends CI_Controller {
                 
                 /* 포인트를 사용하여 수정하였을 경우 차감 */
                 if($payPoint > 0) {
+                    /* 보유 포인트 확인 */
+                    $memberPoint = $this->db->query("SELECT point FROM member_list WHERE idx = ?", [$memberIdx])->row_array();
+                    if ((int)$memberPoint['point'] < (int)$payPoint) {
+                        $this->db->trans_rollback();
+                        $result['result'] = false;
+                        $result['msg'] = '보유 포인트가 부족합니다.';
+                        die(json_encode($result));
+                    }
+
                     $minusPoint = (int)$payPoint * -1;
 
                     $sql = "UPDATE member_list SET point = point + {$minusPoint} WHERE idx = '{$memberIdx}' ";
@@ -2003,6 +2012,15 @@ class UserApi extends CI_Controller {
     
         // 포인트 차감
         if ($payPoint > 0) {
+            /* 보유 포인트 확인 */
+            $memberPoint = $this->db->query("SELECT point FROM member_list WHERE idx = ?", [$memberIdx])->row_array();
+            if ((int)$memberPoint['point'] < (int)$payPoint) {
+                $this->db->trans_rollback();
+                $result['result'] = false;
+                $result['msg'] = '보유 포인트가 부족합니다.';
+                die(json_encode($result));
+            }
+
             $this->db->query("UPDATE member_list SET point = point - ? WHERE idx = ?", [$payPoint, $memberIdx]);
     
             $this->db->insert('point_log', [

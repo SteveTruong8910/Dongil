@@ -114,12 +114,12 @@
 			<span>동글</span>
 			<span>사업자등록번호: 401-17-62774</span>
 			<span>통신판매업번호: 2024-부산사하-0698</span>
-			<span>전화번호: 010-4674-6705</span>
+			<span>전화번호: 010-9198-8460</span>
 			<div>
 				<span style="display: inline-block;">계좌번호: 기업 28810139201013</span>
 				<button onclick="copyToClipboard('기업 28810139201013')" style="margin-left: 2px; padding: 3px; display: inline-block;">복사</button>
 			</div>
-			<span>주소: 부산광역시 서구 충무대로91 101-2401호</span>
+			<span>주소: 부산 사하구 하신중앙로 27번길6</span>
 			<span>대표자: 황종민</span>
 			<span>COPYRIGHT (C) 2024 동글. ALL RIGHTS RESERVED.</span>
 		</div>
@@ -324,16 +324,31 @@
 			return new Date(utc + (9 * 60 * 60 * 1000));
 		}
 
-		// CONFIGURATION: Target Time
-		// Target: 2026-01-02 16:30:00 KST
-		const target = new Date(2026, 0, 2, 16, 30, 0);
+		let now = getKSTDate();
+		const baseDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+		let targetDate = baseDate;
+
+		if (isHolidayOrWeekend(baseDate)) {
+			targetDate = getNextValidDate(baseDate);
+		}
+
+		let target = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate(), 16, 30, 0);
+
+		if (now > target) {
+			const nextDay = new Date(baseDate.getTime() + 24 * 60 * 60 * 1000);
+			targetDate = getNextValidDate(nextDay);
+			target = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate(), 16, 30, 0);
+		}
 
 		const sendMonth = target.getMonth() + 1;
 		const sendDay = target.getDate();
 
+		const isToday = now.getDate() === target.getDate() &&
+			now.getMonth() === target.getMonth() &&
+			now.getFullYear() === target.getFullYear();
+
 		const sendBox = document.getElementById('sendBox');
-		
-		// Create/Get Current Time Element
+
 		let currentTimeElement = document.getElementById('currentTime');
 		if (!currentTimeElement) {
 			currentTimeElement = document.createElement('p');
@@ -344,30 +359,21 @@
 			sendBox.insertBefore(currentTimeElement, document.getElementById('countdown'));
 		}
 
-		// Create/Get Target Time Element (New Requirement)
 		let targetTimeElement = document.getElementById('targetTime');
 		if (!targetTimeElement) {
 			targetTimeElement = document.createElement('p');
 			targetTimeElement.id = 'targetTime';
-			// Same styling as currentTime
-			targetTimeElement.style.margin = '5px 0'; // Adjust margin
+			targetTimeElement.style.margin = '5px 0';
 			targetTimeElement.style.color = 'rgba(0, 0, 0, 0.6)';
 			targetTimeElement.style.letterSpacing = '-1px';
-			
-			// Format: 2026-01-02 16:30
+
 			const tYear = target.getFullYear();
 			const tMonth = (target.getMonth() + 1).toString().padStart(2, '0');
 			const tDay = target.getDate().toString().padStart(2, '0');
 			const tHour = target.getHours().toString().padStart(2, '0');
 			const tMin = target.getMinutes().toString().padStart(2, '0');
-			
-			targetTimeElement.innerText = `마감 시간: ${tYear}-${tMonth}-${tDay} ${tHour}:${tMin}`;
 
-			// Insert after currentTime (which is before countdown)
-			// structure: sendBox > [currentTime] > [targetTime] > [countdown]
-			// insertBefore countdown puts it before countdown. Since currentTime is also before countdown, 
-			// we just need to ensure order.
-			// append child to sendBox before countdown
+			targetTimeElement.innerText = `마감 시간: ${tYear}-${tMonth}-${tDay} ${tHour}:${tMin}`;
 			sendBox.insertBefore(targetTimeElement, document.getElementById('countdown'));
 		}
 
@@ -381,31 +387,20 @@
 			const now = getKSTDate();
 			const diffInMs = target - now;
 
-			// Handle Expiration
 			if (diffInMs < 0) {
 				clearInterval(countdownInterval);
 				document.getElementById('countdown').innerText = "접수 마감되었습니다";
 				return;
 			}
 
-			// 1. Correct Hour Calculation (Total Hours)
 			const hours = Math.floor(diffInMs / (1000 * 60 * 60));
-
-			// 2. Correct Minute Calculation
 			const minutes = Math.floor((diffInMs % (1000 * 60 * 60)) / (1000 * 60));
-
-			// 3. Formatting (Pad minutes with 0)
 			const displayMinutes = minutes.toString().padStart(2, '0');
-			
-			// Styling: Emphasize numbers
-			// Using <b> tag instead of span with style to minimize CSS changes while keeping emphasis.
-			// Or using structure as requested: {TotalHours}시간 {Minutes}분...
-			// Since user said "màu k cần đổi gì cả" (no color change), I will skip colour adjustments.
-			// But the spec requirement says "Bold or Red". I'll use bold.
-			
-			// Template: {TotalHours}시간 {Minutes}분 이내 접수시 {Month}월 {Day}일에 발송 됩니다
+
+			const sendDateText = isToday ? "오늘" : `${sendMonth}월 ${sendDay}일에`;
+
 			document.getElementById('countdown').innerHTML =
-				`<b>${hours}</b>시간 <b>${displayMinutes}</b>분 이내 접수시 ${sendMonth}월 ${sendDay}일에 발송 됩니다`;
+				`<b>${hours}</b>시간 <b>${displayMinutes}</b>분 이내 접수시 ${sendDateText} 발송 됩니다`;
 		}
 
 		updateCurrentTime();

@@ -295,7 +295,7 @@
     </div>
     <div id="step-4" class="step hide" style="padding-bottom:70px;">        
         <p class="selectMent">📄문서 전송(A4 사이즈)</p>
-        <p class="letterMent">✉️100gsm 백상지(<span style="color:red;font-size:16px"><?=(isIos() || isAndroid())? '*3개씩x무제한 업로드 / ' : ''?></span>장당 흑백 150원, 컬러 300원)</p>        
+        <p class="letterMent">✉️100gsm 백상지(<?=(isIos() || isAndroid())? '<span style="color:red;font-size:16px">*3개씩x무제한 업로드</span> / <br/>' : ''?>장당 흑백 150원, 컬러 300원)</p>        
         <p class="letterMent">✅ 봉투는 대봉투로 전송됩니다</p>
         
         <? if(!empty($this->user['idx']) && $saveIdx == 0){ ?> 
@@ -389,7 +389,7 @@
             <? if(!empty($this->user)) { ?>
                 <button class="postBtn" onclick="onPostPopup('show');">
                     <i class="fas fa-map-marker-alt" style="margin-right:5px;"></i>
-                    주소지 찾기
+                    저장된 주소
                 </button>
             <? }else{ ?>
                 <button class="postBtn" onclick="onPostPopup('show');">
