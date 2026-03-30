@@ -1,23 +1,15 @@
 <style>
-    #category{ display: none; }
-    #container{ padding: 0px; }        
+	#category { display: none; }
+	#container { padding: 0px; }
 
-    .imgBox, .cropImgBox, .cropImgBox2 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%; /* 부모 요소의 너비를 100%로 설정 */
-        height: 100%; /* 부모 요소의 높이를 100%로 설정 */
-        margin: 0; /* 부모 요소의 마진 제거 */
-        padding: 0; /* 부모 요소의 패딩 제거 */
-    }
+	html, body {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+		background: #fff;
+	}
 
-    .postImg, .cropImg, .cropImg2 {
-        max-width: 100%;
-        height: auto;
-        margin: 0; /* 이미지의 마진 제거 */
-        padding: 0; /* 이미지의 패딩 제거 */
-    }
 	.first-page {
 		position: relative;
 		width: 100vw;
@@ -27,6 +19,8 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		page-break-after: always;
+		overflow: hidden;
 	}
 
 	.rotate-box {
@@ -34,6 +28,9 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		width: 100vh;
+		height: 100vw;
+		text-align: center;
 	}
 
 	.first-page p {
@@ -44,7 +41,7 @@
 		font-weight: bold;
 	}
 
-	#postImgView .cropImgBox2 {
+	.imgBox, .cropImgBox, .cropImgBox2 {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -53,101 +50,80 @@
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
-		page-break-inside: avoid;
+		position: relative;
+		page-break-after: always;
 	}
 
-	#postImgView .cropImg2 {
-		width: 100vw;
-		height: 100vh;
-		max-height: 100vh;
-		max-width: 100%;
-		object-fit: contain;
-		margin: 0;
-		padding: 0;
-	}
-
-	#postImgView .cropImgBox {
-		display: flex;
-		justify-content: center;
-		align-items: center;
+	.postImg, .cropImg, .cropImg2 {
 		width: 100%;
-		height: 100vh;
-		margin: 0;
-		padding: 0;
-		overflow: hidden;
-		page-break-inside: avoid;
-	}
-
-	#postImgView .cropImg {
-		width: 100vw;
-		height: 100vh;
-		max-height: 100vh;
-		max-width: 100%;
+		height: 100%;
 		object-fit: contain;
-		margin: 0;
-		padding: 0;
+		display: block;
 	}
 
-	/* ====== PRINT FIX ====== */
 	@media print {
 		@page {
 			margin: 0 !important;
 			size: auto;
 		}
 
-		.imgSheet {
-			page-break-after: always;
-			page-break-inside: avoid;
-		}
-
-		.cropImgBox2 {
-			height: 100vh !important;
-			max-height: 100vh !important;
-			overflow: hidden !important;
-			page-break-inside: avoid !important;
-		}
-
-		.cropImg2 {
+		html, body {
 			width: 100%;
 			height: 100%;
-			display: block;
-			margin: 0;
-			object-fit: cover !important;
-		}
-
-		.cropImgBox {
-			height: 100vh !important;
-			max-height: 100vh !important;
-			overflow: hidden !important;
-			page-break-inside: avoid !important;
-		}
-
-		.cropImg {
-			width: 100%;
-			height: 100%;
-			display: block;
-			margin: 0;
-			object-fit: cover !important;
-		}
-
-		html,
-		body {
 			margin: 0 !important;
 			padding: 0 !important;
-			height: 100%;
-			width: 100%;
+		}
+
+		/* 2. Ẩn thành phần thừa */
+		#category, header, footer, .loading-bar {
+			display: none !important;
 		}
 
 		.first-page {
+			display: flex !important;
+			justify-content: center !important;
+			align-items: center !important;
 			width: 100vw !important;
 			height: 100vh !important;
+			margin: 0 !important;
+			page-break-after: always !important;
+			page-break-inside: avoid !important;
 		}
 
 		.rotate-box {
 			transform: rotate(90deg) !important;
 		}
-	}
 
+		.imgBox, .cropImgBox, .cropImgBox2 {
+			display: block !important;
+			position: relative !important;
+			width: 100vw !important;
+			height: 100vh !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			page-break-after: always !important;
+			page-break-inside: avoid !important;
+			overflow: hidden !important;
+			left: 0;
+			top: 0;
+		}
+
+		.imgSheet > div:last-child {
+			page-break-after: auto !important;
+		}
+
+		.postImg, .cropImg, .cropImg2 {
+			width: 100% !important;
+			height: 100% !important;
+			object-fit: cover !important;
+			display: block !important;
+			position: absolute;
+			top: 0;
+			left: 0;
+			margin: 0 !important;
+			padding: 0 !important;
+		}
+	}
 </style>
 
 <div id="postImgView" class="imgSheet">
