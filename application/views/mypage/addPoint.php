@@ -276,10 +276,7 @@
 
                 if(window.ReactNativeWebView) {
                     // React Native WebView를 통한 결제 처리
-                    javascript:nav.locationHref(
-                        `/mypage/payPoint?memberIdx=${memberIdx}&amount=${amount}&payType=${payType}`,
-                        'z1'
-                    );
+                    javascript:location.href = `/mypage/payPoint?memberIdx=${memberIdx}&amount=${amount}&payType=${payType}`;
                 }else {
                     // 일반 웹에서 결제 처리
                     AUTHNICE.requestPay({

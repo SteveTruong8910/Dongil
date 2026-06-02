@@ -21,7 +21,7 @@
                         <div class="content"><?= nl2br(htmlspecialchars($info['content'][0] ?: '&nbsp;')) ?></div>
 
                         <div class="btnWrap">
-                            <a href="javascript:nav.locationHref('/letter?tmpSaveIdx=<?=$info['idx']?>', 'b1');" class="continueBtn">이어서 작성하기</a>
+                            <a href="/letter?tmpSaveIdx=<?=$info['idx']?>"class="continueBtn">이어서 작성하기</a>
                             <a class="deleteBtn" onclick="removeLetter(<?=$info['idx']?>)">삭제하기</a>
                         </div>
                     </div>

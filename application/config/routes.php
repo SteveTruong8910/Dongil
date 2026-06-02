@@ -54,3 +54,8 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['log-access'] = 'UserApi/logAppAccess';
+
+// SSO bridge from the new (Nest) site. JWT in ?token=... is verified against
+// JWT_SHARED_SECRET (constants.php) and member_list.idx is matched to set the
+// CI session. See application/controllers/SsoAuth.php.
+$route['auth/sso'] = 'SsoAuth/callback';

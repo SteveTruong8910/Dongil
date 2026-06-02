@@ -65,10 +65,7 @@
         }
         
         // 검색된 편지 페이지로 이동
-        javascript:nav.locationHref(
-            `/mypage/myLetter?mbId=${$mbId.val()}&mbName=${$mbName.val()}&mbPassword=${$mbPassword.val()}`, 
-            'b4'
-        );
+        javascript:location.href = `/mypage/myLetter?mbId=${$mbId.val()}&mbName=${$mbName.val()}&mbPassword=${$mbPassword.val()}`;
     }
     
     // 인증 문자를 전송하는 함수

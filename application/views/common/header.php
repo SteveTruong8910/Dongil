@@ -84,7 +84,7 @@
                                     <i class="fas fa-search"></i>
                                 </a>
                             <? }else{ ?>
-                                <a href="javascript:nav.locationHref('/', 'clear')" class="home">
+                                <a href="/" class="home">
                                     <img src="/assets/image/ico/ico_home.png"/>
                                 </a>                                                          
                             <? } ?>
@@ -94,10 +94,9 @@
                     <div class="col-xs-4" style="display: flex; align-items: center;">
                         <!-- 포인트 충전 링크 (로그인한 사용자만 표시) -->
                         <? if(!empty($this->user)){ ?>
-                            <a href="javascript:nav.locationHref('/mypage/point', 'd1')" class="point" style="display: flex; align-items: center; position:relative">
+                            <a href="/mypage/point" class="point" style="display: flex; align-items: center; position:relative">
                                 <img src="/assets/image/ico/ico_coin.png" style="width: 20px; margin-right: 5px;"/>
-                                <?=number_format($this->user['point'])?>                                                                
-                                <span class="speechBubble">포인트 충전하기</span>
+                                <?=number_format($this->user['point'])?>
                             </a>
                         <? } ?>
                     </div>

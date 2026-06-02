@@ -13,7 +13,7 @@ class Mypage extends CI_Controller {
 
         // 현재 컨트롤러와 메서드명을 가져옴
         $current_controller = $this->router->fetch_class();
-        $current_method = $this->router->fetch_method();                
+        $current_method = $this->router->fetch_method();
     }
 
     public function index()
@@ -114,8 +114,8 @@ class Mypage extends CI_Controller {
         $viewData['isDeposit'] = $isDeposit;
 
         // 뷰 로드 (헤더, 본문, 푸터)
-        $this->load->view('/common/header', $viewData);                
-        $this->load->view('/mypage/myLetter', $viewData);        
+        $this->load->view('/common/header', $viewData);
+        $this->load->view('/mypage/myLetter', $viewData);
         $this->load->view('/common/footer');
     }
 
@@ -458,22 +458,16 @@ class Mypage extends CI_Controller {
     
     public function addPoint()
     {
-        $viewData = array('title' => '포인트 충전');               
-        
-        // 헤더, 본문, 푸터 뷰 로드
-		$this->load->view('/common/header', $viewData);                
-        $this->load->view('/mypage/addPoint', $viewData);
-		$this->load->view('/common/footer');
+        /* 포인트 충전 일시 중단 */
+        header('Location: /mypage/point');
+        exit;
     }
-    
+
     public function payPoint()
     {
-        $viewData = array('title' => '포인트 결제');               
-        
-        // 헤더, 본문, 푸터 뷰 로드
-		$this->load->view('/common/header', $viewData);
-		$this->load->view('/mypage/payPoint', $viewData);
-		$this->load->view('/common/footer');
+        /* 포인트 결제 일시 중단 */
+        header('Location: /mypage/point');
+        exit;
     }
 
     public function pay()        

@@ -64,7 +64,7 @@
         // 게시글이 성공적으로 등록되면 성공 메시지를 보여주고 게시판 목록으로 리디렉션
         showAlert('등록되었습니다.')
         .then(() => {
-            nav.locationHref('/board?type=qna', 'c1', true); // 게시판 목록으로 이동
+            location.href = '/board?type=qna'; // 게시판 목록으로 이동
         });
     }
 </script>

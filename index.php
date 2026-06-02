@@ -1,4 +1,45 @@
 <?php
+/*
+ *---------------------------------------------------------------
+ * MAINTENANCE MODE (DISABLED)
+ *---------------------------------------------------------------
+ * Set MAINTENANCE_ENABLED to true to re-enable the gate.
+ * Bypass with ?key={MAINTENANCE_BYPASS_KEY} (remembered via cookie).
+ */
+define('MAINTENANCE_ENABLED', false);
+define('MAINTENANCE_BYPASS_KEY', 'e3ddc7669cad3eb7f0e08a859d7c3a010c812411');
+if (MAINTENANCE_ENABLED && !defined('STDIN')) {
+	$_maint_bypass = false;
+	if (isset($_GET['key']) && hash_equals(MAINTENANCE_BYPASS_KEY, (string) $_GET['key'])) {
+		setcookie('maint_bypass', MAINTENANCE_BYPASS_KEY, time() + 86400 * 30, '/', '', !empty($_SERVER['HTTPS']), true);
+		$_maint_bypass = true;
+	} elseif (isset($_COOKIE['maint_bypass']) && hash_equals(MAINTENANCE_BYPASS_KEY, (string) $_COOKIE['maint_bypass'])) {
+		$_maint_bypass = true;
+	}
+	$_maint_req = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
+	$_maint_is_image = (strpos($_maint_req, '/assets/image/maintenance.jpg') === 0);
+	/* Whitelist .well-known (Apple/Google domain verification, SSL ACME, ...) */
+	$_maint_is_wellknown = (strpos($_maint_req, '/.well-known/') === 0);
+	if (!$_maint_bypass && !$_maint_is_image && !$_maint_is_wellknown) {
+		header('HTTP/1.1 503 Service Unavailable', true, 503);
+		header('Retry-After: 3600');
+		header('Content-Type: text/html; charset=UTF-8');
+		header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+		header('Pragma: no-cache');
+		echo '<!doctype html><html><head><meta charset="utf-8"><title>Maintenance</title>'
+			. '<meta name="viewport" content="width=device-width,initial-scale=1">'
+			. '<style>html,body{margin:0;padding:0;height:100%;width:100%;background:#fff;}'
+			. 'body{display:flex;align-items:center;justify-content:center;overflow:hidden;}'
+			. 'img{max-width:90vw;max-height:90vh;width:auto;height:auto;display:block;'
+			. '-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;'
+			. '-webkit-user-drag:none;pointer-events:none;}</style></head>'
+			. '<body oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">'
+			. '<img src="/assets/image/maintenance.jpg" alt="Maintenance" draggable="false">'
+			. '</body></html>';
+		exit;
+	}
+}
+
 /**
  * CodeIgniter
  *

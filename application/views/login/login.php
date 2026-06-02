@@ -1,6 +1,6 @@
 <?
     $client_id = "tDVeMCohzRzopuN8rrCQ";
-    $redirect_uri = urlencode("https://dongl.co.kr/login/naverLoginCallback");
+    $redirect_uri = urlencode("https://dongl.cafe24.com/login/naverLoginCallback");
     $state = md5(uniqid(rand(), TRUE)); // CSRF 공격을 방지하기 위한 상태 코드    
     
     $naverLoginUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id={$client_id}&redirect_uri={$redirect_uri}&state={$state}";
@@ -60,12 +60,12 @@
     </div>
     
     <p class="joinMent">계정이 없으신가요? 
-        <a href="javascript:nav.locationHref('/join', 'a3')" class="purpleText">회원가입 하기</a>
+        <a href="/join" class="purpleText">회원가입 하기</a>
     </p>
     
     <p class="joinMent">
         이미 계정이 있으신가요? 
-        <a class="purpleText" href="javascript:nav.locationHref('/searchPwd', 'a4')">비밀번호 찾기</a>
+        <a class="purpleText" href="/searchPwd">비밀번호 찾기</a>
     </p>
 </div>
 
@@ -79,7 +79,7 @@
     AppleID.auth.init({
         clientId: 'dongl.co.kr',  // 애플 로그인에 사용된 서비스 ID
         scope: '',  // 권한 범위 (여기서는 비어 있음)
-        redirectURI: 'https://dongl.co.kr/login/appleLoginCallback',  // 로그인 후 리디렉션 URI
+        redirectURI: 'https://dongl.cafe24.com/login/appleLoginCallback',  // 로그인 후 리디렉션 URI
         state: 'state',  // 상태 값
         usePopup: false  // 팝업을 사용할지 여부
     });
@@ -88,7 +88,7 @@
     function kakaoLogin() {  
         // 카카오 로그인 인증 요청 (리디렉션 URI를 지정)
         Kakao.Auth.authorize({
-            redirectUri: 'https://dongl.co.kr/login/kakaoLogin',  // 로그인 후 리디렉션 URI
+            redirectUri: 'https://dongl.cafe24.com/login/kakaoLogin',  // 로그인 후 리디렉션 URI
         });
     }
     
@@ -102,7 +102,7 @@
     function naverLogin() {
         if(window.ReactNativeWebView) {
             // React Native WebView 환경에서는 특정 페이지로 리디렉션
-            nav.locationHref("/login/naverLogin", 'z2');
+            location.href = '/login/naverLogin';
         } else {
             // 일반 웹 환경에서는 버튼에 설정된 URL로 이동
             location.href = $('#naverLoginBtn').data('href');
@@ -137,7 +137,7 @@
         }
         
         // 로그인 성공 시 홈으로 리디렉션
-        nav.locationHref('/', 'clear');
+        location.href = '/';
     }
     
     // DOM 준비 완료 후 이벤트 리스너 추가

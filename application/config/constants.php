@@ -86,3 +86,11 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 define('IS_MY', $_SERVER['REMOTE_ADDR'] == '61.79.75.126');
 
+// Shared HS256 secret with the new Nest backend (JWT_SECRET there).
+// Used by SsoAuth controller to verify access tokens that land on
+// /auth/sso?token=... links from the new site.
+defined('JWT_SHARED_SECRET') OR define(
+    'JWT_SHARED_SECRET',
+    'donglrenewal'
+);
+

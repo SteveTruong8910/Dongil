@@ -12,37 +12,37 @@
     
     <p class="serviceMent">서비스</p>
     <div class="service">        
-        <a href="javascript:nav.locationHref('/mypage/point', 'd1')" class="box">
+        <a href="/mypage/point" class="box">
             <span>포인트 관리</span>
             <span><img class="arrow" src="/assets/image/ico/ico_arrow_right.png"></span>
         </a>        
         
-        <a href="javascript:nav.locationHref('/mypage/myLetter', 'b4')" class="box">
+        <a href="/mypage/myLetter" class="box">
             <span>내가 쓴 편지</span>
             <span><img class="arrow" src="/assets/image/ico/ico_arrow_right.png"></span>
         </a>
 
-        <a href="javascript:nav.locationHref('/mypage/myMailbox', 'b4')" class="box">
+        <a href="/mypage/myMailbox" class="box">
             <span>사서함 편지</span>
             <span><img class="arrow" src="/assets/image/ico/ico_arrow_right.png"></span>
         </a>
 
-        <!-- <a href="javascript:nav.locationHref('/mypage/myDocument', 'b4')" class="box">
+        <!-- <a href="/mypage/myDocument" class="box">
             <span>개인 문서함</span>
             <span><img class="arrow" src="/assets/image/ico/ico_arrow_right.png"></span>
         </a> -->
         
-        <a href="javascript:nav.locationHref('/mypage/tmpLetter', 'b6')" class="box">
+        <a href="/mypage/tmpLetter" class="box">
             <span>임시저장된 편지</span>
             <span><img class="arrow" src="/assets/image/ico/ico_arrow_right.png"></span>
         </a>
                 
-        <a href="javascript:nav.locationHref('/mypage/myAddress', 'b4')" class="box">
+        <a href="/mypage/myAddress" class="box">
             <span>주소지 관리</span>
             <span><img class="arrow" src="/assets/image/ico/ico_arrow_right.png"></span>
         </a>
         
-        <a href="javascript:nav.locationHref('/board?type=qna', 'c3')" class="box">
+        <a href="/board?type=qna" class="box">
             <span>1대1 문의하기</span>
             <span><img class="arrow" src="/assets/image/ico/ico_arrow_right.png"></span>
         </a>
@@ -76,7 +76,7 @@
                     return;
                 }
                         
-                nav.locationHref('/', 'clear');
+                location.href = '/';
             });
         });
     }

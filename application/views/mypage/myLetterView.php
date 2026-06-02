@@ -68,7 +68,7 @@
                         </a>
                         <iframe src="https://docs.google.com/gview?embedded=true&url=https://dongl.co.kr<?=$filePath?>" type="application/pdf" aria-label="example" width="100%" height="350"></iframe>
                     <? }else { ?>
-                        <a class="link" href="javascript:nav.locationHref('<?=$filePath?>', 'b5');">
+                        <a class="link" href="<?=$filePath?>">
                             <i class="fas fa-solid fa-file"></i> - (<?=$writeInfo['fileColor'][$key]?>)<?=$file['originalFileName']?>
                         </a>
                         <embed src="<?=$filePath?>" type="application/pdf" aria-label="example" width="100%" height="500">

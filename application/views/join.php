@@ -34,7 +34,7 @@
     
     <p class="joinMent">
         이미 계정이 있으신가요? 
-        <a class="purpleText" href="javascript:nav.locationHref('/searchPwd', 'a4')">비밀번호 찾기</a>
+        <a class="purpleText" href="/searchPwd">비밀번호 찾기</a>
     </p>
 </div>
 
@@ -89,7 +89,7 @@
         // 성공 시 회원가입 완료 메시지 및 리디렉션
         showAlert("회원가입이 완료되었습니다.")
         .then(() => {
-            nav.locationHref('/', 'clear');
+            location.href = '/';
         });
     }
     

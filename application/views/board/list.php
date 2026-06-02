@@ -20,7 +20,7 @@
         <a href="http://pf.kakao.com/_AxlNCn/chat" target="_blank" class="writeBoard" style="border: 1px solid #cbcb00; background: #ffff9d; color: #747474;">
             <img src="/assets/image/ico/ico_kakao_login.png" width="25" style="margin-right: 5px;"> 카카오톡으로 문의하기
         </a>
-        <a href="javascript:nav.locationHref('/board/write', 'c3')" class="writeBoard">
+        <a href="/board/write" class="writeBoard">
             <i class="fas fa-pencil-alt" style="margin-right: 5px;"></i> 문의 등록
         </a>
     <? } ?>
@@ -60,7 +60,7 @@
         for(let i=0; i<getBoardListRes.list.length; i++){
             let data = getBoardListRes.list[i],
                 answerBox = '',
-                evnet = (type != 'qna' || isLogin == 'Y')? `href="javascript:nav.locationHref('/board/view/${data.idx}?type=${type}', 'c2')"` : 
+                evnet = (type != 'qna' || isLogin == 'Y')? `href="/board/view/${data.idx}?type=${type}"` : 
                                                            `onclick="checkBoardPwd(${data.idx})"`;  // 게시글 보기 버튼을 클릭했을 때, 로그인 상태나 타입에 따라 이벤트 변경
             
             // 문의 게시판의 경우 답변 여부 표시
@@ -107,7 +107,7 @@
         }
 
         // 비밀번호가 맞으면 게시글 보기 페이지로 이동
-        nav.locationHref(`/board/view/${idx}?type=${type}`, 'c2');
+        location.href = `/board/view/${idx}?type=${type}`;
     }
 
     $(function(){

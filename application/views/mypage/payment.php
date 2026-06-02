@@ -46,7 +46,7 @@
             <input id="reservDate" type="date" value="<?=date('Y-m-d')?>" min="<?=date('Y-m-d')?>" max="<?=date('Y-12-31', strtotime('+1 year')); ?>">
         </div>
                         
-        <div class="pointWrap <?=empty($this->user['idx'])? 'hide' : '' ?>">
+        <div class="pointWrap hide">
             <p class="title">포인트를 사용하시겠어요?</p>
             <div class="point">
                 <div>
@@ -151,11 +151,12 @@
         </div>
         
         <div id="payBtnBox" class="payBtnBox">
-        <? foreach($this->config->item('payType') as $key => $name){ 
+        <? foreach($this->config->item('payType') as $key => $name){
+            /* point/nicepay(card,naverpayCard,kakaopay,bank) 결제 일시 중단 - 무통장입금만 노출 */
+            if($key != 'deposit') continue;
             if($saveIdx > 0 && !empty($info) && $info['payType'] != $key && $info['payType'] != 'point') continue;
-            if($key == 'bank' || $key == 'point') continue;
         ?>
-            <button class="payTypeBtn" data-type="<?=$key?>" onclick="setPayBtn($(this));"><?=$name?></button>                
+            <button class="payTypeBtn" data-type="<?=$key?>" onclick="setPayBtn($(this));"><?=$name?></button>
         <? } ?>
         </div>        
 
@@ -436,10 +437,7 @@
 
                 // React Native 환경에서 결제 페이지로 이동
                 if (window.ReactNativeWebView) {
-                    nav.locationHref(
-                        `/mypage/pay?mailboxIdx=${writeRes.idx}&payType=${payType}&orderId=${orderId}&amount=${amount}&productName=${encodeURIComponent(productName)}`,
-                        'z1'
-                    );
+                    location.href = `/mypage/pay?mailboxIdx=${writeRes.idx}&payType=${payType}&orderId=${orderId}&amount=${amount}&productName=${encodeURIComponent(productName)}`;
                 } else {
                     console.log('AUTHNICE', AUTHNICE);
                     try {
@@ -484,7 +482,7 @@
      * @returns {Object}
      */
     async function setMailboxPayment(payType) {
-        const payPoint = parseInt(uncomma($('#payPoint').val()));
+        const payPoint = 0; // 포인트 결제 일시 중단
         const totalPrice = price;
         const realTotalPrice = totalPrice - payPoint;
 

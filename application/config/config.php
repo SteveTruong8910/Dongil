@@ -23,7 +23,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+// Auto-detect from HTTP_HOST surfaces the cafe24 origin IP (1.234.22.166)
+// instead of the public hostname for some requests, which trips iOS WebView
+// cert validation (NSURLErrorDomain -1202: cert is for dongl.cafe24.com but
+// the URL is the IP). Pin the canonical HTTPS hostname so every absolute
+// URL CI builds — redirect(), site_url(), form actions, asset links — uses it.
+$config['base_url'] = 'https://dongl.cafe24.com/';
+//$config['base_url'] = '';
 //$config['base_url'] = 'http://3.26.51.114:8989'; // Dùng cho http/ec2
 
 

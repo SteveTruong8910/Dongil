@@ -63,22 +63,21 @@
 		<? } ?>
 		<div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
 			<? if(empty($this->user)){ ?>
-				<a href="javascript:nav.locationHref('/login', 'a2')" class="letterBtn" style="background: linear-gradient(272deg, #FFD600 0.5%, #FFDF34 93.87%); margin-bottom: 10px;">로그인</a>
+				<a href="/login" class="letterBtn" style="background: linear-gradient(272deg, #FFD600 0.5%, #FFDF34 93.87%); margin-bottom: 10px;">로그인</a>
 
 
 
 
 
 
-				<a href="javascript:nav.locationHref('/letter', 'b1')" class="purpleBack letterBtn">비회원 편지쓰기</a>
-				<a href="javascript:nav.locationHref('/mypage/searchLetter', 'b2')" class="searchBtn">마이페이지 / 비회원 주문 조회</a>
+				<a href="/mypage/searchLetter" class="searchBtn">마이페이지 / 비회원 주문 조회</a>
 			<? }else{ ?>
 				<div id="sendBox" style="margin-bottom: 10px;">
 					<p style="font-size: 18px; font-weight: bold; letter-spacing: -1px;">📦발송안내</p>
 					<p id="countdown" style="margin-top: 5px; display: block;color: rgba(0, 0, 0, 0.6); letter-spacing: -1px; margin: 5px 0;"></p>
 				</div>
-				<a href="javascript:nav.locationHref('/letter', 'b1')" class="purpleBack letterBtn">편지 적으러 가기</a>
-				<a href="javascript:nav.locationHref('/mypage/myLetter', 'b4')" class="searchBtn">내가 쓴 편지</a>
+				<a href="/mypage/tmpLetter" class="purpleBack letterBtn">임시저장 편지 이어쓰기</a>
+				<a href="/mypage/myLetter" class="searchBtn">내가 쓴 편지</a>
 			<? } ?>
 		</div>
 
@@ -108,8 +107,8 @@
 
 		<div id="companyInfo" class="companyInfo hide" style="margin-top: 5px;">
             <span>
-                <a href="javascript:nav.locationHref('/app/provision', 'y1')">이용약관</a> |
-                <a href="javascript:nav.locationHref('/app/privacy', 'y2')">개인정보처리방침</a>
+                <a href="/app/provision">이용약관</a> |
+                <a href="/app/privacy">개인정보처리방침</a>
             </span>
 			<span>동글</span>
 			<span>사업자등록번호: 401-17-62774</span>
@@ -119,7 +118,7 @@
 				<span style="display: inline-block;">계좌번호: 기업 28810139201013</span>
 				<button onclick="copyToClipboard('기업 28810139201013')" style="margin-left: 2px; padding: 3px; display: inline-block;">복사</button>
 			</div>
-			<span>주소: 부산 사하구 하신중앙로 27번길6</span>
+			<span>주소: 부산광역시 서구 충무대로 91 101-2401호</span>
 			<span>대표자: 황종민</span>
 			<span>COPYRIGHT (C) 2024 동글. ALL RIGHTS RESERVED.</span>
 		</div>
@@ -282,6 +281,28 @@
 		'2025-10-08', // 10월 3일 개천절 (목)
 		'2025-10-09', // 10월 9일 한글날 (수)
 		'2025-12-25', // 12월 25일 크리스마스 (수)
+
+		// 2026 공휴일
+		'2026-01-01', // 신정
+		'2026-02-16', // 설날 연휴
+		'2026-02-17', // 설날
+		'2026-02-18', // 설날 연휴
+		'2026-03-01', // 3·1절
+		'2026-03-02', // 삼일절 대체공휴일
+		'2026-05-01', // 근로자의 날
+		'2026-05-05', // 어린이날
+		'2026-05-24', // 부처님 오신 날
+		'2026-05-25', // 부처님 오신 날 대체공휴일
+		'2026-06-03', // 전국동시지방선거 (임시 공휴일)
+		'2026-06-06', // 현충일
+		'2026-08-15', // 광복절
+		'2026-08-17', // 광복절 대체공휴일
+		'2026-09-24', // 추석 연휴
+		'2026-09-25', // 추석
+		'2026-09-26', // 추석 연휴
+		'2026-10-03', // 개천절
+		'2026-10-09', // 한글날
+		'2026-12-25', // 크리스마스
 	];
 
 	function getKSTDate() {

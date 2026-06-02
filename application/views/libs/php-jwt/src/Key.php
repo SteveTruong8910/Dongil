@@ -7,16 +7,23 @@ use OpenSSLAsymmetricKey;
 use OpenSSLCertificate;
 use TypeError;
 
+/**
+ * Rewritten without constructor property promotion so it parses on PHP 7.x
+ * (cafe24 shared hosting). Original upstream uses PHP 8+ syntax.
+ */
 class Key
 {
+    /** @var string|resource|OpenSSLAsymmetricKey|OpenSSLCertificate */
+    private $keyMaterial;
+    /** @var string */
+    private $algorithm;
+
     /**
      * @param string|resource|OpenSSLAsymmetricKey|OpenSSLCertificate $keyMaterial
      * @param string $algorithm
      */
-    public function __construct(
-        private $keyMaterial,
-        private string $algorithm
-    ) {
+    public function __construct($keyMaterial, $algorithm)
+    {
         if (
             !\is_string($keyMaterial)
             && !$keyMaterial instanceof OpenSSLAsymmetricKey
@@ -33,6 +40,9 @@ class Key
         if (empty($algorithm)) {
             throw new InvalidArgumentException('Algorithm must not be empty');
         }
+
+        $this->keyMaterial = $keyMaterial;
+        $this->algorithm = $algorithm;
     }
 
     /**
@@ -40,7 +50,7 @@ class Key
      *
      * @return string
      */
-    public function getAlgorithm(): string
+    public function getAlgorithm()
     {
         return $this->algorithm;
     }

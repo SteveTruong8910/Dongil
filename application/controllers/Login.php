@@ -16,18 +16,18 @@ class Login extends CI_Controller {
     // 생성자 함수
     public function __construct(){
         parent::__construct();
-        
+
         // 공통 설정 파일 로드
         $this->load->config('common');
-        
+
         // 세션에서 사용자 정보를 가져옴
         $this->user = getUserInfo($this->session->userdata('user'), $this->db);
-        
+
         // 이미 로그인한 사용자가 있을 경우, 홈 페이지로 리다이렉트
         if(!empty($this->user)){
             header('Location: /'); // 홈 페이지로 리다이렉트
             exit; // 스크립트 종료
-        }                
+        }
     }
     
     // 로그인 페이지를 렌더링
@@ -59,7 +59,7 @@ class Login extends CI_Controller {
         $state = $_GET["state"];
 
         // 네이버 로그인 콜백 URL 인코딩
-        $redirectURI = urlencode("https://dongl.co.kr/login/naverLoginCallback");
+        $redirectURI = urlencode("https://dongl.cafe24.com/login/naverLoginCallback");
 
         // 네이버 토큰 발급 요청 URL
         $url = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_id=".$client_id."&client_secret=".$client_secret."&redirect_uri=".$redirectURI."&code=".$code."&state=".$state;
@@ -132,7 +132,7 @@ class Login extends CI_Controller {
         $team_id = 'AZ5QSBWLQJ';  // 애플 개발자 계정의 팀 ID
         $client_id = 'dongl.co.kr';  // 애플 로그인에 사용된 서비스 ID (클라이언트 ID)
         $key_id = '8XNW9BKZGL';  // 애플에서 발급받은 키의 ID
-        $redirect_uri = 'https://dongl.co.kr/login/appleLoginCallback';  // 애플 로그인 후 리디렉션될 URI
+        $redirect_uri = 'https://dongl.cafe24.com/login/appleLoginCallback';  // 애플 로그인 후 리디렉션될 URI
         $private_key = file_get_contents(APPPATH . 'views/libs/AuthKey_8XNW9BKZGL.p8');  // 애플에서 제공한 개인 키 파일 경로
 
         // JWT Header 설정 (ES256 알고리즘 사용)
@@ -273,7 +273,7 @@ class Login extends CI_Controller {
     public function kakaoLogin() {
         // 카카오 API 키와 리디렉션 URI 설정
         $kakao_api_key = '12d54fccd175f671e18ce6ab6a7489ef';
-        $redirect_uri = 'https://dongl.co.kr/login/kakaoLogin';
+        $redirect_uri = 'https://dongl.cafe24.com/login/kakaoLogin';
 
         // 카카오 인증 코드 받기
         $code = $_GET['code'];

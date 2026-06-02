@@ -50,7 +50,7 @@ class Home extends CI_Controller {
              WHERE                
                 isUse = 'Y'
              ORDER BY
-                idx DESC;
+                idx ASC;
         ";
 
         // 쿼리 실행 및 결과 가져오기

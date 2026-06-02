@@ -2874,10 +2874,7 @@
 
                 // React Native 환경에서 결제 페이지로 이동
                 if (window.ReactNativeWebView) {
-                    javascript: nav.locationHref(
-                        `/letter/pay?writeIdx=${writeRes.writeIdx}&payType=${payType}`,
-                        'z1'
-                    );
+                    javascript: location.href = `/letter/pay?writeIdx=${writeRes.writeIdx}&payType=${payType}`;
                 } else {
                     // 결제 요청을 위한 NICE PAY API 호출
                     AUTHNICE.requestPay({

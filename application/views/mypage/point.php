@@ -8,7 +8,8 @@
         <p class="myPointTxt">보유 포인트</p>
         <p class="myPoint"><?=number_format($this->user['point'])?>P</p>
         
-        <a href="javascript:nav.locationHref('/mypage/addPoint', 'b1')">충전하기</a>        
+        <!-- 포인트 충전 일시 중단 -->
+        <!-- <a href="/mypage/addPoint">충전하기</a> -->
     </div>
     <p class="line"></p>
     

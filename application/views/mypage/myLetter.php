@@ -32,7 +32,7 @@
             ?>
             <a>
                 <div class="letterListBox" style="<?=$data['state'] == 'B'? 'border: 1px solid #f71313' : ''?>">                    
-                    <a style="width: 98%; display: block; text-align: right; font-size: 12px; margin-bottom: 4px; text-decoration: underline;" href="javascript:nav.locationHref('<?=$viewUrl?>', 'b5');">
+                    <a style="width: 98%; display: block; text-align: right; font-size: 12px; margin-bottom: 4px; text-decoration: underline;" href="<?=$viewUrl?>">
                         작성한 내용확인
                     </a>
                     <div></div>
@@ -41,7 +41,7 @@
                     <p class="state <?=$data['state']?>"><?=$this->config->item('state')[$data['state']]?></p>
                     <? if(!empty($data['registrationNumber'])) { ?>
                     <p class="guide">등기번호</p>
-                    <p onclick="nav.locationHref('/mypage/delivery/<?=$data['registrationNumber']?>', 'b5');" style="text-decoration: underline; cursor:pointer;">
+                    <p onclick="location.href='/mypage/delivery/<?=$data['registrationNumber']?>';"style="text-decoration: underline; cursor:pointer;">
                         <?=formatWithHyphens($data['registrationNumber'])?>
                     </p>
                     <? } ?>
@@ -151,7 +151,7 @@
             return;
         }
 
-        nav.locationHref(`/letter?idx=${writeIdx}`, 'b1');
+        location.href = `/letter?idx=${writeIdx}`;
     }
 
     // 주문 취소 함수

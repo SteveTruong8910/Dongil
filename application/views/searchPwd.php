@@ -64,7 +64,7 @@
         // 비밀번호 변경 완료 후 로그인 페이지로 리디렉션
         showAlert("비밀번호가 변경되었습니다.")
         .then(() => {
-            nav.locationHref('/login', 'clear/a2');            
+            location.href = '/login';            
         });
     }                        
 

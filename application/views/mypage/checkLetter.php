@@ -47,10 +47,7 @@
             return;
         } 
         
-        javascript:nav.locationHref(
-            `/letter?mbId=${$mbId.val()}&mbName=${$mbName.val()}&mbPassword=${$mbPassword.val()}`, 
-            'b3'
-        );                
+        javascript:location.href = `/letter?mbId=${$mbId.val()}&mbName=${$mbName.val()}&mbPassword=${$mbPassword.val()}`;                
     }
     
 </script>

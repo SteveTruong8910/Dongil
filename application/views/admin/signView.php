@@ -16,7 +16,7 @@
         }
     }
 
-    #signView.big .delStamp{    
+    #signView.big .delStamp{
         bottom: calc(10px + 2.4cm);
     }
 

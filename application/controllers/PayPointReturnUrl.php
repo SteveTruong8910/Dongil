@@ -18,6 +18,12 @@ class payPointReturnUrl extends CI_Controller {
 	
     public function index()
     {
+        /* 포인트 충전 일시 중단 - Nicepay 콜백도 거부 */
+        echo "<p style='font-size: 18px'>포인트 충전은 현재 일시 중단되어 있습니다.</p>";
+        echo "<script type='text/javascript' src='/assets/js/navigation.js?" . $this->config->item('ver') . "'></script>";
+        echo "<script>setTimeout(function(){ if (window.ReactNativeWebView) { nav.goBack(); } else { window.history.back(); } }, 1500);</script>";
+        exit;
+
         // 결제 진행 중 메시지 출력
         echo "<p style='font-size: 18px'>결제가 진행중이오니 잠시만 기다려주세요!</p>";
 

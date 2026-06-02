@@ -21,10 +21,16 @@ class Letter extends CI_Controller {
         $isLogin = empty($this->user)? 'N' : 'Y';
         $saveIdx = $_GET['idx']?? 0;
         $tmpSaveIdx = $_GET['tmpSaveIdx']?? 0;
-        
-        /* 관리자로 로그인 되어있는 경우에는 관리자페이지로 리디렉션 */ 
+
+        /* 관리자로 로그인 되어있는 경우에는 관리자페이지로 리디렉션 */
         if(!empty($this->user['id'])){
             header('Location: /admin');
+            exit;
+        }
+
+        /* 신규 편지쓰기 일시 중단 - 임시저장(이어서 작성) / 수정만 허용 */
+        if(empty($saveIdx) && empty($tmpSaveIdx)) {
+            header('Location: /');
             exit;
         }
                 

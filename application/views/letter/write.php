@@ -505,7 +505,7 @@
             <input id="reservDate" type="date" value="<?=date('Y-m-d')?>" min="<?=date('Y-m-d')?>" max="<?=date('Y-12-31', strtotime('+1 year')); ?>">
         </div>
                         
-        <div class="pointWrap <?=empty($this->user['idx'])? 'hide' : '' ?>">
+        <div class="pointWrap hide">
             <p class="title">포인트를 사용하시겠어요?</p>
             <div class="point">
                 <div>
@@ -611,13 +611,14 @@
         </div>
         
         <div id="payBtnBox" class="payBtnBox">
-        <? foreach($this->config->item('payType') as $key => $name){ 
+        <? foreach($this->config->item('payType') as $key => $name){
+            /* point/nicepay(card,naverpayCard,kakaopay,bank) 결제 일시 중단 - 무통장입금만 노출 */
+            if($key != 'deposit') continue;
             if($saveIdx > 0 && !empty($info) && $info['payType'] != $key && $info['payType'] != 'point') continue;
-            if($key == 'bank' || $key == 'point') continue;
         ?>
-            <button class="payTypeBtn" data-type="<?=$key?>" onclick="setPayBtn($(this));"><?=$name?></button>                
+            <button class="payTypeBtn" data-type="<?=$key?>" onclick="setPayBtn($(this));"><?=$name?></button>
         <? } ?>
-        </div>        
+        </div>
 
 <!--        depositType2-->
         <button class="btnPay" onclick="nicepayStart()"><span id="totalPrice">0원 결제하기</span></button>
@@ -964,8 +965,8 @@
                 } else if (!$senderTel.val()) {
 					falseMsg = '보내는사람의 전화번호를 입력해주세요.';  // 보내는 사람 전화번호가 비어있을 경우 메시지 설정
 					target = $senderTel;
-				} else if ($senderTel.val() && !($senderTel.val().length == 11 || $senderTel.val().length == 10 || $senderTel.val().length == 9)) {
-					falseMsg = '전화번호는 숫자  9~11자리로 입력해주세요.';  // 보내는 사람 전화번호가 비어있을 경우 메시지 설정
+				} else if ($senderTel.val() && $senderTel.val().length != 11) {
+					falseMsg = '전화번호는 숫자 11자리로 입력해주세요.';  // 보내는 사람 전화번호가 비어있을 경우 메시지 설정
 					target = $senderTel;
                 } else if (isLogin == 'N' && $mbPassword.val().length != 4) {
                     falseMsg = '임의의 숫자 4자리를 입력해주세요.';  // 비로그인 상태에서 비밀번호가 4자리가 아닐 경우 메시지 설정
@@ -1408,7 +1409,8 @@
 
         // 총 가격 계산 (자료실 가격 추가)
         totalPrice = parseInt(letterPrice + photosPrice + filePrice + libraryPrice + stampPrice);
-        payPoint = parseInt(uncomma($('#payPoint').val()));
+        // 포인트 결제 일시 중단 - 항상 0
+        payPoint = 0;
         realTotalPrice = totalPrice - payPoint;
 
         // 최소 결제 금액 체크
@@ -1498,7 +1500,7 @@
             mbName : mbName,
             mbPhoneNumber : mbPhoneNumber,
             mbPassword : mbPassword,
-            isAllPoint : $('#isAllPoint').is(':checked')? 'Y' : 'N',
+            isAllPoint : 'N',  // 포인트 결제 일시 중단
             letterPrice : letterPrice,
             photoPrice : photosPrice,
             filePrice : filePrice,
@@ -3872,10 +3874,7 @@
 
                 // React Native 환경에서 결제 페이지로 이동
                 if (window.ReactNativeWebView) {
-                    javascript: nav.locationHref(
-                        `/letter/pay?writeIdx=${writeRes.writeIdx}&payType=${payType}`,
-                        'z1'
-                    );
+                    javascript: location.href = `/letter/pay?writeIdx=${writeRes.writeIdx}&payType=${payType}`;
                 } else {
                     // 결제 요청을 위한 NICE PAY API 호출
                     AUTHNICE.requestPay({

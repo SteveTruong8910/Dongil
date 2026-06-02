@@ -617,15 +617,22 @@ class UserApi extends CI_Controller {
 	{
         ini_set('memory_limit', '-1');
         $result = array('result' => false, 'msg' => "");
-                
+
         /* saveIdx가 0보다 클경우 수정하기 단계, tmpSaveIdx가 0보다 클경우 임시저장 단계 */
         $saveIdx = (int)$_POST['saveIdx'];
         $tmpSaveIdx = (int)$_POST['tmpSaveIdx'];
         $isTmpSave = $_POST['isTmpSave'];
         $isLogin = $_POST['isLogin'];
-        $memberIdx = $_POST['memberIdx'];        
-        
-        $payType = empty($_POST['payType'])? 'point' : $_POST['payType'];
+        $memberIdx = $_POST['memberIdx'];
+
+        /* 포인트 결제 일시 중단: 기본값을 deposit로, payType=point/payPoint>0 요청 차단 */
+        $payType = empty($_POST['payType'])? 'deposit' : $_POST['payType'];
+        if($isTmpSave != 'Y') {
+            if($payType == 'point' || (int)($_POST['payPoint'] ?? 0) > 0) {
+                $result['msg'] = '포인트 결제는 현재 일시 중단되어 있습니다.';
+                die(json_encode($result));
+            }
+        }
         $letterIdx = $_POST['letterIdx'];
         $productName = $_POST['productName'];
         $fontName = $_POST['fontName'];
@@ -1939,10 +1946,16 @@ class UserApi extends CI_Controller {
             die(json_encode($result));
         }
 
-        
+
         $payPoint = (int) $this->input->post('payPoint');
         $realTotalPrice = (int) $amount;
         $totalPrice = $realTotalPrice + $payPoint;
+
+        /* 포인트 결제 일시 중단 */
+        if ($payType === 'point' || $payPoint > 0) {
+            $result['msg'] = '포인트 결제는 현재 일시 중단되어 있습니다.';
+            die(json_encode($result));
+        }
 
 
         if ($type === 'scan') {

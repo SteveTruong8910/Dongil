@@ -121,6 +121,10 @@ class PointApi extends CI_Controller {
     {
         $result = array('result' => false, 'msg' => "");
 
+        /* 포인트 충전 일시 중단 */
+        $result['msg'] = '포인트 충전은 현재 일시 중단되어 있습니다.';
+        die(json_encode($result));
+
         // 세션에서 사용자 정보 가져오기
         $memberIdx = $this->user['idx'];
         $point = (int)$_POST['point'];  // 충전할 포인트 (정수형으로 변환)
